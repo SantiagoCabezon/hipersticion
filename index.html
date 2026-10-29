@@ -935,7 +935,7 @@ function Hero() {
               <motion.div id="definicion" key="definicion" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }} className="overflow-hidden">
                 <article className="mt-8 border-l-2 border-leaf bg-[#0a1a14]/70 py-6 pl-6 pr-4 md:py-8 md:pl-10">
                   <p className="measure text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-fg/90">
-                    <strong className="font-bold text-fg">Hiper + superstición.</strong> Una ficción que se vuelve real porque mucha gente la cree y actúa en consecuencia. No es magia ni pensamiento positivo: las historias que compartimos sobre el futuro guían las decisiones del presente, y esas decisiones terminan dándole forma a la realidad. La profecía crea las condiciones para su propio cumplimiento.
+                    <strong className="font-bold text-fg">Hiper + superstición.</strong> Una ficción que se vuelve real porque mucha gente la cree y actúa en consecuencia. No es magia ni pensamiento positivo: las historias que compartimos sobre el futuro guían las decisiones del presente, y esas decisiones terminan dándole forma a la realidad.
                   </p>
                   {/* Mismo ancho que la definición: la línea fina acompaña al párrafo */}
                   <div className="measure mt-4 border-t border-line pt-4 text-[clamp(1.05rem,1.4vw,1.25rem)]">
@@ -1866,6 +1866,15 @@ function Cine() {
           </button>
         </div>
         <p className="label mt-4">Pasá el cursor (o tocá) cada película para ver la profecía que se cumplió.</p>
+        {/* Cierre conceptual de Cine / transición al circuito */}
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-10% 0px' }} transition={{ duration: 0.7 }}
+          className="cinema-outro-bridge mt-20 max-w-[60ch]">
+          <span className="section-tag label text-accent">[ La profecía ]</span>
+          <h3 className="bridge-headline f-serif mt-4 text-[clamp(1.6rem,3.2vw,2.6rem)] italic leading-tight">“La profecía crea las condiciones para su propio cumplimiento.”</h3>
+          <p className="bridge-subtext mt-5 text-[clamp(1rem,1.3vw,1.15rem)] leading-relaxed text-fg/80">
+            <strong className="font-bold text-fg">IA, vigilancia, automatización y escasez de recursos:</strong> las ficciones entrenaron nuestra mirada para asumir estos escenarios como un destino inevitable.
+          </p>
+        </motion.div>
         <Circuito />
       </div>
     </section>
