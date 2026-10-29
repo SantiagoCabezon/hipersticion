@@ -1,0 +1,2495 @@
+<!doctype html>
+<html lang="es" data-view="inicio">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Hiperstición</title>
+  <meta name="description" content="Un ensayo interactivo sobre las historias que creemos y cómo construyen el mundo." />
+  <meta name="theme-color" content="#040806" />
+  <meta property="og:title" content="Hiperstición" />
+  <meta property="og:description" content="Un ensayo interactivo sobre las historias que creemos y cómo construyen el mundo." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%2262%20130%20970%201048%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20fill-rule%3D%22evenodd%22%20d%3D%22M170.5%20911.0%20L167.5%20913.0%20L151.0%20933.5%20L134.0%20958.0%20L127.5%20969.5%20L153.5%20959.5%20L164.0%20957.0%20L183.0%20937.0Z%20M957.5%20140.0%20L952.0%20137.5%20L901.5%20138.0%20L854.5%20141.5%20L821.0%20145.5%20L788.5%20151.0%20L745.0%20160.5%20L685.0%20179.0%20L644.0%20195.5%20L624.0%20205.0%20L592.5%20222.0%20L562.5%20240.5%20L515.5%20275.5%20L491.0%20297.0%20L468.5%20319.0%20L442.5%20347.5%20L414.5%20382.5%20L390.5%20417.5%20L379.5%20436.0%20L364.5%20464.5%20L349.5%20498.5%20L338.5%20529.5%20L330.5%20559.5%20L328.0%20560.5%20L302.0%20527.0%20L295.0%20524.5%20L289.0%20525.0%20L285.5%20526.5%20L280.5%20531.5%20L269.5%20564.0%20L264.0%20588.0%20L260.5%20611.5%20L258.5%20639.5%20L260.0%20675.0%20L264.0%20703.5%20L269.5%20726.0%20L277.0%20748.0%20L150.5%20885.0%20L123.0%20919.0%20L96.5%20959.5%20L70.5%201011.5%20L70.5%201020.0%20L76.0%201027.0%20L83.0%201030.0%20L90.5%201029.0%20L112.0%201012.5%20L125.0%201005.0%20L146.0%20995.5%20L160.5%20990.0%20L176.0%20986.0%20L184.5%20981.5%20L346.5%20805.0%20L406.0%20785.0%20L465.0%20761.0%20L512.0%20738.0%20L551.0%20716.0%20L585.0%20694.0%20L626.5%20663.0%20L670.0%20625.0%20L693.0%20602.0%20L730.5%20560.0%20L750.5%20535.0%20L754.5%20527.5%20L754.5%20520.5%20L752.5%20516.0%20L748.5%20512.0%20L704.0%20497.0%20L701.0%20494.5%20L707.0%20491.0%20L742.0%20478.0%20L775.0%20463.0%20L819.5%20438.5%20L838.5%20426.0%20L866.5%20404.5%20L889.0%20383.0%20L903.5%20366.0%20L916.5%20346.5%20L926.0%20329.0%20L937.0%20303.0%20L948.0%20267.5%20L955.5%20233.5%20L961.0%20194.0%20L963.0%20169.0%20L963.0%20148.0Z%20M171.0%20908.0%20L185.5%20935.5%20L185.5%20937.5%20L166.0%20958.5%20L145.5%20964.5%20L125.0%20973.5%20L124.0%20970.5%20L144.0%20939.5%20L169.5%20908.0Z%22/%3E%3Cpath%20fill%3D%22%2383C998%22%20fill-rule%3D%22evenodd%22%20d%3D%22M931.5%20178.0%20L899.0%20195.5%20L849.5%20227.0%20L807.5%20256.5%20L753.5%20298.0%20L702.0%20341.0%20L645.0%20392.0%20L607.0%20428.0%20L558.0%20477.0%20L514.0%20523.0%20L449.0%20595.0%20L397.5%20655.5%20L367.5%20693.0%20L356.5%20763.5%20L356.5%20769.5%20L357.5%20770.5%20L381.0%20763.0%20L425.5%20746.0%20L455.5%20733.0%20L500.5%20711.0%20L530.5%20694.0%20L568.0%20670.0%20L587.0%20656.5%20L620.0%20630.0%20L619.5%20628.0%20L530.5%20628.0%20L525.5%20627.0%20L520.5%20623.0%20L517.0%20616.0%20L517.0%20611.0%20L518.5%20607.0%20L523.0%20601.5%20L529.0%20599.0%20L654.0%20599.0%20L673.5%20580.0%20L699.0%20552.0%20L713.5%20534.5%20L714.5%20531.5%20L644.0%20507.5%20L639.0%20503.0%20L636.0%20496.5%20L636.0%20492.0%20L638.0%20487.0%20L642.0%20482.5%20L646.5%20480.0%20L656.5%20478.0%20L700.5%20463.0%20L741.0%20446.5%20L772.0%20431.5%20L799.0%20416.5%20L824.5%20400.0%20L853.0%20377.0%20L852.0%20375.0%20L813.5%20375.0%20L808.5%20374.0%20L802.0%20368.0%20L800.0%20363.5%20L800.0%20357.5%20L801.5%20353.5%20L806.5%20348.0%20L810.5%20346.0%20L881.0%20346.0%20L885.0%20341.5%20L894.0%20327.0%20L902.0%20311.0%20L917.0%20270.0%20L928.0%20220.0%20L932.0%20189.5%20L932.5%20179.0Z%20M885.0%20170.0%20L884.0%20169.0%20L868.0%20169.5%20L822.5%20175.0%20L780.0%20182.5%20L777.5%20184.0%20L771.0%20184.5%20L748.5%20190.0%20L690.0%20208.5%20L658.0%20221.5%20L623.5%20238.5%20L598.0%20253.0%20L591.0%20258.5%20L591.0%20318.5%20L587.5%20325.0%20L582.5%20329.0%20L577.0%20330.5%20L570.0%20329.0%20L563.0%20322.0%20L561.5%20317.5%20L561.5%20279.5%20L560.5%20278.5%20L537.0%20296.0%20L511.5%20318.0%20L481.0%20348.5%20L451.5%20382.5%20L425.5%20417.5%20L399.5%20460.5%20L384.5%20491.5%20L368.0%20534.0%20L358.5%20566.5%20L353.0%20594.0%20L353.0%20600.0%20L350.0%20607.0%20L343.0%20612.5%20L331.5%20612.0%20L323.5%20604.0%20L301.5%20574.0%20L298.0%20572.5%20L293.5%20590.0%20L290.0%20612.0%20L288.0%20637.0%20L288.0%20655.0%20L291.5%20689.5%20L299.0%20721.5%20L302.5%20721.5%20L342.0%20678.5%20L409.0%20596.5%20L482.5%20514.0%20L528.0%20466.0%20L603.5%20391.0%20L670.5%20329.5%20L719.0%20288.5%20L763.5%20253.0%20L825.0%20208.5Z%22/%3E%3Cpath%20fill%3D%22%23FF5722%22%20fill-rule%3D%22evenodd%22%20d%3D%22M170.5%20911.0%20L167.5%20913.0%20L149.5%20935.5%20L134.5%20957.0%20L127.5%20970.0%20L143.5%20963.0%20L164.0%20957.0%20L183.0%20937.0%20L182.5%20934.5Z%22/%3E%3Cpath%20fill%3D%22%23E36027%22%20fill-rule%3D%22evenodd%22%20d%3D%22M1024.5%20835.0%20L1020.5%20828.0%20L992.5%20795.0%20L958.5%20762.0%20L939.5%20746.5%20L921.0%20733.5%20L903.5%20723.0%20L881.5%20712.0%20L864.5%20705.0%20L838.5%20697.0%20L834.5%20697.0%20L824.5%20694.0%20L811.5%20693.0%20L810.5%20692.0%20L766.0%20691.0%20L765.0%20692.0%20L741.0%20695.0%20L726.0%20699.0%20L702.0%20708.0%20L675.0%20722.5%20L647.0%20742.5%20L630.5%20757.0%20L612.0%20776.0%20L589.5%20803.5%20L563.5%20842.5%20L537.0%20889.0%20L515.0%20933.0%20L487.0%20985.0%20L471.0%201012.0%20L452.0%201040.0%20L428.0%201069.5%20L400.0%201097.0%20L383.0%201110.5%20L366.0%201122.0%20L345.0%201133.0%20L324.0%201141.0%20L305.0%201146.0%20L292.0%201147.0%20L291.0%201148.0%20L281.0%201148.0%20L280.0%201149.0%20L258.5%201149.0%20L257.5%201148.0%20L240.5%201147.0%20L221.5%201143.0%20L205.5%201138.0%20L172.5%201122.0%20L145.0%201101.0%20L130.5%201086.0%20L118.5%201071.0%20L106.5%201052.0%20L95.5%201028.0%20L88.0%201031.5%20L81.5%201031.5%20L73.5%201026.5%20L73.0%201027.5%20L81.0%201048.5%20L89.5%201065.5%20L111.0%201096.5%20L135.0%201121.0%20L149.0%201132.0%20L167.0%201143.5%20L192.0%201155.5%20L220.0%201164.5%20L236.0%201167.5%20L251.0%201168.5%20L252.0%201169.5%20L287.5%201169.5%20L288.5%201168.5%20L309.5%201166.5%20L329.5%201161.5%20L353.5%201152.5%20L380.5%201138.0%20L408.5%201118.0%20L438.5%201090.0%20L464.5%201059.0%20L491.5%201019.5%20L521.5%20966.5%20L548.5%20912.5%20L567.5%20877.5%20L586.5%20845.5%20L606.5%20816.5%20L632.5%20785.5%20L656.5%20762.5%20L678.5%20745.5%20L694.5%20735.5%20L712.5%20726.5%20L740.5%20716.5%20L761.5%20712.5%20L771.5%20712.5%20L772.5%20711.5%20L798.0%20711.5%20L799.0%20712.5%20L814.0%20713.5%20L834.0%20718.5%20L838.0%20718.5%20L848.0%20722.5%20L854.0%20723.5%20L880.0%20734.5%20L895.0%20742.5%20L917.0%20756.5%20L933.0%20768.5%20L951.5%20784.5%20L978.0%20811.0%20L1008.0%20846.5%20L1010.0%20847.5%20L1018.5%20847.5%20L1021.5%20845.5%20L1024.5%20840.5Z%22/%3E%3C/svg%3E" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&display=swap" />
+
+  <!-- Tailwind (Play CDN) con la paleta del proyecto -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+  theme: {
+      extend: {
+        colors: {
+          ink: 'var(--bg)',
+          surface: 'var(--surface)',
+          card: 'var(--card)',
+          line: 'var(--line)',
+          fg: 'rgb(var(--fg-rgb) / <alpha-value>)',
+          muted: 'rgb(var(--muted-rgb) / <alpha-value>)',
+          accent: 'var(--accent)',
+          brand: 'var(--brand-green)',
+          leaf: 'var(--leaf)',
+          regen: 'var(--green)',
+          eco: 'var(--blue)',
+          deep: 'var(--green-deep)',
+          ocean: 'var(--blue-deep)'
+        },
+        screens: { xs: '420px' }
+      }
+    }
+};
+  </script>
+
+  <style>
+    html, body { background: #040806; color: #eef3ee; margin: 0; }
+    #boot { min-height: 70vh; display: grid; place-items: center; font: 12px/1.4 ui-monospace, Menlo, monospace; letter-spacing: .14em; text-transform: uppercase; color: #8fa398; padding: 24px 16px; text-align: center; }
+  </style>
+
+  <!-- Librerías: React 18, Framer Motion 11, Recharts 2, Lucide, Babel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.min.js"></script>
+  <script>window.react = window.React; /* lucide-react UMD busca "react" en minúscula */</script>
+  <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/recharts@2.12.7/umd/Recharts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.460.0/dist/umd/lucide-react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.2/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"><div id="boot">Cargando Hiperstición…</div></div>
+  <noscript><div id="boot">Hiperstición necesita JavaScript activado.</div></noscript>
+
+  <!--
+    =====================================================================
+    CÓDIGO DE LA APP (React + JSX). Se compila en el navegador con Babel.
+    Para editar textos o datos, buscá las constantes en mayúsculas:
+    ASSETS, VARIABLES, HAMSTER_TEXTO, FILMS, MANIFIESTO, initialData…
+    =====================================================================
+  -->
+  <script type="text/plain" id="app-src">
+/**
+ * HIPERSTICIÓN · Single File Component
+ * --------------------------------------------------------------------
+ * Todo el proyecto en un solo archivo: datos, secciones, vistas, catálogo y gráfico.
+ * Dependencias: react, framer-motion, recharts, lucide-react.
+ * Estilos: tokens CSS y fuentes van embebidos (ver GLOBAL_CSS); las clases utilitarias
+ * son de Tailwind. Si el entorno no trae Tailwind, el hook useTailwindRuntime lo carga solo
+ * con la configuración de colores del proyecto.
+ */
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { motion, AnimatePresence, MotionConfig, useInView, useMotionValueEvent, useScroll, useSpring, useTransform } from 'framer-motion';
+import { CartesianGrid, Line, LineChart, ReferenceDot, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ChevronLeft, ChevronRight, Film, Mic, Minus, Plus, RefreshCw, Search, Sparkles, Sprout, User, Wrench, X } from 'lucide-react';
+
+/* ==================================================================
+   ESTILOS GLOBALES Y TAILWIND
+   ================================================================== */
+const FONTS_URL = 'https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&display=swap';
+
+const TAILWIND_CONFIG = {
+  theme: {
+      extend: {
+        colors: {
+          ink: 'var(--bg)',
+          surface: 'var(--surface)',
+          card: 'var(--card)',
+          line: 'var(--line)',
+          fg: 'rgb(var(--fg-rgb) / <alpha-value>)',
+          muted: 'rgb(var(--muted-rgb) / <alpha-value>)',
+          accent: 'var(--accent)',
+          brand: 'var(--brand-green)',
+          leaf: 'var(--leaf)',
+          regen: 'var(--green)',
+          eco: 'var(--blue)',
+          deep: 'var(--green-deep)',
+          ocean: 'var(--blue-deep)'
+        },
+        screens: { xs: '420px' }
+      }
+    }
+};
+
+const GLOBAL_CSS = `
+/* Layout: columna editorial negra, tipografía expandida masiva + rótulos mono de instrumento + serif editorial para conceptos y citas.
+   Marca: isotipo pluma-hoja (verde #83C998) con plumín #FF5722 y línea ondulada #E36027. Tema oscuro único por decisión; el Manifiesto vira al verde institucional. */
+/* Paleta v3: negro con sesgo verde, verdes profundos y azules ecológicos como capa regenerativa; el naranja queda como acento puntual. */
+:root {
+  --bg: #040806;
+  --surface: #0a1410;
+  --card: #0d1813;
+  --line: #23352c;
+  --line-soft: #13211b;
+  --fg: #eef3ee;
+  --fg-rgb: 238 243 238; /* canales para opacidades tipo text-fg/80 */
+  --muted: #8fa398;
+  --muted-rgb: 143 163 152;
+  --accent: #FF5722;
+  --green-deep: #12392b;
+  --green: #2f7d57;
+  --leaf: #7cc68a;
+  --blue-deep: #0d2f3d;
+  --blue: #2f8fae;
+  --brand-green: #83C998;
+  --brand-orange: #E36027;
+  --f-display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+/* Vista Manifiesto: verde institucional */
+:root[data-view="manifiesto"] {
+  --bg: #1e2b22;
+  --surface: #243328;
+  --card: #243328;
+  --line: #3b4e40;
+  --line-soft: #2c3d31;
+  --muted: #b0bcad;
+  --muted-rgb: 176 188 173;
+}
+html { scroll-behavior: smooth; background: var(--bg); transition: background-color .4s ease; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; transition: background-color .4s ease; }
+::selection { background: var(--accent); color: #000; }
+.f-display { font-family: var(--f-display); font-stretch: 125%; font-weight: 800; letter-spacing: -0.02em; line-height: 0.95; text-wrap: balance; }
+.f-cond { font-family: var(--f-display); font-stretch: 70%; font-weight: 700; letter-spacing: -0.01em; text-wrap: balance; }
+.f-serif { font-family: var(--f-serif); font-optical-sizing: auto; text-wrap: pretty; }
+.f-mono { font-family: var(--f-mono); }
+.label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.measure { max-width: 65ch; }
+.tnum { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--leaf); outline-offset: 3px; }
+/* Logo: sin recuadro; el foco de teclado se marca con un subrayado verde bajo la palabra */
+.logo-btn, .logo-btn:focus, .logo-btn:focus-visible, .logo-btn:active { outline: none; box-shadow: none; border: 0; background: transparent; -webkit-tap-highlight-color: transparent; }
+.logo-btn:focus-visible .logo-word { text-decoration: underline; text-decoration-color: var(--leaf); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.glow-hero { background: radial-gradient(60% 55% at 85% 10%, rgba(47,143,174,.16), transparent 70%), radial-gradient(55% 60% at 10% 30%, rgba(47,125,87,.18), transparent 70%); }
+.glow-data { background: linear-gradient(180deg, var(--bg) 0%, #051219 45%, var(--bg) 100%); }
+.glow-hope { background: radial-gradient(70% 80% at 20% 100%, rgba(47,125,87,.28), transparent 70%), radial-gradient(60% 70% at 90% 0%, rgba(47,143,174,.2), transparent 70%), var(--bg); }
+.noscroll::-webkit-scrollbar { height: 6px; }
+.noscroll::-webkit-scrollbar-thumb { background: var(--line); }
+.grain { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px); }
+@keyframes drift { 0% { transform: translate3d(-10%, -6%, 0) scale(1.1); } 50% { transform: translate3d(8%, 4%, 0) scale(1.3); } 100% { transform: translate3d(-10%, -6%, 0) scale(1.1); } }
+@keyframes scan { from { background-position: 0 0; } to { background-position: 0 100px; } }
+@keyframes loopbar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes blink { 50% { opacity: .2; } }
+.video-ghost { animation: drift 16s ease-in-out infinite; }
+.video-scan { animation: scan 4s linear infinite; }
+.loopbar { transform-origin: left; animation: loopbar 15s linear infinite; }
+.blink { animation: blink 1.2s steps(1) infinite; }
+.film { transition: flex-grow .55s cubic-bezier(.2,.7,.2,1), border-color .3s, opacity .5s ease; }
+.film img, .film .poster-fallback { transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .5s; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .video-ghost, .video-scan, .loopbar, .blink { animation: none; }
+  .film, .film img { transition: none; }
+}
+.recharts-cartesian-axis-tick-value { font-family: var(--f-mono); font-size: 11px; }
+`;
+
+// Carga Tailwind (Play CDN) con los colores del proyecto, solo si el entorno no lo trae ya configurado.
+function useTailwindRuntime() {
+  useEffect(() => {
+    const w = window;
+    if (w.tailwind && w.tailwind.config && w.tailwind.config.theme && w.tailwind.config.theme.extend && w.tailwind.config.theme.extend.colors && w.tailwind.config.theme.extend.colors.leaf) return;
+    if (document.getElementById('hip-tailwind')) return;
+    const s = document.createElement('script');
+    s.id = 'hip-tailwind';
+    s.src = 'https://cdn.tailwindcss.com/3.4.17';
+    s.onload = () => { if (w.tailwind) w.tailwind.config = TAILWIND_CONFIG; };
+    document.head.appendChild(s);
+  }, []);
+}
+
+function GlobalStyles() {
+  useTailwindRuntime();
+  useEffect(() => {
+    if (document.getElementById('hip-fonts')) return;
+    const l = document.createElement('link');
+    l.id = 'hip-fonts'; l.rel = 'stylesheet'; l.href = FONTS_URL;
+    document.head.appendChild(l);
+  }, []);
+  return <style>{GLOBAL_CSS}</style>;
+}
+
+/* ==================================================================
+   CONFIGURACIÓN DE ASSETS
+   ================================================================== */
+// Rutas de imágenes y video.
+// En Vite, todo lo que pongas en /public se sirve desde la raíz del sitio:
+//   public/portadas/broffoni.jpg  →  /portadas/broffoni.jpg
+//   public/posters/matrix.jpg     →  /posters/matrix.jpg
+// Para WordPress u otro CDN, reemplazá por la URL de la carpeta, por ejemplo:
+//   portadas: 'https://tusitio.org/wp-content/uploads/hipersticion/portadas/'
+const BASE = ''; // carpeta base de los assets (ej. '/wp-content/uploads/hipersticion/')
+
+const ASSETS = {
+  portadas: `${BASE}portadas/`,
+  posters: `${BASE}posters/`,   // Cine → fotograma fijo de cada clip (.jpg)
+  trailers: `${BASE}trailers/`  // Cine → <clip>.webm y <clip>.mp4 (6 s en loop, sin audio)
+};
+
+// Si `file` ya es una URL o ruta absoluta, se usa tal cual; si no, se antepone la carpeta.
+const assetSrc = (dir, file) =>
+  !file ? '' : /^(https?:)?\/\//.test(file) || file.startsWith('/') ? file : dir + file;
+
+/* ==================================================================
+   DATOS · WORLD3 (Standard Run real)
+   ================================================================== */
+// 1.a · World3 · Standard Run ("Business as Usual"), año por año 1900–2100 (los picos caen en su año exacto).
+// Generado ejecutando el modelo World3 (ecuaciones de Meadows et al., implementación pyworld3) con sus parámetros estándar.
+// Columnas: [año, población (millones), alimentos per cápita (kg equiv. vegetal/persona·año),
+//            fracción de recursos no renovables restantes, producción industrial per cápita (US$ 1968/persona·año),
+//            índice de contaminación persistente (1970 = 1)]
+const W3_ROWS = [[1900,1600,269.3,1.0,41.6,0.184],[1901,1608,280.0,0.9997,42.5,0.117],[1902,1619,278.6,0.9994,44.1,0.078],[1903,1632,279.0,0.9991,45.6,0.056],[1904,1646,280.0,0.9988,47.0,0.043],[1905,1661,281.2,0.9985,48.3,0.037],[1906,1676,282.5,0.9981,49.7,0.034],[1907,1690,283.9,0.9978,51.0,0.034],[1908,1705,285.3,0.9974,52.3,0.036],[1909,1720,286.8,0.997,53.7,0.039],[1910,1734,288.4,0.9966,55.1,0.044],[1911,1748,290.0,0.9962,56.6,0.049],[1912,1763,291.7,0.9958,58.1,0.055],[1913,1777,293.5,0.9953,59.6,0.062],[1914,1791,295.5,0.9949,61.2,0.07],[1915,1806,297.7,0.9944,62.8,0.078],[1916,1820,299.9,0.9939,64.5,0.086],[1917,1835,302.1,0.9934,66.2,0.095],[1918,1849,304.3,0.9929,68.0,0.103],[1919,1864,306.6,0.9924,69.8,0.112],[1920,1879,308.9,0.9918,71.7,0.122],[1921,1894,311.3,0.9912,73.6,0.131],[1922,1910,313.8,0.9906,75.6,0.141],[1923,1926,316.3,0.99,77.7,0.15],[1924,1941,318.8,0.9894,79.8,0.16],[1925,1958,321.5,0.9887,82.0,0.17],[1926,1974,324.2,0.988,84.2,0.18],[1927,1991,327.0,0.9873,86.6,0.19],[1928,2008,329.8,0.9866,88.9,0.2],[1929,2025,332.8,0.9858,91.4,0.21],[1930,2043,335.8,0.985,93.9,0.221],[1931,2061,338.9,0.9842,96.5,0.231],[1932,2079,342.0,0.9833,99.1,0.242],[1933,2098,345.3,0.9825,101.8,0.253],[1934,2117,348.7,0.9815,104.6,0.264],[1935,2136,352.2,0.9806,107.5,0.275],[1936,2155,355.7,0.9796,110.5,0.287],[1937,2175,359.4,0.9786,113.5,0.299],[1938,2195,363.1,0.9775,116.7,0.311],[1939,2216,367.0,0.9764,119.9,0.323],[1940,2237,371.0,0.9753,123.2,0.336],[1941,2266,373.8,0.9741,126.2,0.349],[1942,2302,376.1,0.9729,128.8,0.363],[1943,2338,378.6,0.9716,131.5,0.377],[1944,2375,381.2,0.9703,134.3,0.391],[1945,2412,383.9,0.9689,137.1,0.406],[1946,2449,386.7,0.9675,140.0,0.421],[1947,2488,389.5,0.966,142.9,0.437],[1948,2527,392.4,0.9645,145.9,0.453],[1949,2567,395.3,0.9629,148.9,0.47],[1950,2607,398.2,0.9613,152.0,0.488],[1951,2649,401.2,0.9596,155.1,0.506],[1952,2692,404.3,0.9578,158.3,0.524],[1953,2735,407.3,0.956,161.4,0.544],[1954,2780,410.4,0.9541,164.7,0.564],[1955,2826,413.6,0.9521,167.9,0.585],[1956,2873,417.2,0.9501,171.2,0.606],[1957,2920,420.8,0.948,174.6,0.629],[1958,2969,424.5,0.9458,178.0,0.652],[1959,3018,428.1,0.9435,181.5,0.676],[1960,3069,431.7,0.9412,185.1,0.701],[1961,3120,435.3,0.9388,188.7,0.726],[1962,3172,438.8,0.9362,192.4,0.753],[1963,3226,442.4,0.9336,196.1,0.781],[1964,3280,445.9,0.9309,199.9,0.809],[1965,3335,449.4,0.9281,203.7,0.839],[1966,3392,452.6,0.9251,207.5,0.87],[1967,3449,455.3,0.9219,211.4,0.901],[1968,3507,455.3,0.9186,215.3,0.934],[1969,3565,456.2,0.9151,219.2,0.968],[1970,3624,457.3,0.9115,223.0,1.004],[1971,3684,458.5,0.9076,226.9,1.041],[1972,3745,459.6,0.9035,230.8,1.08],[1973,3806,460.8,0.8993,234.7,1.122],[1974,3869,461.9,0.8949,238.6,1.166],[1975,3932,463.0,0.8902,242.5,1.212],[1976,3995,464.1,0.8854,246.5,1.26],[1977,4060,465.4,0.8803,250.4,1.312],[1978,4124,466.7,0.875,254.4,1.366],[1979,4189,468.0,0.8695,258.5,1.423],[1980,4255,469.3,0.8637,262.6,1.484],[1981,4321,470.5,0.8577,266.7,1.548],[1982,4387,471.8,0.8514,270.8,1.615],[1983,4454,473.0,0.8449,275.0,1.686],[1984,4522,474.3,0.8381,279.2,1.76],[1985,4590,475.5,0.8311,283.4,1.839],[1986,4659,476.7,0.8238,287.7,1.921],[1987,4728,477.9,0.8162,292.0,2.007],[1988,4798,479.1,0.8083,296.3,2.097],[1989,4868,480.2,0.8001,300.6,2.192],[1990,4938,481.4,0.7916,305.0,2.29],[1991,5009,482.6,0.7828,309.4,2.394],[1992,5079,483.9,0.7736,313.9,2.501],[1993,5150,485.2,0.7642,318.5,2.613],[1994,5221,486.5,0.7544,323.1,2.729],[1995,5291,487.4,0.7442,327.7,2.851],[1996,5362,488.9,0.7337,332.4,2.976],[1997,5432,490.5,0.7229,337.1,3.107],[1998,5503,492.1,0.7116,341.9,3.243],[1999,5573,493.6,0.7,346.8,3.384],[2000,5643,495.1,0.688,351.8,3.53],[2001,5714,496.5,0.6756,356.7,3.682],[2002,5785,497.9,0.6628,361.7,3.84],[2003,5856,499.2,0.6496,366.7,4.003],[2004,5928,500.5,0.636,371.8,4.173],[2005,5999,501.7,0.6219,376.9,4.35],[2006,6070,503.0,0.6074,382.0,4.534],[2007,6141,504.5,0.5925,385.7,4.726],[2008,6211,505.2,0.5772,387.8,4.925],[2009,6280,505.4,0.5617,389.9,5.132],[2010,6347,505.3,0.5458,391.7,5.348],[2011,6415,504.9,0.5297,393.3,5.573],[2012,6481,504.2,0.5134,394.7,5.806],[2013,6547,503.2,0.4968,395.1,6.048],[2014,6611,501.3,0.48,392.3,6.298],[2015,6671,498.6,0.4633,389.3,6.558],[2016,6729,495.6,0.4466,385.9,6.825],[2017,6784,492.1,0.4299,382.0,7.1],[2018,6837,488.2,0.4134,377.6,7.382],[2019,6889,484.0,0.397,370.0,7.67],[2020,6935,477.4,0.3812,350.0,7.963],[2021,6972,467.6,0.3664,330.8,8.259],[2022,7002,456.7,0.3528,312.3,8.557],[2023,7026,445.4,0.3402,294.7,8.856],[2024,7043,433.7,0.3287,277.9,9.151],[2025,7054,421.7,0.3181,262.0,9.439],[2026,7061,409.5,0.3086,247.2,9.716],[2027,7062,397.6,0.2999,233.3,9.977],[2028,7060,386.2,0.2919,224.0,10.218],[2029,7057,375.5,0.2846,215.0,10.434],[2030,7051,365.2,0.2778,206.3,10.62],[2031,7044,355.3,0.2716,198.0,10.772],[2032,7033,344.4,0.2657,190.1,10.888],[2033,7019,334.0,0.2601,182.3,10.964],[2034,7001,324.1,0.2547,174.8,11.0],[2035,6978,314.8,0.2495,167.5,10.994],[2036,6949,306.4,0.2446,160.5,10.948],[2037,6916,298.7,0.24,153.9,10.862],[2038,6878,292.0,0.2355,147.5,10.739],[2039,6836,286.2,0.2312,141.3,10.583],[2040,6790,281.3,0.2272,135.3,10.395],[2041,6741,277.4,0.2233,129.7,10.18],[2042,6690,274.5,0.2196,124.3,9.941],[2043,6638,272.2,0.2162,119.2,9.683],[2044,6583,270.3,0.2128,114.3,9.408],[2045,6528,268.7,0.2097,109.6,9.12],[2046,6471,267.7,0.2067,105.2,8.822],[2047,6414,267.1,0.2038,101.0,8.518],[2048,6356,265.5,0.2011,96.9,8.211],[2049,6298,260.4,0.1985,93.1,7.901],[2050,6238,256.6,0.196,89.4,7.592],[2051,6176,253.3,0.1937,85.9,7.285],[2052,6114,250.4,0.1915,82.5,6.982],[2053,6051,247.7,0.1894,79.3,6.685],[2054,5988,245.2,0.1873,76.2,6.393],[2055,5925,242.9,0.1854,73.3,6.108],[2056,5863,240.7,0.1836,70.4,5.831],[2057,5802,238.8,0.1819,67.7,5.563],[2058,5741,237.0,0.1802,65.1,5.303],[2059,5680,235.3,0.1787,62.6,5.053],[2060,5620,233.8,0.1772,60.2,4.811],[2061,5562,232.4,0.1757,57.8,4.579],[2062,5503,231.2,0.1744,55.6,4.357],[2063,5446,230.0,0.1731,53.4,4.144],[2064,5390,229.0,0.1719,51.4,3.94],[2065,5333,228.1,0.1707,49.4,3.745],[2066,5278,227.4,0.1696,47.5,3.559],[2067,5223,226.7,0.1686,45.7,3.381],[2068,5170,226.1,0.1676,43.9,3.212],[2069,5117,225.6,0.1666,42.2,3.051],[2070,5066,225.2,0.1657,40.6,2.897],[2071,5016,224.8,0.1648,39.0,2.751],[2072,4967,224.6,0.164,37.5,2.612],[2073,4920,224.4,0.1632,36.0,2.48],[2074,4874,224.2,0.1625,34.6,2.354],[2075,4829,224.1,0.1618,33.3,2.234],[2076,4786,224.0,0.1611,31.9,2.121],[2077,4745,224.0,0.1605,30.7,2.013],[2078,4705,224.0,0.1599,29.4,1.91],[2079,4667,224.0,0.1593,28.3,1.812],[2080,4630,224.1,0.1587,27.1,1.72],[2081,4594,224.2,0.1582,26.0,1.631],[2082,4558,224.4,0.1577,25.0,1.548],[2083,4524,224.7,0.1572,24.0,1.468],[2084,4490,225.0,0.1568,23.0,1.393],[2085,4457,225.3,0.1563,22.0,1.321],[2086,4423,225.7,0.1559,21.0,1.253],[2087,4389,226.0,0.1555,20.0,1.189],[2088,4356,226.5,0.1552,19.1,1.127],[2089,4322,226.9,0.1548,18.2,1.069],[2090,4289,227.5,0.1545,17.4,1.014],[2091,4256,228.0,0.1542,16.5,0.961],[2092,4224,228.7,0.1539,15.8,0.912],[2093,4192,229.4,0.1536,15.0,0.866],[2094,4160,230.1,0.1533,14.3,0.823],[2095,4129,230.9,0.1531,13.6,0.781],[2096,4098,231.8,0.1528,13.0,0.742],[2097,4067,232.7,0.1526,12.4,0.704],[2098,4037,233.7,0.1524,11.8,0.668],[2099,4007,234.7,0.1522,11.2,0.634],[2100,3977,235.7,0.152,10.7,0.602]];
+
+// Máximos de la corrida completa (paso 0,5 años), para expresar cada curva como % de su propio pico.
+const W3_MAX = { poblacion: 7062, alimentos: 505.4, recursos: 1, industria: 395.3, contaminacion: 11.0 };
+
+// Datos reales, para comparar con la simulación al pasar el cursor (solo series oficiales y en el mismo tipo de valor).
+// Población mundial en millones, al 1 de enero de cada año.
+// 1950–2023: ONU, World Population Prospects 2024 (estimaciones); 2024–2025: misma fuente (variante media).
+// 1900–1949: la ONU solo publica estimaciones por década (The World at Six Billion, 1999); los años intermedios
+// se interpolan con crecimiento constante entre esas décadas y se marcan como interpolados en el recuadro.
+const POB_REAL = { 1900: 1650, 1901: 1660, 1902: 1670, 1903: 1679, 1904: 1689, 1905: 1699, 1906: 1709, 1907: 1719, 1908: 1730, 1909: 1740, 1910: 1750, 1911: 1761, 1912: 1771, 1913: 1782, 1914: 1793, 1915: 1804, 1916: 1815, 1917: 1826, 1918: 1837, 1919: 1849, 1920: 1860, 1921: 1880, 1922: 1900, 1923: 1921, 1924: 1941, 1925: 1962, 1926: 1983, 1927: 2005, 1928: 2026, 1929: 2048, 1930: 2070, 1931: 2092, 1932: 2114, 1933: 2136, 1934: 2159, 1935: 2182, 1936: 2205, 1937: 2228, 1938: 2252, 1939: 2276, 1940: 2300, 1941: 2319, 1942: 2337, 1943: 2356, 1944: 2375, 1945: 2395, 1946: 2414, 1947: 2433, 1948: 2453, 1949: 2473, 1950: 2493, 1951: 2537, 1952: 2584, 1953: 2634, 1954: 2686, 1955: 2740, 1956: 2795, 1957: 2853, 1958: 2911, 1959: 2966, 1960: 3015, 1961: 3065, 1962: 3123, 1963: 3193, 1964: 3264, 1965: 3335, 1966: 3404, 1967: 3473, 1968: 3545, 1969: 3619, 1970: 3695, 1971: 3770, 1972: 3845, 1973: 3921, 1974: 3996, 1975: 4071, 1976: 4144, 1977: 4218, 1978: 4292, 1979: 4369, 1980: 4448, 1981: 4529, 1982: 4613, 1983: 4697, 1984: 4782, 1985: 4869, 1986: 4958, 1987: 5050, 1988: 5142, 1989: 5234, 1990: 5328, 1991: 5419, 1992: 5506, 1993: 5592, 1994: 5676, 1995: 5759, 1996: 5842, 1997: 5925, 1998: 6007, 1999: 6089, 2000: 6172, 2001: 6255, 2002: 6338, 2003: 6420, 2004: 6503, 2005: 6587, 2006: 6671, 2007: 6757, 2008: 6844, 2009: 6933, 2010: 7022, 2011: 7111, 2012: 7201, 2013: 7292, 2014: 7382, 2015: 7470, 2016: 7559, 2017: 7646, 2018: 7730, 2019: 7811, 2020: 7887, 2021: 7954, 2022: 8021, 2023: 8092, 2024: 8162, 2025: 8232 };
+// Alimentos por persona, FAO, kcal/persona·día. World3 los mide en kg equivalentes por persona y año:
+// se comparan como índice (1970 = 100).
+// 1961–2013: hojas de balance de alimentos, serie histórica (metodología anterior).
+const ALIM_HIST = { 1961: 2196, 1962: 2243, 1963: 2254, 1964: 2287, 1965: 2310, 1966: 2327, 1967: 2330, 1968: 2334, 1969: 2343, 1970: 2389, 1971: 2365, 1972: 2352, 1973: 2389, 1974: 2381, 1975: 2396, 1976: 2389, 1977: 2418, 1978: 2477, 1979: 2476, 1980: 2490, 1981: 2501, 1982: 2531, 1983: 2575, 1984: 2584, 1985: 2587, 1986: 2589, 1987: 2607, 1988: 2624, 1989: 2635, 1990: 2621, 1991: 2601, 1992: 2610, 1993: 2616, 1994: 2639, 1995: 2663, 1996: 2673, 1997: 2687, 1998: 2701, 1999: 2715, 2000: 2727, 2001: 2725, 2002: 2728, 2003: 2735, 2004: 2747, 2005: 2761, 2006: 2779, 2007: 2807, 2008: 2825, 2009: 2825, 2010: 2850, 2011: 2869, 2012: 2874, 2013: 2884 };
+// 2010–2023: hojas de balance de alimentos, serie actual (FAOSTAT, Food Balances 2010–, consulta oct. 2026).
+const ALIM_FBS = { 2010: 2825.19, 2011: 2845.39, 2012: 2850.37, 2013: 2856.01, 2014: 2886.77, 2015: 2888.55, 2016: 2895.45, 2017: 2921.15, 2018: 2926.08, 2019: 2941.79, 2020: 2952.62, 2021: 2974.94, 2022: 2997.7, 2023: 3016 };
+// Empalme: desde 2014 se usa la serie actual, llevada a la escala de la histórica con la razón promedio
+// entre ambas en los años en que se superponen (2010–2013).
+const ALIM_EMPALME = [2010, 2011, 2012, 2013].reduce((a, y) => a + ALIM_HIST[y] / ALIM_FBS[y], 0) / 4;
+const ALIM_REAL = { ...ALIM_HIST };
+Object.keys(ALIM_FBS).forEach((y) => { if (+y > 2013) ALIM_REAL[y] = ALIM_FBS[y] * ALIM_EMPALME; });
+const REAL_DATO = {
+  poblacion: {
+    fuente: 'ONU', modo: 'absoluto', valores: POB_REAL,
+    nota: (y) => (y < 1950 && y % 10 !== 0 ? 'Interpolado entre décadas' : y > 2023 ? 'Estimación' : null)
+  },
+  alimentos: {
+    fuente: 'FAO', modo: 'indice', base: 1970, valores: ALIM_REAL,
+    nota: (y) => (y > 2013 ? 'Serie FAO actual, empalmada' : null)
+  }
+};
+
+const WORLD3 = W3_ROWS.map(([year, pop, fpc, nrfr, iopc, ppolx]) => ({
+  year,
+  poblacion: +(pop / W3_MAX.poblacion * 100).toFixed(1),
+  alimentos: +(fpc / W3_MAX.alimentos * 100).toFixed(1),
+  recursos: +(nrfr * 100).toFixed(1),
+  industria: +(iopc / W3_MAX.industria * 100).toFixed(1),
+  contaminacion: +(ppolx / W3_MAX.contaminacion * 100).toFixed(1),
+  raw: { poblacion: pop, alimentos: fpc, recursos: nrfr, industria: iopc, contaminacion: ppolx }
+}));
+
+const W3_1970 = WORLD3.find((r) => r.year === 1970).raw;
+const fmtN = (n, d = 0) => n.toLocaleString('es-AR', { maximumFractionDigits: d, minimumFractionDigits: d });
+
+// Valores del recuadro en lenguaje llano: cada variable se compara con un año de referencia.
+const vs1970 = (ratio) => {
+  if (ratio >= 2) return `${(Math.round(ratio * 10) / 10).toLocaleString('es-AR')} veces el nivel de 1970`;
+  const pct = Math.round(Math.abs(ratio - 1) * 100);
+  if (pct === 0) return 'igual que en 1970';
+  return `${pct}% ${ratio > 1 ? 'más' : 'menos'} que en 1970`;
+};
+const W3_AYUDA = {
+  poblacion: 'Personas en el mundo.',
+  alimentos: 'Comida disponible por persona, comparada con 1970.',
+  recursos: 'Recursos no renovables que quedan, comparados con 1900.',
+  industria: 'Bienes industriales producidos por persona, comparados con 1970.',
+  contaminacion: 'Contaminación acumulada en el ambiente, comparada con 1970.'
+};
+
+// 1.b · Variables del tablero (textos del brief)
+const VARIABLES = [
+  {
+    key: 'recursos', color: '#EF4444', boton: 'Recursos No Renovables', nombre: 'Recursos No Renovables', linea: 'Línea Roja',
+    modelo: 'En la corrida estándar, en 2026 queda el 31% del stock de 1900.',
+    resumen: 'QUÉ MIDE: Stock de fósiles y minerales. POR QUÉ CAE: La aceleración del siglo XX dispara el consumo. Extraer exige exponencialmente más energía, drenando recursos. DATO REAL: Desde 1970, la extracción global de materiales se triplicó (UNEP, 2024).',
+    queMide: 'El stock disponible de combustibles fósiles, minerales y fertilizantes minerales de fácil extracción.',
+    porQue: 'Muestra un descenso continuo desde 1900. La aceleración industrial del siglo XX dispara la tasa de consumo. Al volverse más escasos, extraer la siguiente unidad exige exponencialmente más energía y capital, drenando recursos del resto de la economía.',
+    evidencia: 'Desde 1970, la extracción global de materiales se triplicó: pasó de 30.000 millones de toneladas anuales a unos 106.000 millones en la actualidad.',
+    fuentes: 'Panel Internacional de Recursos de la ONU (UNEP / IRP), Global Resources Outlook 2024.'
+  },
+  {
+    key: 'industria', color: '#06B6D4', boton: 'Industria', nombre: 'Producción Industrial per cápita', linea: 'Línea Azul',
+    modelo: 'Pico del modelo entre 2012 y 2013: 77% más bienes industriales por persona que en 1970.',
+    resumen: 'QUÉ MIDE: Bienes y capacidad industrial per cápita. POR QUÉ HACE PICO Y CAE: Crece por energía barata. Toca un pico porque el capital debe reorientarse a extraer recursos cada vez más escasos y caros. DATO REAL: La producción industrial per cápita real siguió de cerca la curva del modelo (Graham Turner, CSIRO).',
+    queMide: 'La cantidad de bienes manufacturados, maquinaria y capacidad industrial disponible por persona.',
+    porQue: 'Crece aceleradamente alimentada por energía barata y alta disponibilidad de recursos. Llega a un pico (alrededor de 2010–2015) porque el capital debe reorientarse a cubrir el costo creciente de extraer recursos escasos y controlar la contaminación, estancando la inversión industrial neta.',
+    evidencia: 'Entre 1970 y 2000, la producción industrial per cápita real siguió de cerca el escenario estándar: en el año 2000 quedaba a menos de un 15% de la simulación. En 2014, Turner extendió la comparación a cuatro décadas y los datos seguían alineados con ese escenario.',
+    fuentes: 'Graham Turner, “A comparison of The Limits to Growth with 30 years of reality” (CSIRO, 2008) e “Is Global Collapse Imminent?” (Universidad de Melbourne, 2014).'
+  },
+  {
+    key: 'alimentos', color: '#10B981', boton: 'Alimentos', nombre: 'Alimentos per cápita', linea: 'Línea Verde',
+    modelo: 'Pico del modelo en 2009: 11% más comida por persona que en 1970.',
+    resumen: 'QUÉ MIDE: Producción agrícola per cápita. POR QUÉ CAE: La Revolución Verde la disparó, pero cae cuando la degradación del suelo y falta de insumos superan las mejoras tecnológicas. DATO REAL: El rendimiento se estancó o cayó en el 24–39% de las zonas de maíz, arroz, trigo y soja (Ray et al., 2012).',
+    queMide: 'La disponibilidad de producción agrícola y calórica por habitante.',
+    porQue: 'Sube fuertemente durante el siglo XX gracias a la Revolución Verde (mecanización, fertilizantes derivados del gas natural y pesticidas). Muestra una meseta e inminente caída cuando la degradación del suelo, la falta de insumos industriales y la contaminación ambiental sobrepasan las mejoras tecnológicas.',
+    evidencia: 'Aunque la producción total creció, entre 1961 y 2008 el rendimiento por hectárea nunca mejoró, se estancó o cayó en el 24–39% de las zonas donde se cultivan maíz, arroz, trigo y soja, según el cultivo. Esos cuatro cultivos producen casi dos tercios de las calorías agrícolas del mundo.',
+    fuentes: 'Ray et al., Nature Communications (2012) y PLOS ONE (2013).'
+  },
+  {
+    key: 'poblacion', color: '#F59E0B', boton: 'Población', nombre: 'Población', linea: 'Línea Amarilla',
+    modelo: 'Pico del modelo en 2027: 7.060 millones de personas. La población real ya supera los 8.200 millones.',
+    resumen: 'QUÉ MIDE: Habitantes. POR QUÉ CRECE: Crece con desfase por la inercia demográfica y la medicina, hasta que la falta de alimentos eleva la mortalidad. DATO REAL: De unos 3.850 millones en 1972 a más de 8.200 millones hoy: la población real superó la proyección del modelo (ONU).',
+    queMide: 'Número total de habitantes en el planeta.',
+    porQue: 'Crece con un desfase temporal respecto a la alimentación y la industria por la inercia demográfica y la medicina moderna. Sigue aumentando incluso cuando la industria y los alimentos ya tocaron techo, hasta que la menor disponibilidad calórica y el deterioro sanitario elevan gradualmente la tasa de mortalidad.',
+    evidencia: 'De unos 3.850 millones en 1972 a 8.000 millones en 2022, y más de 8.200 millones hoy. La población real creció más que en la simulación: en 2020 éramos 7.887 millones, frente a 6.935 millones del modelo. Al pasar el cursor sobre el gráfico se ve el dato real de cada década.',
+    fuentes: 'Naciones Unidas, División de Población: World Population Prospects 2024.'
+  },
+  {
+    key: 'contaminacion', color: '#A855F7', boton: 'Contaminación', nombre: 'Contaminación', linea: 'Línea Violeta',
+    modelo: 'Pico del modelo en 2034: 11 veces el nivel de 1970.',
+    resumen: 'QUÉ MIDE: Residuos y emisiones no absorbidos. POR QUÉ SE DISPARA: Los sumideros naturales se saturan y la acumulación se vuelve exponencial. DATO REAL: El CO2 pasó de 327 ppm en 1972 a más de 420 ppm (NOAA).',
+    queMide: 'Acumulación de residuos y emisiones no absorbidos por la biosfera (CO2, plásticos, metales pesados, acidificación).',
+    porQue: 'Es la curva de respuesta más lenta pero más agresiva. Los sumideros naturales absorben el impacto inicial, pero al saturarse, la contaminación se dispara exponencialmente hasta su pico en la década de 2030 (2034 en el modelo), impactando negativamente sobre la productividad del suelo y la salud global.',
+    evidencia: 'El CO2 en la atmósfera pasó de 327 ppm (partes por millón) en 1972 a más de 420 ppm en 2023. Son las mediciones del observatorio de Mauna Loa, en Hawái: está en la cima de un volcán en medio del océano Pacífico, lejos de fuentes de contaminación locales, y registra el CO2 sin interrupciones desde 1958, por eso es la referencia mundial. El modelo mide la “contaminación persistente” en general; el CO2 es uno de sus indicadores.',
+    fuentes: 'NOAA Global Monitoring Laboratory (serie anual de Mauna Loa, curva de Keeling).'
+  }
+];
+
+const VAR_BY_KEY = Object.fromEntries(VARIABLES.map((v) => [v.key, v]));
+
+const PEAK_ROW = Object.fromEntries(VARIABLES.map((v) => {
+  const row = WORLD3.reduce((a, b) => (b[v.key] > a[v.key] ? b : a));
+  return [v.key, v.key === 'recursos' ? null : row];
+}));
+
+/* ==================================================================
+   DATOS · TEXTOS
+   ================================================================== */
+// 1.c · Hámster · texto sincronizado (tres fases)
+const HAMSTER_TEXTO = [
+  'Desde el nacimiento hasta la pubertad, un hámster duplica su peso cada semana;',
+  'si no dejara de crecer al alcanzar la madurez —como hacen los animales— y siguiera duplicando su peso hasta cumplir un año, nos encontraríamos ante un hámster de 9000 millones de toneladas. Este hámster podría devorar en un solo día todo el maíz que se produce anualmente en el mundo y aun así seguiría teniendo hambre.',
+  'Existe una razón por la que, en la naturaleza, las cosas solo crecen hasta cierto punto; entonces, ¿por qué la mayoría de los economistas y políticos creen que la economía puede crecer indefinidamente?'
+];
+
+const HAMSTER_FASES = ['Come granos', 'Devora ciudades', 'Rodea el planeta'];
+
+// 1.d · Cine · profecías autocumplidas
+const FILMS = [
+  { titulo: '2001: Odisea del Espacio', anio: 1968, poster: '2001-odisea.jpg', clip: '2001-odisea', tono: '#38BDF8',
+    sinopsis: 'Una misión a Júpiter queda en manos de HAL 9000, una computadora que conversa con la tripulación y termina decidiendo por su cuenta.',
+    profecia: 'Tablets, videollamadas, interfaces de pantalla plana e Inteligencia Artificial conversacional (HAL 9000).',
+    hoy: 'Tablets, videollamadas y asistentes de IA con los que conversamos son parte de la vida diaria.' },
+  { titulo: 'Fahrenheit 451', anio: 1966, poster: 'fahrenheit-451.jpg', clip: 'fahrenheit-451', tono: '#F97316',
+    sinopsis: 'En una sociedad donde los libros están prohibidos, un bombero encargado de quemarlos empieza a leerlos.',
+    profecia: 'Pantallas planas de pared a pared, auriculares inalámbricos in-ear y fragmentación de la atención mediática.',
+    hoy: 'Televisores que ocupan paredes enteras, auriculares inalámbricos y feeds infinitos que compiten por cada segundo de atención.' },
+  { titulo: 'Soylent Green', anio: 1973, poster: 'soylent-green.jpg', clip: 'soylent-green', tono: '#84CC16',
+    sinopsis: 'Nueva York, 2022: una ciudad superpoblada y recalentada sobrevive con raciones sintéticas que fabrica una sola corporación.',
+    profecia: 'Superpoblación, agotamiento de recursos naturales, alimentos sintéticos corporativos y colapso climático.',
+    hoy: 'La película transcurre en 2022: el año en que la población mundial superó los 8.000 millones.' },
+  { titulo: 'Blade Runner', anio: 1982, poster: 'blade-runner.jpg', clip: 'blade-runner', foco: '72% 50%', tono: '#06B6D4',
+    sinopsis: 'Los Ángeles, 2019. Un policía debe cazar androides fabricados para ser indistinguibles de las personas.',
+    profecia: 'Publicidad holográfica gigante, megaciudades verticales, androides y crisis ambiental urbana.',
+    hoy: 'Pantallas publicitarias gigantes, megaciudades de decenas de millones de habitantes y robots humanoides en desarrollo.' },
+  { titulo: 'Matrix', anio: 1999, poster: 'matrix.jpg', clip: 'matrix', tono: '#10B981',
+    sinopsis: 'Un programador descubre que el mundo en el que vive es una simulación construida por máquinas.',
+    profecia: 'Realidad simulada, alienación digital y vidas sumergidas en entornos virtuales.',
+    hoy: 'Deepfakes, mundos virtuales y horas diarias frente a pantallas que difuminan el límite entre lo real y lo digital.' },
+  { titulo: 'Minority Report', anio: 2002, poster: 'minority-report.jpg', clip: 'minority-report', foco: '40% 50%', tono: '#A855F7',
+    sinopsis: 'Una división policial arresta a personas por crímenes que todavía no cometieron.',
+    profecia: 'Interfaces gestuales, publicidad hiperpersonalizada y vigilancia predictiva.',
+    hoy: 'Reconocimiento facial en la vía pública, publicidad que nos sigue y algoritmos de predicción policial.' },
+  { titulo: 'WALL‑E', anio: 2008, poster: 'wall-e.jpg', clip: 'wall-e', foco: '66% 50%', tono: '#F59E0B',
+    sinopsis: 'Un robot compacta basura en una Tierra abandonada mientras la humanidad flota en una nave crucero.',
+    profecia: 'Hiperconsumismo, acumulación masiva de residuos y automatización de la vida cotidiana.',
+    hoy: 'Compramos con un clic y recibimos en el día; asistentes de voz, apps y algoritmos automatizan tareas cotidianas mientras pasamos horas frente a pantallas. Y el mundo produce unos 400 millones de toneladas de plástico por año (PNUMA).' },
+  { titulo: 'Interstellar', anio: 2014, poster: 'interstellar.jpg', clip: 'interstellar', tono: '#EF4444',
+    sinopsis: 'Con los cultivos colapsando, una misión cruza un agujero de gusano en busca de un planeta habitable.',
+    profecia: 'Acabamiento de la capa arable, tormentas de polvo y crisis de subsistencia planetaria.',
+    hoy: 'Hasta el 40% de las tierras del planeta ya está degradado y cada año unos 2.000 millones de toneladas de arena y polvo se elevan a la atmósfera (Convención de la ONU de Lucha contra la Desertificación).' }
+];
+
+const PRADERA_TEXTOS = [
+  'En una pradera con conejos, el ecosistema sostiene la demanda y se regenera.',
+  'Pero si sumamos más conejos, la presión se acelera y el consumo supera la tasa de recuperación.',
+  'Cuando el consumo agota la capacidad de regeneración, el sistema colapsa.'
+];
+
+// Manifiesto para inventar el futuro
+const MANIFIESTO = [
+  { titulo: 'La falsa dicotomía', texto: 'Hoy el mundo nos inunda de relatos apocalípticos y, en este contexto distópico, se ha instalado una falsa dicotomía: nos hacen creer que debemos elegir entre el colapso económico o el ambiental, como si no hubiera otra forma de organizar la sociedad que continuar destruyendo la biósfera. Vivimos atrapados en ficciones que nos contamos tanto que terminamos materializándolas en la realidad.' },
+  { titulo: 'El choque material', texto: 'Nos acercamos a puntos críticos de no retorno impulsados por el aumento de la temperatura global, la pérdida drástica de ecosistemas y el agotamiento acelerado de los recursos materiales y energéticos que sostienen nuestra forma de vida. Toda ideología que ignore los límites biofísicos del planeta es una ficción peligrosa. El estudio de los límites del crecimiento ya advertía en 1972 que este rumbo de bonanza material basada en el mito infinito iba a sobrepasar las fronteras finitas de la Tierra.' },
+  { titulo: 'El absurdo del presente', texto: '¿Por qué gastar billones de dólares en ir a Marte cuando podemos usarlos para regenerar la Tierra? Es desconcertante sentir que uno es catalogado como un extremista solo por proponer que actuemos en sintonía con un consenso científico masivo que lleva medio siglo advirtiéndolo.' },
+  { titulo: 'Más allá de la sostenibilidad', texto: 'El relato del progreso nos enseñó a ver la naturaleza como un obstáculo. Su versión amable, la "sostenibilidad", nació como una promesa, pero el marketing corporativo la reescribió a su medida hasta vaciarla de sentido y convertirla en maquillaje del daño existente. No se trata solo de conservar lo que queda, sino de activar una cultura basada en la regeneración de la trama vital.' },
+  { titulo: 'El verdadero desafío', texto: 'Tenemos la capacidad técnica, el conocimiento y las herramientas para construir un sistema que reconozca los umbrales de la naturaleza; el desafío actual es comunicacional y político. Tenemos que dejar atrás la obsesión por crecer sin parar y empezar a cuidar los límites reales de la naturaleza.' },
+  { titulo: 'Un cambio de época', texto: 'El cambio de rumbo exige abandonar la inercia cultural y diseñar nuevos marcos de acción basados en la evidencia científica. Si las ficciones que heredamos construyeron este presente, tenemos el poder de crear nuevos relatos. Las grandes transformaciones no empiezan con certezas: empiezan con una ficción que alguien se anima a contar.', cierre: 'Inventemos el futuro.' }
+];
+
+/* ==================================================================
+   DATOS · CATÁLOGO
+   ================================================================== */
+// 1.e · Catálogo
+// La fuente de verdad es la planilla de Google publicada como CSV: pegá su link acá.
+// (Google Sheets → Archivo → Compartir → Publicar en la Web → hoja "Catálogo" → .csv)
+// Si queda vacío, o si Google no responde, se usa la copia local de abajo.
+const CATALOGO_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjAq0onnRefnP_IWURqiLLU2r1ZT_Mxa1wNbhvFXaI4yeVFZUambe3IcOYa1sCXg/pub?gid=291419888&single=true&output=csv';
+
+// Copia local: mismas columnas que la planilla (Megacatalogo_Web_v2.xlsx).
+const CATALOGO_LOCAL = [
+  ["Título", "Autor", "Formato", "Tema", "Tiempo", "Link URL", "Descripción", "Portada", "Destacado", "ISBN", "Idioma", "Nivel", "Costo"],
+  ["Flavia Broffoni", "", "Referente", "Colapso y transición", "⚡ 5 min", "https://www.instagram.com/flaviabroffoni/", "Activismo y transición ecosocial.", "", "", "", "ES", "", ""],
+  ["Enrique Viale", "", "Referente", "Energía y recursos, Economía y política", "⚡ 5 min", "https://www.instagram.com/enrique.viale/", "Abogacía ambiental y extractivismo.", "", "", "", "ES", "", ""],
+  ["Maristella Svampa", "", "Referente", "Colapso y transición, Economía y política", "⚡ 5 min", "https://www.instagram.com/maristellasvampa/", "Sociología del colapso y alternativas.", "", "", "", "ES", "", ""],
+  ["El Viejo Farmer", "Guillermo Schnitman", "Referente", "Alimentación y suelo, Permacultura y bioconstrucción", "⚡ 5 min", "https://www.instagram.com/elviejofarmer/", "Divulgación sobre huerta y agroecología.", "", "", "", "ES", "", ""],
+  ["El colapso ecológico ya llegó", "Maristella Svampa y Enrique Viale", "Libro", "Colapso y transición", "📖 +1 hr", "https://www.yenny-elateneo.com/productos/el-colapso-ecologico-ya-llego/", "Brújula (Svampa y Viale) para salir del maldesarrollo.", "https://acdn-us.mitiendanube.com/stores/004/088/117/products/677263-09482cfb572bc1fcf517293031661809-1024-1024.webp", "", "", "ES", "", ""],
+  ["La revolución de una brizna de paja", "Masanobu Fukuoka", "Libro", "Alimentación y suelo, Permacultura y bioconstrucción", "📖 +1 hr", "https://www.libreriasudestada.com.ar/productos/la-revolucion-es-una-brizna-de-paja-masanobu-fukoka/", "Manifiesto de la agricultura natural (Fukuoka).", "https://images.cdn1.buscalibre.com/fit-in/360x360/44/e5/44e5a3516a0211dd20f6ac5776bff200.jpg", "", "", "ES", "", ""],
+  ["Colapso", "Flavia Broffoni", "Libro", "Colapso y transición, Energía y recursos", "📖 +1 hr", "https://www.libreriasudestada.com.ar/productos/colapso-flavia-broffoni/", "Cómo transitar el umbral de los mundos por venir.", "https://acdn-us.mitiendanube.com/stores/001/029/689/products/colapso-973fb45f3088f7726a17225954635258-1024-1024.webp", "", "", "ES", "", ""],
+  ["Los límites al crecimiento", "Donella Meadows, Dennis Meadows, Jørgen Randers y William W. Behrens III", "Libro", "Economía y política, Colapso y transición", "📖 +1 hr", "https://www.clubderoma.org.ar/los-l%C3%ADmites-del-crecimiento", "El informe Meadows original.", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWip9Q5u6iWey-dLDXlbfXsO20JiGzULFhmCeGnUwPRQ&s=10", "", "", "ES", "", ""],
+  ["El libro de la huerta", "El Viejo Farmer (Guillermo Schnitman)", "Libro", "Alimentación y suelo", "📖 +1 hr", "https://lamarcaeditora.com/catalogo/ensayo-185/el-libro-de-la-huerta-1153", "Agroecología para la autonomía alimentaria.", "https://lamarcaeditora.com/admin/files/libros/1153/9789508893840.jpg/thumb/620", "", "", "ES", "", ""],
+  ["Introducción a la permacultura", "Bill Mollison y Reny Mia Slay", "Libro", "Permacultura y bioconstrucción", "📖 +1 hr", "https://www.sergicaballero.com/introduccion-a-la-permacultura-de-bill-mollison/", "Manual de diseño para asentamientos humanos.", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa6wzm2xpTUpEkZL2PeJHljsnC9_GTc1dMGjvWiScwcQ&s=10", "", "", "ES", "", ""],
+  ["El mito regenerativo", "Mariano García (conducción)", "Podcast", "Alimentación y suelo, Economía y política", "📖 +1 hr", "https://elmitoregenerativo.com/", "Diez historias para entender la agricultura y la ganadería regenerativas.", "https://i.scdn.co/image/ab6765630000ba8a7a78d0b4e1c4582445c3a508", "", "", "ES", "", ""],
+  ["Colapsonautas", "Flavia Broffoni", "Podcast", "Colapso y transición", "📖 +1 hr", "https://youtube.com/playlist?list=PLXg7_Ueh75IflBclJhZL5nx9FfrVZN5cy&si=qXOaNxAI9nP8urXY", "Conversaciones para navegar el descenso.", "https://i.scdn.co/image/ab6765630000ba8a097a38212a86eee6d1bbd601", "", "", "ES", "", ""],
+  ["Breaking Down: Collapse", "Kory y Kellan", "Podcast", "Energía y recursos, Colapso y transición", "📖 +1 hr", "https://open.spotify.com/show/2qxBel3uqIDjWHEruamAv2", "Mecanismos del colapso global.", "https://cdn-images-3.listennotes.com/podcasts/breaking-down-collapse-kory-kellan-s6-DLUfK79R-4Kn3d2sW7ob.1400x1400.jpg", "", "", "EN", "", ""],
+  ["The Great Simplification", "Nate Hagens", "Podcast", "Energía y recursos", "📖 +1 hr", "https://www.thegreatsimplification.com/", "Nate Hagens sobre energía y ecología.", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRifllU6BcdESMunJk0xMgu-LuNqJen3OI6DGSO8bQWZQ&s=10", "", "", "EN", "", ""],
+  ["El futuro (im)posible", "Toni Balseiro y Martín Haas", "Documental", "Colapso y transición, Energía y recursos", "📖 +1 hr", "https://elfuturoimposible.org/episodios/", "Límites materiales de nuestra civilización.", "https://www.youtube.com/watch?v=7dE1ImZSlT8", "", "", "ES", "", ""],
+  ["Nuestra tierra", "Lucrecia Martel", "Documental", "Economía y política", "📖 +1 hr", "https://www.netflix.com/search?q=Nuestra%20tierra%20Lucrecia%20Martel", "El juicio por el asesinato de Javier Chocobar y la lucha de la comunidad chuschagasta por su territorio.", "https://static.labiennale.org/files/styles/seo_thumbnail/public/cinema/2025/Schede_film/970x647/Fuori_Concorso/nuestra_tierra.jpg?itok=70NsrJgU", "", "", "ES", "", ""],
+  ["Viaje a los pueblos fumigados", "Fernando \"Pino\" Solanas", "Documental", "Alimentación y suelo, Economía y política", "📖 +1 hr", "https://www.youtube.com/watch?v=hYoruFcmLZU", "Pino Solanas y el impacto del agronegocio.", "", "", "", "ES", "", ""],
+  ["La rebelión de las flores", "María Laura Vasquez", "Documental", "Economía y política, Energía y recursos", "📖 +1 hr", "https://play.cine.ar/INCAA/produccion/8797", "Mujeres indígenas y resistencia.", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfpzw6nm-F2Y0gkfTe_5tOZL-iVzUP1fAaVZ-22g1ibDgjrLeoAbxiM8o&s=10", "", "", "ES", "", ""],
+  ["Lineamientos para una transición ecosocial", "Equipo Transiciones · Fundación Rosa Luxemburgo", "Informe", "Economía y política, Colapso y transición", "📖 +1 hr", "https://rosalux-ba.org/wp-content/uploads/2024/07/Equipo-Transiciones-Lineamientos-para-una-Transicion-Ecosocial-1.pdf", "Ciencia para el cambio de matriz productiva.", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnZ5GuKpKzAxwtXEpsajycdKkBY_OepztrI-aU2aFgQw&s=10", "", "", "ES", "", ""],
+  ["Huerta y Bosque", "", "Cuenta", "Permacultura y bioconstrucción, Alimentación y suelo", "⚡ 5 min", "https://www.instagram.com/huerta.y.bosque/", "Ecosistemas comestibles y agroecología.", "", "", "", "ES", "", ""],
+  ["El Árbol – Escuela de Ruralidad y Permacultura", "Luciano Kordon", "Referente", "Permacultura y bioconstrucción", "⚡ 5 min", "https://www.instagram.com/elarbolescueladepermacultura/", "Educación y diseño regenerativo.", "", "", "", "ES", "", ""],
+  ["Tu propio proyecto de permacultura", "El Árbol – Escuela de Ruralidad y Permacultura", "Taller", "Permacultura y bioconstrucción", "📖 +1 hr", "https://elarbolescueladepermacultura.wordpress.com/programa-online/", "Formación en diseño ecosocial.", "", "", "", "ES", "", ""],
+  ["Desobediencia civil pacífica contra la crisis climática", "Flavia Broffoni · TEDxRíodelaPlata", "Charla", "Colapso y transición", "☕ 15 min", "https://www.ted.com/talks/flavia_broffoni_desobediencia_civil_pacifica_contra_la_crisis_climatica", "Por qué la desobediencia civil no violenta es una respuesta a la emergencia climática.", "https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/5bf4c732-48b6-4adc-8092-c116a4147fa9/mqdefault.jpg?quality=82&w=1050", "", "", "ES", "", ""],
+  ["Terricidio", "Moira Millán", "Libro", "Economía y política, Colapso y transición", "📖 +1 hr", "https://www.libreriasudestada.com.ar/productos/terricidio-moira-millan/", "La weychafe mapuche sobre el terricidio y el buen vivir.", "https://acdn-us.mitiendanube.com/stores/001/029/689/products/terricidio-fadadb804c573a219d17278846307411-1024-1024.webp", "", "", "ES", "", ""],
+  ["Vecinos en Flor", "", "Proyecto", "Alimentación y suelo, Biodiversidad y restauración", "⚡ 5 min", "https://www.instagram.com/vecinosenflor/", "Huerta y jardín de plantas nativas en Agronomía (UBA) que forma a personas con y sin discapacidad.", "", "", "", "ES", "", ""],
+  ["TACHA", "", "Organización", "Energía y recursos", "⚡ 5 min", "https://www.instagram.com/tachabsas/", "Arte con materiales de descarte: residencias, talleres y proyectos artísticos para organizaciones.", "", "", "", "ES", "", ""],
+  ["Club de Reparadores", "", "Organización", "Energía y recursos, Economía y política", "⚡ 5 min", "https://www.instagram.com/clubdereparadores/", "Movimiento que promueve la reparación y el consumo responsable.", "", "", "", "ES", "", ""],
+  ["Earthly Education", "", "Cuenta", "Colapso y transición, Economía y política", "⚡ 5 min", "https://www.instagram.com/earthlyeducation/", "Educación climática: justicia social, resistencia y esperanza radical.", "", "", "", "EN", "", ""],
+  ["Michael Mezzatesta", "", "Referente", "Colapso y transición", "⚡ 5 min", "https://www.instagram.com/michael__mezz/", "Creador de contenido y conductor del podcast Better Future.", "", "", "", "EN", "", ""],
+  ["Better Future", "Michael Mezzatesta", "Podcast", "Colapso y transición", "📖 +1 hr", "https://betterfuture.media", "Personas, proyectos e ideas para construir un futuro mejor.", "https://pod-engine-public.nyc3.cdn.digitaloceanspaces.com/images/CnElGqz4lX2XfXMG8DeZE1E1WpCVKe96KRMgSPkB0yV.png", "", "", "EN", "", ""],
+  ["Consciente Colectivo", "", "Organización", "Colapso y transición, Economía y política", "☕ 15 min", "https://conscientecolectivo.com.ar/", "ONG de acción climática y educación ambiental.", "", "", "", "ES", "", ""],
+  ["Abogados y Abogadas Ambientalistas", "", "Organización", "Economía y política, Energía y recursos", "⚡ 5 min", "https://www.instagram.com/abogadesambientalistas/", "Asociación de abogacía ambiental contra el extractivismo.", "", "", "", "ES", "", ""],
+  ["Soledad Barruti", "", "Referente", "Alimentación y suelo, Economía y política", "⚡ 5 min", "https://www.instagram.com/solesbarruti/", "Periodista, autora de Malcomidos y Mala leche.", "", "", "", "ES", "", ""],
+  ["Planeta B", "El Viejo Farmer (Guillermo Schnitman)", "Podcast", "Colapso y transición, Economía y política", "📖 +1 hr", "https://youtube.com/playlist?list=PLKlVJTEIbXajU6irpkb3R_t9QPxArVNpK&si=v0IHEIR3UQQ40iM-", "Policrisis, ficciones colectivas ordenadoras y la transición hacia un planeta vivible.", "https://www.youtube.com/watch?v=zQ3xj7-iFlQ&list=PLKlVJTEIbXajU6irpkb3R_t9QPxArVNpK", "", "", "ES", "", ""],
+  ["Guillermo Folguera", "", "Referente", "Economía y política, Energía y recursos", "⚡ 5 min", "https://www.instagram.com/guillefolguera/", "Biólogo y filósofo de la ciencia; crítica al extractivismo.", "", "", "", "ES", "", ""],
+  ["Bioconstrucción: técnica cob", "Maxi Permacultura", "Curso", "Permacultura y bioconstrucción", "📖 +1 hr", "https://maxipermacultura.com/curso/curso-de-construccion-con-cob-de-los-cimientos-a-la-terminacion-final/?v=c582dec943ff", "Construcción con cob, de los cimientos a la terminación.", "", "", "", "ES", "", ""],
+  ["Rewilding Argentina", "", "Organización", "Biodiversidad y restauración", "⚡ 5 min", "https://www.instagram.com/rewilding_argentina/", "Fundación que restaura ecosistemas y reintroduce especies.", "", "", "", "ES", "", ""],
+  ["Unión de Trabajadores de la Tierra (UTT)", "", "Organización", "Alimentación y suelo, Economía y política", "⚡ 5 min", "https://www.instagram.com/trabajadoresdelatierra/", "Organización de familias productoras de alimentos agroecológicos.", "", "", "", "ES", "", ""],
+  ["Agencia Tierra Viva", "", "Organización", "Alimentación y suelo, Economía y política", "☕ 15 min", "https://agenciatierraviva.com.ar/", "Agencia de noticias sobre agro, alimentación y territorios.", "", "", "", "ES", "", ""],
+  ["Recuperadores Urbanos del Oeste (RUO)", "", "Organización", "Energía y recursos, Economía y política", "☕ 15 min", "https://rudeloeste.com/", "Cooperativa de recuperadores urbanos que recicla residuos en el oeste porteño.", "", "", "", "ES", "", ""],
+  ["OíHoy", "", "Proyecto", "Permacultura y bioconstrucción, Colapso y transición", "☕ 15 min", "https://oihoy.com.ar/", "Casa en Villa Ortúzar con talleres y cursos de educación regenerativa.", "", "", "", "ES", "", ""],
+  ["Tierra y dignidad", "Darío Aranda", "Libro", "Economía y política, Alimentación y suelo", "📖 +1 hr", "https://www.libreriasudestada.com.ar/productos/tierra-y-dignidad-dario-aranda-17hmm/", "Crónicas de territorios que resisten al extractivismo.", "https://acdn-us.mitiendanube.com/stores/001/029/689/products/tapa-42d698d7e86f7127e717836976823497-1024-1024.webp", "", "", "ES", "", ""],
+  ["Decrecimiento", "Giacomo D'Alisa, Federico Demaria y Giorgos Kallis (eds.)", "Libro", "Economía y política", "📖 +1 hr", "https://www.econautaseditorial.com/productos/decrecimiento/", "Vocabulario para una nueva era.", "https://images.cdn1.buscalibre.com/fit-in/360x360/ce/df/cedfb83ff47c3ae10b73722517ba4294.jpg", "", "", "ES", "", ""],
+  ["Nave Tierra", "", "Proyecto", "Permacultura y bioconstrucción, Energía y recursos", "☕ 15 min", "https://www.navetierra.com.ar/", "Casa autosustentable tipo earthship, hecha con materiales reciclados.", "", "", "", "ES", "", ""],
+  ["Clima", "El Gato y la Caja", "Libro", "Colapso y transición, Energía y recursos", "📖 +1 hr", "https://tienda.elgatoylacaja.com/productos/clima-el-desafio-de-diseno-mas-grande-de-todos-los-tiempos/", "El desafío de diseño más grande de todos los tiempos.", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSufS-Ld8btitA305bIpvPmMthoCRlYnuNhKK_5a_fvUwE3jOxH90WvvAA&s=10", "", "", "ES", "", ""],
+  ["Bancal desde cero", "Huerta y Bosque", "Taller", "Alimentación y suelo", "📖 +1 hr", "https://huertaybosque.mitiendanube.com/productos/bancal-desde-cero/", "Armar un bancal de cultivo paso a paso.", "", "", "", "ES", "", ""],
+  ["Planificá tu primera huerta", "Huerta y Bosque", "Taller", "Alimentación y suelo", "📖 +1 hr", "https://huertaybosque.mitiendanube.com/productos/manual-de-huerta-1erxq/", "Planificar la huerta desde el primer día.", "", "", "", "ES", "", ""],
+  ["Plagas y nutrición de la huerta", "Sitopía", "Curso", "Alimentación y suelo", "📖 +1 hr", "https://sitopia.com.ar/curso-completo-de-plagas-y-nutricion-de-la-huerta/", "Curso completo para cuidar la huerta sin agrotóxicos.", "", "", "", "ES", "", ""],
+  ["Construcción con paja", "Gernot Minke y Friedemann Mahlke", "Manual", "Permacultura y bioconstrucción", "📖 +1 hr", "https://www.escuelafeliz.org/wp-content/uploads/2024/12/W-Gernot-Minke-Manual-De-Construccion-Con-Paja.pdf", "Técnicas para construir con fardos de paja.", "", "", "", "ES", "", ""],
+  ["Manual de diseño ante incendios forestales", "", "Manual", "Permacultura y bioconstrucción", "📖 +1 hr", "https://www.mediafire.com/file/srf2ianpurpxeo7/Manual_de_dise%25C3%25B1o_ante_incendios_forestales.pdf/file", "Diseñar terrenos y viviendas para prevenir incendios.", "", "", "", "ES", "", ""],
+  ["El arte de la fermentación", "Sandor Ellix Katz", "Manual", "Alimentación y suelo", "📖 +1 hr", "https://www.maslibros.com.ar/productos/el-arte-de-la-fermentacion/", "Procesos fermentativos del mundo.", "", "", "", "ES", "", ""],
+  ["El proceso de diseño en permacultura", "Antonio Scotti", "Manual", "Permacultura y bioconstrucción", "📖 +1 hr", "https://www.mediafire.com/file/l8ptv4kma000dtn/El_Proceso_de_dise%25C3%25B1o_en_Permacultura_-_Antonio_Scotti.pdf/file", "Guía paso a paso para diseñar en permacultura.", "", "", "", "ES", "", ""],
+  ["Fabricación casera de herramientas", "", "Manual", "Permacultura y bioconstrucción", "📖 +1 hr", "https://www.mediafire.com/file/kwk0p9fvbh23usu/Fabricacion_casera_de_Herramientas.pdf/file", "Herramientas simples para la huerta y la chacra.", "", "", "", "ES", "", ""],
+  ["Huerta orgánica biointensiva", "CIESA", "Manual", "Alimentación y suelo", "📖 +1 hr", "https://www.mediafire.com/file/zmja5yq8bdh7oaz/Huerta_Organica_Biointensiva_-_CIESA.pdf/file", "Método biointensivo para producir más en poco espacio.", "", "", "", "ES", "", ""],
+  ["Microcosmos", "Lynn Margulis y Dorion Sagan", "Libro", "Biodiversidad y restauración", "📖 +1 hr", "https://www.planetadelibros.com/libro-microcosmos/89557", "Cuatro mil millones de años de evolución desde nuestros ancestros microbianos.", "https://images.cdn3.buscalibre.com/fit-in/360x360/bc/cf/bccfb705a84fdf93762b786790abe393.jpg", "", "", "ES", "", ""],
+  ["Feria Agronomía", "", "Cuenta", "Alimentación y suelo", "⚡ 5 min", "https://www.instagram.com/feriaagronomia/", "Feria del productor al consumidor en la Facultad de Agronomía (UBA).", "", "", "", "ES", "", ""],
+  ["Extinción", "Flavia Broffoni", "Libro", "Colapso y transición", "📖 +1 hr", "https://www.libreriasudestada.com.ar/productos/extincion-flavia-broffoni/", "La crisis ecológica y climática explicada con evidencia científica, y lo que no cuentan los medios.", "https://acdn-us.mitiendanube.com/stores/001/029/689/products/extincion1-e8a3036fb69f7a8ea116109685475686-1024-1024.webp", "", "", "ES", "", ""],
+  ["Asociación Gaia", "", "Proyecto", "Permacultura y bioconstrucción", "☕ 15 min", "https://www.gaia.org.ar/universidad", "Ecovilla a 120 km de Buenos Aires con su Universidad Internacional de Permacultura.", "", "", "", "ES", "", ""]
+];
+
+// Temas fijos. En la planilla puede haber uno o dos por recurso, separados por coma; el primero define el color.
+const TEMAS = [
+  { id: 'colapso', label: 'Colapso y transición', color: '#F59E0B', claves: ['colapso', 'transicion'] },
+  { id: 'alimentacion', label: 'Alimentación y suelo', color: '#84CC16', claves: ['alimentacion', 'suelo'] },
+  { id: 'permacultura', label: 'Permacultura y bioconstrucción', color: '#10B981', claves: ['permacultura', 'bioconstruccion', 'diseno'] },
+  { id: 'energia', label: 'Energía y recursos', color: '#06B6D4', claves: ['energia', 'recursos'] },
+  { id: 'economia', label: 'Economía y política', color: '#A855F7', claves: ['economia', 'politica'] },
+  { id: 'biodiversidad', label: 'Biodiversidad y restauración', color: '#FB7185', claves: ['biodiversidad', 'restauracion', 'rewilding'] }
+];
+const TEMA_BY_ID = Object.fromEntries(TEMAS.map((t) => [t.id, t]));
+const TEMA_GRIS = '#8d8d87';
+
+// ¿Cuánto tiempo tenés?
+const TIEMPOS = [
+  { id: '5', emoji: '⚡', label: '5 min', bajada: 'Un perfil, un post, una idea' },
+  { id: '15', emoji: '☕', label: '15 min', bajada: 'Una nota, una entrevista' },
+  { id: '60', emoji: '📖', label: '+1 hora', bajada: 'Un libro, un documental, un curso' }
+];
+const TIEMPO_BY_ID = Object.fromEntries(TIEMPOS.map((t) => [t.id, t]));
+
+// Tiras por formato (lo que la persona va a hacer con el recurso).
+const TIRAS = [
+  { id: 'leer', titulo: '📖 Leer', bajada: 'Libros, informes y notas', formatos: ['libro', 'informe', 'nota', 'articulo', 'ensayo'] },
+  { id: 'mirar', titulo: '🎥 Mirar', bajada: 'Documentales, charlas y cine', formatos: ['documental', 'charla', 'conferencia', 'pelicula', 'cine', 'video', 'serie'] },
+  { id: 'escuchar', titulo: '🎙️ Escuchar', bajada: 'Podcasts para cuando viajás, caminás o tenés un rato de pausa', formatos: ['podcast'] },
+  { id: 'seguir', titulo: '👤 Seguir', bajada: 'Voces, cuentas y organizaciones para tener cerca en redes', formatos: ['referente', 'instagram', 'cuenta', 'youtube', 'newsletter'] },
+  { id: 'hacer', titulo: '🛠️ Hacer', bajada: 'Talleres, cursos, manuales y guías para pasar a la práctica', formatos: ['taller', 'curso', 'capacitacion', 'manual', 'guia', 'cartilla'] },
+  { id: 'conocer', titulo: '🌱 Conocer', bajada: 'Organizaciones, cooperativas, medios y espacios para conocer y sumarse', formatos: ['proyecto', 'organizacion', 'cooperativa', 'ong', 'espacio', 'red', 'colectivo', 'medio'] },
+  { id: 'otros', titulo: '✳️ Más recursos', bajada: 'Otros formatos', formatos: [] }
+];
+const TIRA_BY_ID = Object.fromEntries(TIRAS.map((t) => [t.id, t]));
+
+// Agregados que no entran en una planilla (ficha de datos del Informe Meadows).
+const CATALOGO_EXTRAS = {
+  'los limites al crecimiento': {
+    kicker: 'Informe Meadows · MIT, 1972',
+    datos: [
+      ['Autores', 'Donella Meadows, Dennis Meadows, Jørgen Randers y William W. Behrens III'],
+      ['Encargo', 'Club de Roma · modelo World3 del MIT'],
+      ['Alimentos per cápita', 'pico en 2009'],
+      ['Producción industrial per cápita', 'pico entre 2012 y 2013'],
+      ['Población', 'pico en 2027 · 7.060 millones'],
+      ['Contaminación', 'pico en 2034 · ×11 respecto de 1970'],
+      ['Recursos no renovables', 'en 2026 queda el 31% del stock de 1900']
+    ]
+  }
+};
+
+// --- Lectura y normalización de la planilla ---
+const norm = (s) => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+
+// CSV con comillas, comas y saltos de línea dentro de las celdas.
+function parseCSV(text) {
+  const rows = []; let row = []; let cell = ''; let q = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (q) {
+      if (ch === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (ch === '"') q = false;
+      else cell += ch;
+    } else if (ch === '"') q = true;
+    else if (ch === ',') { row.push(cell); cell = ''; }
+    else if (ch === '\n' || ch === '\r') {
+      if (ch === '\r' && text[i + 1] === '\n') i++;
+      row.push(cell); rows.push(row); row = []; cell = '';
+    } else cell += ch;
+  }
+  if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+  return rows.filter((r) => r.some((c) => String(c).trim() !== ''));
+}
+
+const COLUMNAS = {
+  titulo: ['titulo', 'nombre'], autor: ['autor', 'autora', 'autores'], formato: ['formato', 'tipo'], tema: ['tema', 'temas'],
+  tiempo: ['tiempo', 'duracion'], url: ['link url', 'link', 'url', 'enlace'], descripcion: ['descripcion'], portada: ['portada', 'imagen'],
+  destacado: ['destacado', 'destacada'], isbn: ['isbn'], idioma: ['idioma'], nivel: ['nivel'], costo: ['costo', 'precio']
+};
+
+const tiempoId = (s) => {
+  const t = norm(s);
+  if (!t) return '';
+  if (/\b15\b/.test(t)) return '15';
+  if (/\b5\b/.test(t)) return '5';
+  if (/hora|hr|\+ ?1|\bh\b|60/.test(t)) return '60';
+  return '';
+};
+
+const temaIds = (s) => String(s || '').split(/[,;/|+]/).map(norm).filter(Boolean)
+  .map((p) => (TEMAS.find((t) => norm(t.label) === p || t.claves.some((k) => p.startsWith(k))) || {}).id)
+  .filter((id, i, a) => id && a.indexOf(id) === i);
+
+// Personas, cuentas y organizaciones: si el link es de una red social van a Seguir; si es una web, a Conocer.
+const tiraId = (formato, url) => {
+  const f = norm(formato);
+  const t = TIRAS.find((x) => x.formatos.some((k) => f.startsWith(k)));
+  if (t && (t.id === 'seguir' || t.id === 'conocer') && url) {
+    return REDES.some(([re]) => re.test(url)) ? 'seguir' : 'conocer';
+  }
+  return t ? t.id : 'otros';
+};
+
+const youTubeId = (url) => {
+  const m = String(url || '').match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/);
+  return m ? m[1] : '';
+};
+
+const SIN_LINK = ['', '#', 'url_aqui'];
+
+// Red y usuario a partir del link (o del título, si empieza con @).
+const REDES = [
+  [/instagram\.com\/([\w.]+)/i, 'Instagram'], [/tiktok\.com\/@([\w.]+)/i, 'TikTok'], [/youtube\.com\/@([\w.-]+)/i, 'YouTube'],
+  [/(?:twitter|x)\.com\/(\w+)/i, 'X'], [/facebook\.com\/([\w.]+)/i, 'Facebook'], [/threads\.net\/@([\w.]+)/i, 'Threads'],
+  [/linkedin\.com\/in\/([\w-]+)/i, 'LinkedIn'], [/([\w-]+)\.substack\.com/i, 'Substack']
+];
+function redDe(url, titulo, formato) {
+  for (const [re, red] of REDES) { const m = String(url || '').match(re); if (m) return { red, usuario: `@${m[1].replace(/\/$/, '')}` }; }
+  const t = String(titulo || '').trim();
+  if (t.startsWith('@')) return { red: norm(formato) === 'instagram' || !url ? 'Instagram' : '', usuario: t.split(/\s/)[0] };
+  if (url) { try { return { red: 'Web', usuario: new URL(url).hostname.replace(/^www\./, '') }; } catch (e) { /* link inválido */ } }
+  return { red: '', usuario: '' };
+}
+// A dónde lleva cada link, para que el botón lo diga ("Escuchar en Spotify", "Leer reseña (PDF)"…).
+const PLATAFORMAS = [
+  [/open\.spotify\.com/i, 'Spotify', 'audio'], [/(youtube\.com|youtu\.be)/i, 'YouTube', 'video'], [/podcasts\.apple\.com/i, 'Apple Podcasts', 'audio'],
+  [/ivoox\.com/i, 'iVoox', 'audio'], [/ted\.com/i, 'TED', 'video'], [/vimeo\.com/i, 'Vimeo', 'video'], [/cine\.ar/i, 'Cine.ar', 'video'], [/ok\.ru/i, 'OK.ru', 'video'], [/netflix\.com/i, 'Netflix', 'video'],
+  [/instagram\.com/i, 'Instagram', 'social'], [/tiktok\.com/i, 'TikTok', 'social'], [/(twitter|x)\.com/i, 'X', 'social'],
+  [/facebook\.com/i, 'Facebook', 'social'], [/linkedin\.com/i, 'LinkedIn', 'social'], [/threads\.net/i, 'Threads', 'social']
+];
+function plataforma(url) {
+  const pdf = /\.pdf($|\?|\/)|\/download\/|mediafire\.com/i.test(url);
+  for (const [re, nombre, tipo] of PLATAFORMAS) if (re.test(url)) return { nombre, tipo, pdf };
+  let host = '';
+  try { host = new URL(url).hostname.replace(/^www\./, ''); } catch (e) { /* link inválido */ }
+  return { nombre: host || 'la web', tipo: 'web', pdf };
+}
+function etiquetaBoton(r) {
+  if (!r.url) return r.red === 'Instagram' && r.usuario ? 'Ver en Instagram' : 'Buscar en la web';
+  const p = plataforma(r.url);
+  const f = norm(r.formato);
+  if (r.tira === 'escuchar') return p.tipo === 'web' ? 'Escuchar en su web' : `Escuchar en ${p.nombre}`;
+  if (r.tira === 'mirar') return p.tipo === 'video' ? `Ver en ${p.nombre}` : `Más info en ${p.nombre}`;
+  if (r.tira === 'conocer') return p.tipo === 'web' ? 'Visitar su web' : `Ver en ${p.nombre}`;
+  if (/^(manual|guia|cartilla)/.test(f)) return p.pdf ? 'Descargar (PDF)' : `Ver en ${p.nombre}`;
+  if (r.tira === 'leer') {
+    if (p.pdf) return 'Leer (PDF)';
+    return f.startsWith('libro') ? `Ver libro en ${p.nombre}` : `Leer en ${p.nombre}`;
+  }
+  if (r.tira === 'seguir') return p.tipo === 'social' ? `Ver en ${p.nombre}` : p.tipo === 'video' ? `Ver charla en ${p.nombre}` : `Leer entrevista en ${p.nombre}`;
+  if (p.pdf) return 'Abrir (PDF)';
+  if (r.tira === 'hacer' && p.tipo === 'web') return `Ver ${f || 'más'}`;
+  return p.tipo === 'web' ? 'Ver en su web' : `Ver en ${p.nombre}`;
+}
+const IDIOMAS = { EN: 'En inglés', PT: 'En portugués', FR: 'En francés', IT: 'En italiano', DE: 'En alemán' };
+
+// Si falta el link: un @usuario de Instagram arma su perfil; si no, búsqueda web con título y autor.
+const linkAutomatico = (r) => (r.red === 'Instagram' && r.usuario.startsWith('@')
+  ? `https://www.instagram.com/${r.usuario.slice(1)}/`
+  : `https://www.google.com/search?q=${encodeURIComponent([r.titulo, r.autor].filter(Boolean).join(' '))}`);
+
+function filasACatalogo(rows) {
+  if (!rows || rows.length < 2) return [];
+  const head = rows[0].map(norm);
+  const idx = Object.fromEntries(Object.entries(COLUMNAS).map(([k, alias]) => [k, head.findIndex((h) => alias.includes(h))]));
+  const get = (r, k) => (idx[k] >= 0 ? String(r[idx[k]] ?? '').trim() : '');
+  return rows.slice(1).map((r) => {
+    const titulo = get(r, 'titulo');
+    if (!titulo) return null;
+    const url = get(r, 'url');
+    const temas = temaIds(get(r, 'tema'));
+    const portadaTxt = get(r, 'portada');
+    const isbn = get(r, 'isbn').replace(/[^0-9Xx]/g, '');
+    const yt = youTubeId(url);
+    const ytPortada = youTubeId(portadaTxt);
+    const imagen = ytPortada ? `https://i.ytimg.com/vi/${ytPortada}/hqdefault.jpg`
+      : portadaTxt ? assetSrc(ASSETS.portadas, portadaTxt)
+      : yt ? `https://i.ytimg.com/vi/${yt}/hqdefault.jpg`
+      : isbn ? `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg?default=false` : '';
+    const idioma = get(r, 'idioma').toUpperCase();
+    return {
+      titulo, autor: get(r, 'autor'), formato: get(r, 'formato') || 'Recurso', descripcion: get(r, 'descripcion'),
+      temas, color: temas.length ? TEMA_BY_ID[temas[0]].color : TEMA_GRIS,
+      tiempo: tiempoId(get(r, 'tiempo')), tira: tiraId(get(r, 'formato'), SIN_LINK.includes(norm(url)) ? '' : url),
+      url: SIN_LINK.includes(norm(url)) ? '' : url, imagen,
+      ...redDe(SIN_LINK.includes(norm(url)) ? '' : url, titulo, get(r, 'formato')),
+      destacado: ['si', 'x', '1', 'true', 'yes'].includes(norm(get(r, 'destacado'))),
+      idioma: idioma && idioma !== 'ES' ? idioma : '', nivel: get(r, 'nivel'), costo: get(r, 'costo'),
+      ...(CATALOGO_EXTRAS[norm(titulo)] || {})
+    };
+  }).filter(Boolean);
+}
+
+const CATALOGO_BASE = filasACatalogo(CATALOGO_LOCAL);
+
+/* ==================================================================
+   UTILIDADES
+   ================================================================== */
+const cx = (...a) => a.filter(Boolean).join(' ');
+
+/* ==================================================================
+   COMPONENTES · ISOTIPO
+   ================================================================== */
+// Isotipo oficial (pluma-hoja verde + plumín naranja + línea ondulada), vectorizado por capas de color.
+// Versión CON contorno blanco (muestra el cañón de la pluma sobre fondos oscuros); la misma que el favicon.
+const ISO = {
+  viewBox: [62, 130, 970, 1048],
+  colores: { contorno: '#FFFFFF', hoja: '#83C998', plumin: '#FF5722', linea: '#E36027' },
+  contorno: "M170.5 911.0 L167.5 913.0 L151.0 933.5 L134.0 958.0 L127.5 969.5 L153.5 959.5 L164.0 957.0 L183.0 937.0Z M957.5 140.0 L952.0 137.5 L901.5 138.0 L854.5 141.5 L821.0 145.5 L788.5 151.0 L745.0 160.5 L685.0 179.0 L644.0 195.5 L624.0 205.0 L592.5 222.0 L562.5 240.5 L515.5 275.5 L491.0 297.0 L468.5 319.0 L442.5 347.5 L414.5 382.5 L390.5 417.5 L379.5 436.0 L364.5 464.5 L349.5 498.5 L338.5 529.5 L330.5 559.5 L328.0 560.5 L302.0 527.0 L295.0 524.5 L289.0 525.0 L285.5 526.5 L280.5 531.5 L269.5 564.0 L264.0 588.0 L260.5 611.5 L258.5 639.5 L260.0 675.0 L264.0 703.5 L269.5 726.0 L277.0 748.0 L150.5 885.0 L123.0 919.0 L96.5 959.5 L70.5 1011.5 L70.5 1020.0 L76.0 1027.0 L83.0 1030.0 L90.5 1029.0 L112.0 1012.5 L125.0 1005.0 L146.0 995.5 L160.5 990.0 L176.0 986.0 L184.5 981.5 L346.5 805.0 L406.0 785.0 L465.0 761.0 L512.0 738.0 L551.0 716.0 L585.0 694.0 L626.5 663.0 L670.0 625.0 L693.0 602.0 L730.5 560.0 L750.5 535.0 L754.5 527.5 L754.5 520.5 L752.5 516.0 L748.5 512.0 L704.0 497.0 L701.0 494.5 L707.0 491.0 L742.0 478.0 L775.0 463.0 L819.5 438.5 L838.5 426.0 L866.5 404.5 L889.0 383.0 L903.5 366.0 L916.5 346.5 L926.0 329.0 L937.0 303.0 L948.0 267.5 L955.5 233.5 L961.0 194.0 L963.0 169.0 L963.0 148.0Z M171.0 908.0 L185.5 935.5 L185.5 937.5 L166.0 958.5 L145.5 964.5 L125.0 973.5 L124.0 970.5 L144.0 939.5 L169.5 908.0Z",
+  hoja: "M931.5 178.0 L899.0 195.5 L849.5 227.0 L807.5 256.5 L753.5 298.0 L702.0 341.0 L645.0 392.0 L607.0 428.0 L558.0 477.0 L514.0 523.0 L449.0 595.0 L397.5 655.5 L367.5 693.0 L356.5 763.5 L356.5 769.5 L357.5 770.5 L381.0 763.0 L425.5 746.0 L455.5 733.0 L500.5 711.0 L530.5 694.0 L568.0 670.0 L587.0 656.5 L620.0 630.0 L619.5 628.0 L530.5 628.0 L525.5 627.0 L520.5 623.0 L517.0 616.0 L517.0 611.0 L518.5 607.0 L523.0 601.5 L529.0 599.0 L654.0 599.0 L673.5 580.0 L699.0 552.0 L713.5 534.5 L714.5 531.5 L644.0 507.5 L639.0 503.0 L636.0 496.5 L636.0 492.0 L638.0 487.0 L642.0 482.5 L646.5 480.0 L656.5 478.0 L700.5 463.0 L741.0 446.5 L772.0 431.5 L799.0 416.5 L824.5 400.0 L853.0 377.0 L852.0 375.0 L813.5 375.0 L808.5 374.0 L802.0 368.0 L800.0 363.5 L800.0 357.5 L801.5 353.5 L806.5 348.0 L810.5 346.0 L881.0 346.0 L885.0 341.5 L894.0 327.0 L902.0 311.0 L917.0 270.0 L928.0 220.0 L932.0 189.5 L932.5 179.0Z M885.0 170.0 L884.0 169.0 L868.0 169.5 L822.5 175.0 L780.0 182.5 L777.5 184.0 L771.0 184.5 L748.5 190.0 L690.0 208.5 L658.0 221.5 L623.5 238.5 L598.0 253.0 L591.0 258.5 L591.0 318.5 L587.5 325.0 L582.5 329.0 L577.0 330.5 L570.0 329.0 L563.0 322.0 L561.5 317.5 L561.5 279.5 L560.5 278.5 L537.0 296.0 L511.5 318.0 L481.0 348.5 L451.5 382.5 L425.5 417.5 L399.5 460.5 L384.5 491.5 L368.0 534.0 L358.5 566.5 L353.0 594.0 L353.0 600.0 L350.0 607.0 L343.0 612.5 L331.5 612.0 L323.5 604.0 L301.5 574.0 L298.0 572.5 L293.5 590.0 L290.0 612.0 L288.0 637.0 L288.0 655.0 L291.5 689.5 L299.0 721.5 L302.5 721.5 L342.0 678.5 L409.0 596.5 L482.5 514.0 L528.0 466.0 L603.5 391.0 L670.5 329.5 L719.0 288.5 L763.5 253.0 L825.0 208.5Z",
+  plumin: "M170.5 911.0 L167.5 913.0 L149.5 935.5 L134.5 957.0 L127.5 970.0 L143.5 963.0 L164.0 957.0 L183.0 937.0 L182.5 934.5Z",
+  linea: "M1024.5 835.0 L1020.5 828.0 L992.5 795.0 L958.5 762.0 L939.5 746.5 L921.0 733.5 L903.5 723.0 L881.5 712.0 L864.5 705.0 L838.5 697.0 L834.5 697.0 L824.5 694.0 L811.5 693.0 L810.5 692.0 L766.0 691.0 L765.0 692.0 L741.0 695.0 L726.0 699.0 L702.0 708.0 L675.0 722.5 L647.0 742.5 L630.5 757.0 L612.0 776.0 L589.5 803.5 L563.5 842.5 L537.0 889.0 L515.0 933.0 L487.0 985.0 L471.0 1012.0 L452.0 1040.0 L428.0 1069.5 L400.0 1097.0 L383.0 1110.5 L366.0 1122.0 L345.0 1133.0 L324.0 1141.0 L305.0 1146.0 L292.0 1147.0 L291.0 1148.0 L281.0 1148.0 L280.0 1149.0 L258.5 1149.0 L257.5 1148.0 L240.5 1147.0 L221.5 1143.0 L205.5 1138.0 L172.5 1122.0 L145.0 1101.0 L130.5 1086.0 L118.5 1071.0 L106.5 1052.0 L95.5 1028.0 L88.0 1031.5 L81.5 1031.5 L73.5 1026.5 L73.0 1027.5 L81.0 1048.5 L89.5 1065.5 L111.0 1096.5 L135.0 1121.0 L149.0 1132.0 L167.0 1143.5 L192.0 1155.5 L220.0 1164.5 L236.0 1167.5 L251.0 1168.5 L252.0 1169.5 L287.5 1169.5 L288.5 1168.5 L309.5 1166.5 L329.5 1161.5 L353.5 1152.5 L380.5 1138.0 L408.5 1118.0 L438.5 1090.0 L464.5 1059.0 L491.5 1019.5 L521.5 966.5 L548.5 912.5 L567.5 877.5 L586.5 845.5 L606.5 816.5 L632.5 785.5 L656.5 762.5 L678.5 745.5 L694.5 735.5 L712.5 726.5 L740.5 716.5 L761.5 712.5 L771.5 712.5 L772.5 711.5 L798.0 711.5 L799.0 712.5 L814.0 713.5 L834.0 718.5 L838.0 718.5 L848.0 722.5 L854.0 723.5 L880.0 734.5 L895.0 742.5 L917.0 756.5 L933.0 768.5 L951.5 784.5 L978.0 811.0 L1008.0 846.5 L1010.0 847.5 L1018.5 847.5 L1021.5 845.5 L1024.5 840.5Z"
+};
+
+function Isotipo({ className, draw = false, id = 'iso' }) {
+  const [x, y, w, h] = ISO.viewBox;
+  return (
+    <svg viewBox={ISO.viewBox.join(' ')} className={className} role="img" aria-label="Isotipo de Hiperstición">
+      {draw && (
+        <defs>
+          <clipPath id={id + '-wave'}>
+            <motion.rect x={x} y={y} height={h} initial={{ width: 0 }} animate={{ width: w }} transition={{ duration: 1.6, delay: 0.4, ease: [0.3, 0.6, 0.2, 1] }} />
+          </clipPath>
+        </defs>
+      )}
+      <path fill={ISO.colores.contorno} fillRule="evenodd" d={ISO.contorno} />
+      <path fill={ISO.colores.hoja} fillRule="evenodd" d={ISO.hoja} />
+      <path fill={ISO.colores.plumin} fillRule="evenodd" d={ISO.plumin} />
+      <path fill={ISO.colores.linea} fillRule="evenodd" d={ISO.linea} clipPath={draw ? `url(#${id}-wave)` : undefined} />
+    </svg>
+  );
+}
+
+/* ==================================================================
+   COMPONENTES · IMAGEN CON FALLBACK
+   ================================================================== */
+// Imagen con fallback: muestra el placeholder y, si el archivo existe, lo funde encima al cargar.
+function SmartImage({ src, alt = '', className, imgClassName, imgStyle, loading = 'lazy', children }) {
+  const [state, setState] = useState('loading');
+  useEffect(() => setState('loading'), [src]);
+  return (
+    <div className={cx(/\babsolute\b/.test(className || '') ? '' : 'relative', 'overflow-hidden', className)}>
+      {children}
+      {src && state !== 'error' && (
+        <img
+          src={src} alt={alt} loading={loading} decoding="async"
+          onLoad={() => setState('ok')} onError={() => setState('error')}
+          className={cx('absolute inset-0 h-full w-full object-cover transition-opacity duration-500', state === 'ok' ? 'opacity-100' : 'opacity-0', imgClassName)}
+          style={imgStyle}
+        />
+      )}
+    </div>
+  );
+}
+
+/* ==================================================================
+   COMPONENTES · UI
+   ================================================================== */
+function Bracket({ children, active, onClick, color, className, ...rest }) {
+  return (
+    <button
+      type="button" onClick={onClick} aria-pressed={active}
+      className={cx('f-mono text-[12px] uppercase tracking-[0.12em] px-2 py-1.5 transition-colors whitespace-nowrap', active ? 'text-black' : 'text-fg hover:text-accent', className)}
+      style={active ? { background: color || 'var(--fg)' } : undefined}
+      {...rest}
+    >
+      [ {children} ]
+    </button>
+  );
+}
+
+function SectionLabel({ index, children }) {
+  return (
+    <div className="flex items-center gap-3">
+      <span className="label tnum">{index}</span>
+      <span className="h-px w-8 bg-line" />
+      <span className="label">{children}</span>
+    </div>
+  );
+}
+
+/* ==================================================================
+   COMPONENTES · ILUSTRACIONES
+   ================================================================== */
+function Rabbit({ size = 26, color = 'currentColor' }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" aria-hidden="true">
+      <ellipse cx="15" cy="7" rx="2.6" ry="7" fill={color} transform="rotate(-12 15 7)" />
+      <ellipse cx="21" cy="7" rx="2.6" ry="7" fill={color} transform="rotate(10 21 7)" />
+      <circle cx="18" cy="17" r="6.2" fill={color} />
+      <ellipse cx="22" cy="28" rx="11" ry="8.5" fill={color} />
+      <circle cx="33" cy="27" r="3" fill={color} />
+      <circle cx="16" cy="16" r="1.1" fill="#000" />
+    </svg>
+  );
+}
+
+// Hámster de pie (coordenadas 240×180, mira a la derecha)
+function HamsterShape() {
+  return (
+    <g>
+      <g fill="#0b0b0b" stroke="#f2f2ee" strokeWidth="2.2" strokeLinejoin="round">
+        <path d="M30 112 q-10 -2 -12 8" fill="none" />
+        <ellipse cx="108" cy="112" rx="78" ry="54" />
+        <circle cx="168" cy="88" r="42" />
+        <circle cx="148" cy="50" r="13" />
+        <circle cx="186" cy="50" r="12" />
+        <ellipse cx="96" cy="164" rx="16" ry="7" />
+        <ellipse cx="150" cy="162" rx="14" ry="7" />
+      </g>
+      <circle cx="148" cy="50" r="6" fill="#E66128" />
+      <circle cx="186" cy="50" r="5.5" fill="#E66128" />
+      <ellipse cx="176" cy="102" rx="13" ry="9" fill="#E66128" opacity=".6" />
+      <circle cx="178" cy="80" r="4" fill="#f2f2ee" />
+      <circle cx="207" cy="92" r="3.5" fill="#E66128" />
+      <path d="M207 96 q-4 8 -10 7 M207 96 q3 8 9 6" stroke="#f2f2ee" strokeWidth="1.6" fill="none" />
+      <path d="M196 98 l26 -6 M196 102 l27 2" stroke="#8d8d87" strokeWidth="1" />
+    </g>
+  );
+}
+
+/* ==================================================================
+   NAVEGACIÓN · NAVBAR
+   ================================================================== */
+function Navbar({ view, go }) {
+  return (
+    <header
+      className="fixed inset-x-0 top-0 z-50 border-b border-line backdrop-blur"
+      style={{ paddingTop: 'env(safe-area-inset-top, 0px)', background: 'color-mix(in srgb, var(--bg) 86%, transparent)' }}
+    >
+      <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-3 px-4 max-xs:gap-2 max-xs:px-3 md:px-8">
+        <button type="button" onClick={() => go('inicio')} className="logo-btn group flex min-w-0 items-center gap-2.5 border-0 bg-transparent p-0 max-xs:gap-1.5" aria-label="Hiperstición, volver al inicio">
+          <Isotipo draw id="iso-nav" className="h-10 w-auto shrink-0 transition-transform group-hover:-rotate-6 max-xs:h-9" />
+          <span className="logo-word f-display min-w-0 truncate py-0.5 text-[17px] leading-[1.2] tracking-tight max-xs:text-[15px] xs:text-[21px]">Hiperstición</span>
+        </button>
+        <div className="flex shrink-0 items-center gap-0.5 xs:gap-2">
+          <Bracket className="max-xs:px-[3px] max-xs:text-[10px] max-xs:tracking-[0.04em]" active={view === 'manifiesto'} onClick={() => go('manifiesto')}>Manifiesto</Bracket>
+          <Bracket className="max-xs:px-[3px] max-xs:text-[10px] max-xs:tracking-[0.04em]" active={view === 'catalogo'} color="var(--accent)" onClick={() => go('catalogo')}>Catálogo</Bracket>
+        </div>
+      </nav>
+    </header>
+  );
+}
+
+/* ==================================================================
+   NAVEGACIÓN · MENÚ LATERAL
+   ================================================================== */
+const HOME_SECTIONS = [
+  { id: 'inicio', label: 'Inicio' },
+  { id: 'cine', label: 'Cine' },
+  { id: 'imaginacion', label: 'Imaginación' },
+  { id: 'hamster', label: 'Hámster' },
+  { id: 'meadows', label: 'Informe Meadows' },
+  { id: 'pradera', label: 'Pradera' },
+  { id: 'cierre', label: 'Cierre' }
+];
+
+function SideNav() {
+  const [active, setActive] = useState('inicio');
+  useEffect(() => {
+    const els = HOME_SECTIONS.map((s) => document.getElementById(s.id)).filter(Boolean);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+  const jump = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  return (
+    <nav aria-label="Secciones" className="fixed right-3 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-2.5 lg:flex">
+      {HOME_SECTIONS.map((s) => {
+        const on = active === s.id;
+        return (
+          <button key={s.id} type="button" onClick={() => jump(s.id)} className="group flex items-center gap-2 rounded-sm bg-[#040806]/60 py-0.5 pl-2" aria-current={on ? 'true' : undefined}>
+            <span className={cx('f-mono text-[10px] uppercase tracking-[0.14em] transition-colors', on ? 'text-fg' : 'text-muted/70 group-hover:text-fg')}>
+              [ {s.label} ]
+            </span>
+            <span className={cx('block h-px transition-all', on ? 'w-6 bg-accent' : 'w-3 bg-muted group-hover:w-5 group-hover:bg-fg')} />
+          </button>
+        );
+      })}
+    </nav>
+  );
+}
+
+/* ==================================================================
+   NAVEGACIÓN · FOOTER
+   ================================================================== */
+function Footer({ go }) {
+  return (
+    <footer className="border-t border-line px-4 py-10 md:px-8">
+      <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4">
+        <span className="flex items-center gap-3"><Isotipo className="h-9 w-auto" /><span className="f-display text-lg">Hiperstición</span></span>
+        <div className="flex flex-wrap gap-2">
+          <Bracket onClick={() => go('inicio')}>Inicio</Bracket>
+          <Bracket onClick={() => go('manifiesto')}>Manifiesto</Bracket>
+          <Bracket onClick={() => go('catalogo')}>Catálogo</Bracket>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ==================================================================
+   SECCIÓN · INICIO
+   ================================================================== */
+function Hero() {
+  const [open, setOpen] = useState(false);
+  return (
+    <section id="inicio" className="glow-hero relative px-4 pb-20 pt-32 md:px-8 md:pt-40">
+      <div className="mx-auto w-full max-w-[1400px]">
+        <motion.div initial={{ opacity: 0.001, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
+          className="f-mono text-[13px] uppercase tracking-[0.32em] text-leaf">
+          Hiperstición · Ensayo interactivo
+        </motion.div>
+        <motion.h1
+          initial={{ opacity: 0.001, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
+          className="f-display mt-6 max-w-[12ch] text-[clamp(3.2rem,9.5vw,9rem)]"
+        >
+          Una ficción que se vuelve <span className="text-accent">real.</span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0.001, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
+          className="f-serif mt-6 max-w-[48ch] text-[clamp(1.1rem,1.8vw,1.5rem)] leading-relaxed text-fg/80"
+        >
+          Muchas de las cosas que hoy vivimos primero fueron ficción. Las historias que creemos construyen el mundo.
+        </motion.p>
+
+        {/* Definición desplegable (mismo componente visual que la revalidación de Herrington) */}
+        <div className="mt-10">
+          <button
+            type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="definicion"
+            className={cx('group inline-flex items-center gap-3 border px-4 py-2.5 f-mono text-[12px] uppercase tracking-[0.12em] transition-colors',
+              open ? 'border-leaf bg-leaf text-black' : 'border-line text-fg hover:border-leaf hover:text-leaf')}
+          >
+            [ Ver definición completa
+            <motion.span aria-hidden="true" animate={{ rotate: open ? 45 : 0 }} transition={{ duration: 0.25 }} className="inline-flex leading-none"><Plus size={16} /></motion.span>
+            ]
+          </button>
+          <AnimatePresence initial={false}>
+            {open && (
+              <motion.div id="definicion" key="definicion" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }} className="overflow-hidden">
+                <article className="mt-8 border-l-2 border-leaf bg-[#0a1a14]/70 py-6 pl-6 pr-4 md:py-8 md:pl-10">
+                  <p className="measure text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-fg/90">
+                    <strong className="font-bold text-fg">Hiper + superstición.</strong> Una ficción que se vuelve real porque mucha gente la cree y actúa en consecuencia. No es magia ni pensamiento positivo: las historias que compartimos sobre el futuro guían las decisiones del presente, y esas decisiones terminan dándole forma a la realidad. La profecía crea las condiciones para su propio cumplimiento.
+                  </p>
+                  {/* Mismo ancho que la definición: la línea fina acompaña al párrafo */}
+                  <div className="measure mt-4 border-t border-line pt-4 text-[clamp(1.05rem,1.4vw,1.25rem)]">
+                    <p className="label leading-relaxed">
+                      Ejemplo · En la pandemia de 2020, todos creyeron que se iba a acabar el papel higiénico. Salieron a comprar… y se acabó.
+                    </p>
+                  </div>
+                </article>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+        <div className="mt-12 flex justify-end">
+          <a href="#cine" onClick={(e) => { e.preventDefault(); document.getElementById('cine')?.scrollIntoView({ behavior: 'smooth' }); }} className="label flex items-center gap-3 hover:text-fg">
+            Scrolleá
+            <motion.span aria-hidden="true" animate={{ y: [0, 8, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }} className="leading-none text-accent"><ArrowDown size={28} strokeWidth={1.75} /></motion.span>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ==================================================================
+   SECCIÓN · FRASE BISAGRA
+   ================================================================== */
+function Bisagra() {
+  return (
+    <section id="imaginacion" className="glow-hope border-t border-line px-4 py-28 md:px-8 md:py-40">
+      <motion.div
+        initial={{ opacity: 0.3, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-15% 0px' }} transition={{ duration: 0.7 }}
+        className="mx-auto max-w-[1400px]"
+      >
+        <SectionLabel index="02">Imaginación</SectionLabel>
+        <p className="f-display mt-10 max-w-[18ch] text-[clamp(2.2rem,5.8vw,5.6rem)]">
+          “La crisis ecológica es, antes que nada, una <span className="text-accent">crisis de imaginación.</span>”
+        </p>
+        <p className="label mt-6">— a partir de Amitav Ghosh</p>
+        <p className="f-serif mt-10 text-[clamp(1.4rem,2.8vw,2.3rem)] italic">¿Somos capaces de imaginar un mundo distinto?</p>
+      </motion.div>
+    </section>
+  );
+}
+
+/* ==================================================================
+   FRASES PUENTE
+   ================================================================== */
+function Puente({ children, className, narrativo = false }) {
+  return (
+    <div className={cx('mx-auto max-w-[1100px] px-4 py-24 text-center md:px-8 md:py-32', className)}>
+      <motion.p
+        initial={{ opacity: 0.3, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-15% 0px' }} transition={{ duration: 0.7 }}
+        className={cx('f-serif mx-auto max-w-[34ch] text-[clamp(1.4rem,3vw,2.4rem)] leading-snug', narrativo ? 'text-fg/85' : 'italic')}
+      >
+        {children}
+      </motion.p>
+    </div>
+  );
+}
+
+/* ==================================================================
+   SECCIÓN · LA PRADERA
+   ================================================================== */
+const RABBITS = (() => {
+  let s = 7;
+  const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  return Array.from({ length: 170 }, () => ({ x: 4 + rnd() * 92, y: 30 + rnd() * 62, size: 18 + rnd() * 16, flip: rnd() > 0.5 }));
+})();
+
+const CRACKS = 'url("data:image/svg+xml,' + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><g fill="none" stroke="#24170d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M0 40 L38 52 L60 30 L96 46 L122 20 L180 34"/><path d="M38 52 L44 96 L20 128 L0 134"/><path d="M44 96 L92 104 L118 140 L104 180"/><path d="M92 104 L96 46"/><path d="M118 140 L160 122 L180 130"/><path d="M160 122 L150 80 L180 70"/><path d="M150 80 L122 20"/><path d="M20 128 L32 180"/><path d="M60 30 L56 0"/></g></svg>'
+) + '")';
+
+function Pradera() {
+  const ref = useRef(null);
+  const { scrollYProgress: raw } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+  const p = useSpring(raw, { stiffness: 260, damping: 32, mass: 0.25 });
+  const [count, setCount] = useState(3);
+  const [step, setStep] = useState(0);
+  const countMV = useTransform(p, [0, 0.1, 0.38, 0.62], [3, 10, 90, 170]);
+  useMotionValueEvent(countMV, 'change', (v) => setCount(Math.round(v)));
+  useMotionValueEvent(raw, 'change', (v) => setStep(v < 0.28 ? 0 : v < 0.6 ? 1 : 2));
+  const ground = useTransform(p, [0, 0.28, 0.55, 0.78, 1], ['#14361c', '#23401c', '#4a4622', '#6b4e2f', '#57432f']);
+  const grassOpacity = useTransform(p, [0, 0.3, 0.7], [1, 0.6, 0]);
+  const crackOpacity = useTransform(p, [0.6, 0.92], [0, 0.85]);
+  const dust = useTransform(p, [0.65, 1], [0, 0.45]);
+  const regen = useTransform(p, [0, 0.3, 0.75], ['70%', '55%', '3%']);
+  const consumo = useTransform(p, [0, 0.28, 0.6], ['18%', '55%', '100%']);
+  const rabbitColor = useTransform(p, [0, 0.62, 0.9], ['#f2f2ee', '#f2f2ee', '#9c8d79']);
+  const rabbitOpacity = useTransform(p, [0.8, 1], [1, 0.55]);
+
+  return (
+    <section id="pradera" className="relative border-t border-line">
+      <Puente narrativo>Para entender la magnitud de este colapso sin números abstractos, bajemos la escala a un ejemplo simple:</Puente>
+      <div ref={ref} className="relative h-[220vh]">
+      <div className="sticky top-0 flex h-[100svh] flex-col overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ background: ground }} />
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            opacity: grassOpacity,
+            backgroundImage: 'repeating-linear-gradient(100deg, rgba(110,190,90,.24) 0 2px, transparent 2px 14px), repeating-linear-gradient(80deg, rgba(60,140,60,.2) 0 1px, transparent 1px 11px)',
+            maskImage: 'linear-gradient(to bottom, transparent 22%, #000 48%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 22%, #000 48%)'
+          }}
+        />
+        <motion.div
+          className="absolute inset-0"
+          style={{ opacity: crackOpacity, backgroundImage: CRACKS, backgroundSize: '180px 180px', maskImage: 'linear-gradient(to bottom, transparent 25%, #000 50%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 25%, #000 50%)' }}
+        />
+        <motion.div className="absolute inset-0" style={{ opacity: dust, background: 'radial-gradient(120% 80% at 50% 0%, rgba(214,163,106,.35), transparent 60%)' }} />
+        <div className="absolute inset-x-0 top-0 bg-gradient-to-b from-black via-black/50 to-transparent" style={{ height: '46%' }} />
+
+        <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 pt-24 md:px-8">
+          <SectionLabel index="05">La escala elemental</SectionLabel>
+          <div className="mt-6 min-h-[8.5rem] md:min-h-[9rem]">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={step}
+                initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.22 }}
+                className="f-cond max-w-[26ch] text-[clamp(1.6rem,3.6vw,3rem)] leading-[1.05]"
+              >
+                {PRADERA_TEXTOS[step].split(/(colapsa\.|regenera\.|supera la tasa de recuperación\.)/).map((chunk, i) =>
+                  /colapsa\.|regenera\.|supera/.test(chunk)
+                    ? <span key={i} className={step === 0 ? 'text-[#7bd88f]' : step === 1 ? 'text-accent' : 'text-[#d6a36a]'}>{chunk}</span>
+                    : <span key={i}>{chunk}</span>
+                )}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+          <div className="mt-4 flex gap-2" aria-hidden="true">
+            {[0, 1, 2].map((i) => <span key={i} className={cx('h-[3px] w-10 transition-colors duration-200', i <= step ? 'bg-fg' : 'bg-white/20')} />)}
+          </div>
+        </div>
+
+        <motion.div className="absolute inset-0 z-0" style={{ opacity: rabbitOpacity }} aria-hidden="true">
+          {RABBITS.slice(0, count).map((r, i) => (
+            <motion.div
+              key={i} className="absolute" style={{ left: r.x + '%', top: r.y + '%', scaleX: r.flip ? -1 : 1 }}
+              initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.16, ease: 'easeOut' }}
+            >
+              <motion.div style={{ color: rabbitColor }}><Rabbit size={r.size} /></motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/15 bg-black/70 backdrop-blur-sm">
+          <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-3 px-4 py-4 sm:grid-cols-[auto_1fr_auto] sm:items-center md:px-8">
+            <span className="label tnum">Población · {count} conejos</span>
+            <div className="grid gap-2">
+              <div className="flex items-center gap-3">
+                <span className="label w-28 shrink-0">Regeneración</span>
+                <div className="relative h-2 flex-1 bg-white/10"><motion.div className="absolute inset-y-0 left-0 bg-[#7bd88f]" style={{ width: regen }} /></div>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="label w-28 shrink-0">Consumo</span>
+                <div className="relative h-2 flex-1 bg-white/10"><motion.div className="absolute inset-y-0 left-0 bg-accent" style={{ width: consumo }} /></div>
+              </div>
+            </div>
+            <span className={cx('label', step === 2 ? 'text-[#d6a36a]' : '')}>{step === 0 ? 'Equilibrio' : step === 1 ? 'Sobrecarga' : 'Desertificación'}</span>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+  );
+}
+
+/* ==================================================================
+   SECCIÓN · INFORME MEADOWS
+   ================================================================== */
+function W3Tooltip({ active, payload, label, focusKey }) {
+  if (!active || !payload?.length) return null;
+  const rows = payload.filter((p) => VAR_BY_KEY[p.dataKey] && (!focusKey || p.dataKey === focusKey));
+  const raw = payload[0].payload.raw;
+  return (
+    <div className="border border-line bg-black/95 px-3 py-2">
+      <div className="label tnum mb-1.5 text-fg">{label} · simulación World3</div>
+      {rows.map((p) => {
+        const real = REAL_DATO[p.dataKey];
+        const valorReal = real && real.valores[label];
+        const comparar = valorReal != null;
+        const k = p.dataKey;
+        const v = raw[k];
+        const w3 = k === 'poblacion' ? `${fmtN(v / 1000, 2)} mil millones`
+          : k === 'recursos' ? `queda el ${fmtN(v * 100)}%`
+          : vs1970(v / W3_1970[k]);
+        const re = !comparar ? null
+          : real.modo === 'indice' ? vs1970(valorReal / real.valores[real.base])
+          : `${fmtN(valorReal / 1000, 2)} mil millones`;
+        return (
+          <div key={p.dataKey} className="f-mono text-[12px] tnum">
+            <div className="flex items-center gap-2"><span className="inline-block h-2 w-2" style={{ background: p.color }} />{VAR_BY_KEY[p.dataKey].nombre}</div>
+            <div className="mt-1 max-w-[30ch] text-[10.5px] leading-snug text-muted">{W3_AYUDA[k]}</div>
+            <div className="mt-1 grid grid-cols-[auto_auto] justify-between gap-x-6 text-fg/85">
+              <span className="text-muted">World3</span>
+              <span className="text-right">{w3}</span>
+            </div>
+            {comparar && (
+              <div className="grid grid-cols-[auto_auto] justify-between gap-x-6" style={{ color: p.color }}>
+                <span>Dato real · {real.fuente}</span>
+                <span className="text-right">{re}</span>
+              </div>
+            )}
+            {comparar && real.nota && real.nota(label) && (
+              <div className="text-[10.5px] uppercase tracking-[0.1em] text-muted">{real.nota(label)}</div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function World3Chart({ selected, hovered, setHovered, onSelect }) {
+  const wrapRef = useRef(null);
+  const inView = useInView(wrapRef, { once: true, margin: '-15% 0px' });
+  const focus = hovered || selected;
+  const peak = PEAK_ROW[focus];
+  return (
+    <div ref={wrapRef} className="relative">
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-between pl-12 pr-4 md:pr-6">
+        <span className="label inline-flex items-center gap-1.5"><ArrowLeft size={12} /> Simulación · antes de hoy</span>
+        <span className="label inline-flex items-center gap-1.5">Simulación · después de hoy <ArrowRight size={12} /></span>
+      </div>
+      <div className="h-[360px] w-full pt-6 md:h-[470px]" onMouseLeave={() => setHovered(null)}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart key={inView ? 'in' : 'out'} data={WORLD3} margin={{ top: 22, right: 16, bottom: 8, left: -12 }}>
+            <CartesianGrid stroke="#13211b" vertical={false} />
+            <XAxis dataKey="year" type="number" domain={[1900, 2100]} ticks={[1900, 1950, 1972, 2000, 2026, 2050, 2100]} tick={{ fill: '#8fa398' }} tickLine={false} axisLine={{ stroke: '#23352c' }} interval={0} />
+            <YAxis domain={[0, 100]} ticks={[0, 25, 50, 75, 100]} tickFormatter={(v) => v + '%'} tick={{ fill: '#8fa398' }} tickLine={false} axisLine={false} width={48} />
+            <Tooltip content={<W3Tooltip focusKey={focus} />} cursor={{ stroke: '#3c5a4c', strokeWidth: 1 }} />
+            <ReferenceLine x={1972} stroke="#3c5a4c" strokeDasharray="2 4" label={{ value: 'PUBLICACIÓN', position: 'insideTopLeft', fill: '#8fa398', fontSize: 10, fontFamily: 'JetBrains Mono' }} />
+            <ReferenceLine x={2026} stroke="#f2f2ee" strokeDasharray="4 4" strokeWidth={1} label={{ value: 'HOY', position: 'insideTopRight', fill: '#f2f2ee', fontSize: 10, fontFamily: 'JetBrains Mono' }} />
+            {VARIABLES.map((v) => {
+              const isFocus = focus === v.key;
+              return (
+                <Line
+                  key={v.key} type="monotone" dataKey={v.key} name={v.nombre} stroke={v.color}
+                  strokeWidth={isFocus ? 4 : 2} strokeOpacity={focus ? (isFocus ? 1 : 0.18) : 0.9}
+                  dot={isFocus ? (d) => (d.payload.year % 10 === 0 ? <circle key={d.key} cx={d.cx} cy={d.cy} r={2.5} fill={v.color} /> : <g key={d.key} />) : false}
+                  activeDot={focus && !isFocus ? false : { r: 4.5, stroke: '#000', strokeWidth: 2 }}
+                  isAnimationActive={inView} animationDuration={1800} animationEasing="ease-out"
+                  onMouseEnter={() => setHovered(v.key)} onClick={() => onSelect(v.key)}
+                  style={{ cursor: 'pointer', transition: 'stroke-width .25s, stroke-opacity .25s' }}
+                />
+              );
+            })}
+            {peak && (
+              <ReferenceDot x={peak.year} y={peak[focus]} r={7} fill="none" stroke={VAR_BY_KEY[focus].color} strokeWidth={2}
+                label={{ value: 'PICO', position: 'top', fill: VAR_BY_KEY[focus].color, fontSize: 10, fontFamily: 'JetBrains Mono' }} />
+            )}
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+      <p className="mt-3 max-w-[70ch] f-serif text-[clamp(0.98rem,1.2vw,1.1rem)] italic leading-snug text-fg/75">
+        Para lograrlo, el estudio del MIT generó una simulación matemática sistémica que hizo interactuar cinco grandes variables: población, producción industrial, alimentos, recursos no renovables y contaminación.
+      </p>
+      <Desplegable etiqueta="Sobre esta simulación" id="nota-world3" className="mt-3">
+      <p className="mt-3 max-w-[90ch] f-mono text-[11px] leading-relaxed text-muted">
+        Simulación: corrida estándar (Standard Run) del modelo World3, año por año, recalculada con las ecuaciones y parámetros de Meadows et al. en su versión de 1974 (Dynamics of Growth in a Finite World), mediante la implementación abierta pyworld3.
+        Todas las curvas son simulación, antes y después de hoy. Cada curva se expresa como % de su propio máximo, porque cada variable tiene su propia escala.
+        Pasá el cursor para comparar la simulación con el dato real de cada año: población en la misma unidad (ONU, 1900–2025; antes de 1950 la ONU solo estima por década y los años intermedios están interpolados) y alimentos por persona como cambio porcentual respecto de 1970 (FAO, 1961–2023; desde 2014 se empalma la serie actual de la FAO con la histórica, usando los años 2010–2013 en que se superponen).
+        Recursos no renovables, producción industrial y contaminación persistente son variables propias del modelo, sin una serie real oficial equivalente.
+      </p>
+      </Desplegable>
+    </div>
+  );
+}
+
+function VariablePanel({ v }) {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.article
+        key={v.key} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}
+        className="border border-line bg-card" style={{ borderTopColor: v.color, borderTopWidth: 3 }}
+      >
+        <header className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line px-5 py-4">
+          <h3 className="f-cond text-[clamp(1.4rem,2.6vw,2rem)]" style={{ color: v.color }}>{v.nombre}</h3>
+          <span className="label">{v.linea} · <span className="text-fg">{v.modelo}</span></span>
+        </header>
+        <p className="border-b border-line px-5 py-4 f-mono text-[12.5px] leading-relaxed text-fg/85">{v.resumen}</p>
+        <div className="grid gap-px bg-line md:grid-cols-3">
+          <div className="min-w-0 bg-card p-5">
+            <div className="label mb-2" style={{ color: v.color }}>1 · Qué mide</div>
+            <p className="text-[15px]">{v.queMide}</p>
+          </div>
+          <div className="min-w-0 bg-card p-5">
+            <div className="label mb-2" style={{ color: v.color }}>2 · Por qué hace esa curva</div>
+            <p className="text-[15px]">{v.porQue}</p>
+          </div>
+          <div className="min-w-0 bg-card p-5">
+            <div className="label mb-2" style={{ color: v.color }}>3 · Dato real y validación</div>
+            <p className="text-[15px]"><span className="label text-fg">Evidencia · </span>{v.evidencia}</p>
+            <p className="mt-3 text-[14px] text-muted"><span className="label text-fg">Fuentes · </span>{v.fuentes}</p>
+          </div>
+        </div>
+      </motion.article>
+    </AnimatePresence>
+  );
+}
+
+function Meadows() {
+  const [selected, setSelected] = useState('recursos');
+  const [hovered, setHovered] = useState(null);
+  return (
+    <section id="meadows" className="glow-data relative px-4 pb-24 pt-8 md:px-8 md:pb-32">
+      <div className="mx-auto max-w-[1400px]">
+        <SectionLabel index="04">El núcleo de datos</SectionLabel>
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+          <h2 className="f-display text-[clamp(2.4rem,6.5vw,6rem)]">El Informe Meadows</h2>
+          <div className="min-w-0">
+            <p className="f-cond text-[clamp(1.6rem,2.8vw,2.4rem)] leading-tight">(MIT, 1972)</p>
+            <p className="label mt-3">Estudio del MIT patrocinado por el Club de Roma y la Fundación Volkswagen · “Los límites al crecimiento” · modelo World3</p>
+          </div>
+        </div>
+
+        <div className="mt-14 border-t border-line pt-8">
+          <World3Chart selected={selected} hovered={hovered} setHovered={setHovered} onSelect={setSelected} />
+          <div className="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Variables del modelo World3">
+            {VARIABLES.map((x) => (
+              <button
+                key={x.key} type="button" role="tab" aria-selected={selected === x.key}
+                onClick={() => setSelected(x.key)} onMouseEnter={() => setHovered(x.key)} onMouseLeave={() => setHovered(null)}
+                onFocus={() => setHovered(x.key)} onBlur={() => setHovered(null)}
+                className="f-mono flex items-center gap-2 border px-3 py-2 text-[12px] uppercase tracking-[0.1em] transition-colors"
+                style={selected === x.key ? { background: x.color, borderColor: x.color, color: '#000' } : { borderColor: 'var(--line)', color: 'var(--fg)' }}
+              >
+                <span className="inline-block h-2 w-2" style={{ background: selected === x.key ? '#000' : x.color }} />
+                [ {x.boton} ]
+              </button>
+            ))}
+          </div>
+          <div className="mt-6"><VariablePanel v={VAR_BY_KEY[selected]} /></div>
+          <Fuentes lista={FUENTES_MEADOWS} id="fuentes-meadows" className="mt-6" />
+        </div>
+
+        <Validacion />
+      </div>
+    </section>
+  );
+}
+
+// Las 10 variables que comparó Herrington (Branderhorst, 2020)
+const HERRINGTON_VARIABLES = ['Población', 'Fecundidad', 'Mortalidad', 'Producción industrial', 'Alimentos', 'Servicios', 'Recursos no renovables', 'Contaminación persistente', 'Bienestar humano', 'Huella ecológica'];
+
+// Fuentes primarias: bloque Meadows y tarjeta de Herrington
+const FUENTES_MEADOWS = [
+  { texto: 'Meadows, D. H., Meadows, D. L., Randers, J. y Behrens III, W. W. (1972). The Limits to Growth. Universe Books. Edición digital del archivo Donella Meadows, Dartmouth College.', url: 'https://collections.dartmouth.edu/archive/text/meadows/diplomatic/meadows_ltg-diplomatic.html' },
+  { texto: 'Meadows, D. L. et al. (1974). Dynamics of Growth in a Finite World. Wright-Allen Press.' },
+  { texto: 'Vanwynsberghe, C. PyWorld3: implementación en Python del modelo World3 (software usado para recalcular la simulación).' },
+  { texto: 'Turner, G. M. (2008). A comparison of The Limits to Growth with 30 years of reality. Global Environmental Change, 18(3).' },
+  { texto: 'Turner, G. (2014). Is Global Collapse Imminent? MSSI Research Paper n.º 4, Universidad de Melbourne.' },
+  { texto: 'UNEP – Panel Internacional de Recursos (2024). Global Resources Outlook 2024.', url: 'https://www.unep.org/resources/global-resource-outlook-2024' },
+  { texto: 'Ray, D. K. et al. (2012). Recent patterns of crop yield growth and stagnation. Nature Communications, 3.' },
+  { texto: 'Ray, D. K. et al. (2013). Yield trends are insufficient to double global crop production by 2050. PLOS ONE, 8(6).' },
+  { texto: 'FAO, FAOSTAT. Hojas de balance de alimentos, serie histórica (1961–2013): suministro de alimentos, mundo, kcal por persona y día.', url: 'https://www.fao.org/faostat/en/#data/FBSH' },
+  { texto: 'FAO, FAOSTAT. Hojas de balance de alimentos (2010–2023): suministro de alimentos, mundo, kcal por persona y día.', url: 'https://www.fao.org/faostat/en/#data/FBS' },
+  { texto: 'Naciones Unidas, DESA, División de Población (2024). World Population Prospects 2024.', url: 'https://www.un.org/development/desa/pd/world-population-prospects-2024' },
+  { texto: 'Naciones Unidas (1999). The World at Six Billion: estimaciones históricas de población mundial (1900–1940), compiladas por la Oficina del Censo de EE. UU.', url: 'https://www.census.gov/data/tables/time-series/demo/international-programs/historical-est-worldpop.html' },
+  { texto: 'NOAA Global Monitoring Laboratory. Tendencias del CO2 atmosférico en Mauna Loa.', url: 'https://gml.noaa.gov/ccgg/trends/' }
+];
+const FUENTES_HERRINGTON = [
+  { texto: 'Branderhorst (Herrington), G. (2020). Update to Limits to Growth: Comparing the World3 Model With Empirical Data. Tesis de maestría, Harvard Extension School.', url: 'https://dash.harvard.edu/entities/publication/7e326e1c-4111-4507-bf62-9b6f17c565d1' },
+  { texto: 'Herrington, G. (2021). Update to limits to growth: Comparing the World3 model with empirical data. Journal of Industrial Ecology, 25(3).' }
+];
+
+// Lista de fuentes desplegable
+function Fuentes({ lista, id, className }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={className}>
+      <button
+        type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls={id}
+        className="inline-flex items-center gap-2 f-mono text-[11px] uppercase tracking-[0.12em] text-muted transition-colors hover:text-leaf"
+      >
+        [ Fuentes · {lista.length}
+        <motion.span aria-hidden="true" animate={{ rotate: open ? 45 : 0 }} transition={{ duration: 0.25 }} className="inline-flex leading-none"><Plus size={12} /></motion.span>
+        ]
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div id={id} key={id} initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35 }} className="overflow-hidden">
+            <ol className="mt-4 grid gap-x-10 gap-y-2 md:grid-cols-2">
+              {lista.map((f, i) => (
+                <li key={i} className="flex min-w-0 gap-3 f-mono text-[11.5px] leading-relaxed text-muted">
+                  <span className="tnum text-fg/60">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="min-w-0 break-words">
+                    {f.texto}{' '}
+                    {f.url && <a href={f.url} target="_blank" rel="noopener noreferrer" className="text-leaf underline decoration-[rgba(124,198,138,0.4)] underline-offset-2 hover:text-fg">Ver fuente ↗</a>}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+// Bloque desplegable con el mismo estilo que [ Fuentes + ]
+function Desplegable({ etiqueta, id, className, children }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={className}>
+      <button
+        type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls={id}
+        className="inline-flex items-center gap-2 f-mono text-[11px] uppercase tracking-[0.12em] text-muted transition-colors hover:text-leaf"
+      >
+        [ {etiqueta}
+        <motion.span aria-hidden="true" animate={{ rotate: open ? 45 : 0 }} transition={{ duration: 0.25 }} className="inline-flex leading-none"><Plus size={12} /></motion.span>
+        ]
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div id={id} key={id} initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35 }} className="overflow-hidden">
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+// Frase destacada + revalidación desplegable
+function Validacion() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="mt-24 border-t border-line pt-16">
+      <p className="f-display max-w-[20ch] text-[clamp(2.2rem,5.6vw,5.4rem)]">
+        No adivinaron el futuro: calcularon los <span className="text-leaf">límites geofísicos del planeta.</span>
+      </p>
+      <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <button
+          type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="herrington"
+          className={cx('group inline-flex items-center gap-3 border px-4 py-2.5 f-mono text-[12px] uppercase tracking-[0.12em] transition-colors',
+            open ? 'border-leaf bg-leaf text-black' : 'border-line text-fg hover:border-leaf hover:text-leaf')}
+        >
+          [ Ver la revalidación · Gaya Herrington, 2020 ]
+          <motion.span aria-hidden="true" animate={{ rotate: open ? 45 : 0 }} transition={{ duration: 0.25 }} className="inline-flex leading-none"><Plus size={16} /></motion.span>
+        </button>
+      </div>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div id="herrington" key="herrington" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }} className="overflow-hidden">
+            <article className="mt-8 grid gap-8 border-l-2 border-leaf bg-[#0a1a14]/70 py-6 pl-6 pr-4 md:grid-cols-[minmax(0,13rem)_1fr] md:py-8 md:pl-10">
+              <div className="min-w-0">
+                <div className="f-display text-[clamp(2.6rem,5vw,4rem)] tnum text-leaf">2020</div>
+                <div className="label mt-3">KPMG / Universidad de Harvard</div>
+              </div>
+              <div className="min-w-0 grid gap-4">
+                <p className="measure f-cond text-[clamp(1.15rem,1.8vw,1.45rem)] leading-tight">
+                  <span className="text-leaf">EL DIAGNÓSTICO ESTÁ VIGENTE:</span> Gaya Herrington comparó los escenarios del modelo con datos reales. Los que mejor coincidieron fueron “Business as Usual 2” y “Tecnología Integral”. En ambos, el crecimiento se frena hacia la década de 2030 y después declina: ni siquiera la tecnología evita el choque con los límites si no cambia el rumbo.
+                </p>
+                <p className="measure text-fg/80">
+                  <span className="label text-leaf">¿Por qué esos dos? · </span>Cada escenario es un futuro posible que el modelo calcula con supuestos distintos; Herrington buscó cuál se parecía más a lo que efectivamente pasó. “Business as Usual 2” es el mundo de siempre, pero con el doble de recursos no renovables que la corrida estándar: el planeta resultó tener más recursos accesibles de los que se estimaban en 1972. “Tecnología Integral” suma, además, innovación acelerada en eficiencia, control de la contaminación y rendimiento agrícola. Que esos dos sean los que mejor coinciden significa que el mundo real tuvo más recursos y más tecnología que en la corrida estándar, y aun así se encamina al mismo freno.
+                </p>
+                <p className="measure text-fg/80">La economista de datos (tesis de maestría en Harvard, mientras trabajaba en KPMG) contrastó cuatro escenarios del modelo con casi 50 años de estadísticas globales sobre 10 variables:</p>
+                <ol className="grid gap-x-6 gap-y-1.5 sm:grid-cols-2">
+                  {HERRINGTON_VARIABLES.map((v, i) => (
+                    <li key={v} className="flex items-baseline gap-3 text-[14.5px]">
+                      <span className="label tnum text-leaf">{String(i + 1).padStart(2, '0')}</span>
+                      <span>{v}</span>
+                    </li>
+                  ))}
+                </ol>
+                <p className="measure"><span className="label text-leaf">Resultado · </span>El escenario “Mundo Estabilizado” fue el que menos coincidió con los datos: el mundo no tomó el camino de la estabilización. Herrington concluye que el sistema transita la meseta previa al estancamiento material y que todavía es posible cambiar el rumbo, aunque esa ventana se está cerrando.</p>
+                <Fuentes lista={FUENTES_HERRINGTON} id="fuentes-herrington" />
+              </div>
+            </article>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <p className="mt-20 max-w-[34ch] border-t border-line pt-12 f-cond text-[clamp(1.6rem,3vw,2.6rem)] leading-tight">
+        El problema no era la falta de datos empíricos, sino la <span className="text-accent">dominancia del relato del crecimiento ilimitado.</span>
+      </p>
+    </div>
+  );
+}
+
+/* ==================================================================
+   SECCIÓN · EL HÁMSTER
+   ================================================================== */
+const GRAINS = (() => {
+  let s = 11;
+  const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  return Array.from({ length: 70 }, () => {
+    const h = Math.pow(r(), 1.6) * 46;
+    const w = 95 * (1 - h / 52);
+    return { x: 650 + (r() - 0.5) * 2 * w, y: 547 - h, rot: r() * 180 };
+  }).sort((a, b) => a.y - b.y);
+})();
+
+const BUILDINGS = [[20, 90, 170], [118, 64, 250], [190, 84, 140], [282, 58, 320], [348, 96, 205], [452, 66, 285], [526, 104, 165], [638, 60, 300], [706, 92, 215], [806, 76, 262], [890, 90, 150]]
+  .map(([x, w, h]) => ({ x, w, h, d: Math.abs(x + w / 2 - 430) }))
+  .map((b, _, arr) => ({ ...b, order: [...arr].sort((a, c) => a.d - c.d).indexOf(b) }));
+
+function formatPeso(g) {
+  if (g < 1000) return fmtN(g) + ' g';
+  if (g < 1e6) return fmtN(g / 1000, 1) + ' kg';
+  if (g < 1e9) return fmtN(g / 1e6) + ' t';
+  if (g < 1e12) return fmtN(g / 1e9, 1) + ' mil t';
+  return fmtN(g / 1e12) + ' millones de t';
+}
+
+// Línea de tiempo del scroll:
+//   0 → 0,25   semanas 1–5: duplicación natural hasta la pubertad (come granos)
+//   0,25 → 0,62  sigue duplicando: devora la ciudad
+//   0,62 → 1     rodea el planeta y sigue engordando
+const PUBERTAD = 5;          // semana en la que un hámster real deja de duplicar su peso
+const P_PUBERTAD = 0.25;     // punto del scroll donde ocurre
+const weekAt = (v) => Math.max(1, Math.min(52, Math.round(
+  v <= P_PUBERTAD ? 1 + (v / P_PUBERTAD) * (PUBERTAD - 1) : PUBERTAD + ((v - P_PUBERTAD) / (1 - P_PUBERTAD)) * (52 - PUBERTAD)
+)));
+
+function HamsterScene({ p, grainsLeft, eaten, chewing }) {
+  // Crecimiento exponencial continuo: nunca se estanca mientras se scrollea
+  const hamScale = useTransform(p, (v) => 0.55 * Math.exp(3.54 * Math.min(v, 0.62)));
+  const cityOp = useTransform(p, [0.2, 0.3, 0.58, 0.66], [0, 1, 1, 0]);
+  const groundOp = useTransform(p, [0.58, 0.66], [1, 0]);
+  const standOp = useTransform(p, [0.6, 0.68], [1, 0]);
+  const planetOp = useTransform(p, [0.6, 0.7], [0, 1]);
+  const planetScale = useTransform(p, [0.6, 0.72], [0.6, 1]);
+  const ring = useTransform(p, [0.66, 0.92], [0.001, 1]);
+  // Después de rodear el planeta, el cuerpo sigue engordando hasta el final del scroll
+  const ringW = useTransform(p, [0.66, 1], [44, 118]);
+  const ringInner = useTransform(ringW, (w) => w - 5);
+  const headScale = useTransform(p, [0.66, 1], [0.8, 1.75]);
+  const theta = useTransform(ring, (l) => -Math.PI / 2 + l * Math.PI * 2);
+  const headX = useTransform(theta, (t) => 500 + 196 * Math.cos(t));
+  const headY = useTransform(theta, (t) => 300 + 196 * Math.sin(t));
+  const headRot = useTransform(theta, (t) => (t * 180) / Math.PI + 90);
+  const ringOp = useTransform(p, [0.64, 0.68], [0, 1]);
+  const ringPath = 'M500 104 A196 196 0 1 1 499.9 104';
+
+  return (
+    <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" className="h-full w-full" aria-hidden="true">
+      {/* Suelo */}
+      <motion.line x1="0" x2="1000" y1="550" y2="550" stroke="#333" strokeWidth="1.5" style={{ opacity: groundOp }} />
+      {/* Ciudad */}
+      <motion.g style={{ opacity: cityOp }}>
+        {BUILDINGS.map((b, i) => (
+          <motion.g key={i} animate={{ y: eaten > b.order ? 30 : 0, opacity: eaten > b.order ? 0 : 1 }} transition={{ duration: 0.35 }}>
+            <rect x={b.x} y={550 - b.h} width={b.w} height={b.h} fill="#101010" stroke="#3a3a3a" strokeWidth="1.5" />
+            {Array.from({ length: Math.floor(b.h / 26) }).map((_, j) => (
+              <g key={j}>
+                <rect x={b.x + 10} y={550 - b.h + 12 + j * 26} width={b.w / 2 - 16} height="9" fill="#F59E0B" opacity={(i + j) % 3 ? 0.18 : 0.55} />
+                <rect x={b.x + b.w / 2 + 6} y={550 - b.h + 12 + j * 26} width={b.w / 2 - 16} height="9" fill="#F59E0B" opacity={(i + j) % 4 ? 0.12 : 0.45} />
+              </g>
+            ))}
+          </motion.g>
+        ))}
+      </motion.g>
+      {/* Granos */}
+      <motion.g style={{ opacity: groundOp }}>
+        {GRAINS.slice(GRAINS.length - grainsLeft).map((g, i) => (
+          <ellipse key={i} cx={g.x} cy={g.y} rx="6" ry="3.6" fill="#E8C26A" stroke="#8a6d2a" strokeWidth=".8" transform={`rotate(${g.rot} ${g.x} ${g.y})`} />
+        ))}
+      </motion.g>
+      {/* Hámster de pie: crece desde los pies */}
+      <motion.g style={{ opacity: standOp }}>
+        <g transform="translate(305 378)">
+          <motion.g style={{ scale: hamScale, transformBox: 'fill-box', transformOrigin: '50% 100%' }}>
+            <motion.g animate={chewing ? { y: [0, -3, 0] } : { y: 0 }} transition={chewing ? { duration: 0.35, repeat: Infinity } : {}}>
+              <HamsterShape />
+            </motion.g>
+          </motion.g>
+        </g>
+      </motion.g>
+      {/* Planeta */}
+      <motion.g style={{ opacity: planetOp, scale: planetScale, transformBox: 'fill-box', transformOrigin: '50% 50%' }}>
+        <circle cx="500" cy="300" r="150" fill="#0d2233" stroke="#2b4a5e" strokeWidth="2" />
+        <path d="M420 210 q40 -30 80 -6 q24 22 -6 46 q-30 14 -46 40 q-26 20 -40 -6 q-12 -40 12 -74z" fill="#556B2F" />
+        <path d="M540 300 q36 -18 62 6 q14 30 -8 58 q-26 26 -52 10 q-22 -30 -2 -74z" fill="#556B2F" />
+        <path d="M430 360 q24 -8 34 10 q2 22 -22 24 q-20 -6 -12 -34z" fill="#556B2F" />
+        <path d="M352 300 a148 148 0 0 0 296 0" fill="none" stroke="#ffffff" strokeOpacity=".06" strokeWidth="2" />
+      </motion.g>
+      {/* Hámster que rodea el planeta y sigue engordando */}
+      <motion.g style={{ opacity: ringOp }}>
+        <motion.path d={ringPath} fill="none" stroke="#f2f2ee" strokeLinecap="round" style={{ pathLength: ring, strokeWidth: ringW }} />
+        <motion.path d={ringPath} fill="none" stroke="#0b0b0b" strokeLinecap="round" style={{ pathLength: ring, strokeWidth: ringInner }} />
+        <motion.path d={ringPath} fill="none" stroke="#E66128" strokeOpacity=".35" strokeWidth="2" strokeDasharray="2 14" style={{ pathLength: ring }} />
+        <motion.g style={{ x: headX, y: headY, rotate: headRot, scale: headScale, transformBox: 'fill-box', transformOrigin: '50% 50%' }}>
+          <g transform="translate(-44 -44)">
+            <circle cx="22" cy="10" r="13" fill="#0b0b0b" stroke="#f2f2ee" strokeWidth="2.2" />
+            <circle cx="66" cy="10" r="13" fill="#0b0b0b" stroke="#f2f2ee" strokeWidth="2.2" />
+            <circle cx="22" cy="10" r="6" fill="#E66128" />
+            <circle cx="66" cy="10" r="6" fill="#E66128" />
+            <circle cx="44" cy="44" r="40" fill="#0b0b0b" stroke="#f2f2ee" strokeWidth="2.2" />
+            <circle cx="30" cy="40" r="4" fill="#f2f2ee" />
+            <circle cx="58" cy="40" r="4" fill="#f2f2ee" />
+            <circle cx="44" cy="58" r="4" fill="#E66128" />
+            <ellipse cx="24" cy="60" rx="10" ry="7" fill="#E66128" opacity=".55" />
+            <ellipse cx="64" cy="60" rx="10" ry="7" fill="#E66128" opacity=".55" />
+          </g>
+        </motion.g>
+      </motion.g>
+    </svg>
+  );
+}
+
+function HamsterSection() {
+  const ref = useRef(null);
+  const { scrollYProgress: raw } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+  const p = useSpring(raw, { stiffness: 140, damping: 26, mass: 0.35 });
+  const [phase, setPhase] = useState(0);
+  const [week, setWeek] = useState(1);
+  const [grainsLeft, setGrainsLeft] = useState(GRAINS.length);
+  const [eaten, setEaten] = useState(0);
+  useMotionValueEvent(raw, 'change', (v) => {
+    setPhase(v < P_PUBERTAD ? 0 : v < 0.62 ? 1 : 2);
+    setWeek(weekAt(v));
+    setGrainsLeft(Math.round(GRAINS.length * Math.max(0, 1 - v / P_PUBERTAD)));
+    setEaten(v < 0.3 ? 0 : Math.min(BUILDINGS.length, Math.floor((v - 0.3) / 0.024)));
+  });
+  const peso = 2 * Math.pow(2, week); // ~2 g al nacer → ~9.000 millones de t a la semana 52
+  const pesoPubertad = 2 * Math.pow(2, PUBERTAD);
+  const natural = week <= PUBERTAD;
+  const barW = useTransform(raw, [0, 1], ['0%', '100%']);
+  // Medimos la línea de tiempo y el zócalo de texto (celular o escritorio, el que esté visible)
+  // para que la escena del hámster quede libre arriba
+  const timelineRef = useRef(null);
+  const zocaloRef = useRef(null);
+  const zocaloDeskRef = useRef(null);
+  const [alturas, setAlturas] = useState({ tl: 60, zh: 240 });
+  useEffect(() => {
+    if (typeof ResizeObserver === 'undefined') return undefined;
+    const medir = () => setAlturas({
+      tl: timelineRef.current?.offsetHeight || 60,
+      zh: Math.max(zocaloRef.current?.offsetHeight || 0, zocaloDeskRef.current?.offsetHeight || 0) || 240
+    });
+    const ro = new ResizeObserver(medir);
+    [timelineRef.current, zocaloRef.current, zocaloDeskRef.current].forEach((el) => el && ro.observe(el));
+    medir();
+    return () => ro.disconnect();
+  }, []);
+
+  return (
+    <section id="hamster" className="relative border-t border-line">
+      <div className="mx-auto max-w-[1400px] px-4 pt-24 md:px-8 md:pt-32">
+        <SectionLabel index="03">Diagnóstico sistémico</SectionLabel>
+        <h2 className="f-display mt-8 max-w-[18ch] text-[clamp(2.2rem,5.6vw,5.4rem)]">El hámster imposible</h2>
+      </div>
+
+      <div ref={ref} className="relative mt-16 h-[420vh]">
+        <div className="sticky top-0 h-[100svh] overflow-hidden" style={{ '--tl': `${alturas.tl}px`, '--zh': `${alturas.zh}px` }}>
+          <div className="absolute inset-0 opacity-50" aria-hidden="true"
+            style={{ backgroundImage: 'linear-gradient(#0f1d17 1px, transparent 1px), linear-gradient(90deg, #0f1d17 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
+          <div className="absolute inset-x-0 bottom-[calc(var(--tl)+var(--zh))] top-16 transition-[bottom] duration-300 md:top-20">
+            <HamsterScene p={p} grainsLeft={grainsLeft} eaten={eaten} chewing={phase === 0} />
+          </div>
+
+          {/* Celular y tablet: zócalo con la fase actual, sobre la línea de tiempo */}
+          <div ref={zocaloRef} className="absolute inset-x-0 bottom-[var(--tl)] z-10 flex flex-col gap-3 border-t border-line bg-black/85 px-4 py-3 backdrop-blur md:px-8 xl:hidden">
+            <div>
+              <div className="flex flex-wrap gap-1.5">
+                {HAMSTER_FASES.map((f, i) => (
+                  <span key={f} className={cx('f-mono px-1.5 py-0.5 text-[9.5px] uppercase tracking-[0.06em] transition-colors', i === phase ? 'bg-accent text-black' : 'border border-line text-muted')}>
+                    Fase {i + 1} · {f}
+                  </span>
+                ))}
+              </div>
+              <AnimatePresence mode="wait">
+                <motion.p key={phase} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}
+                  className="f-serif mt-3 text-[clamp(1rem,1.5vw,1.2rem)] leading-snug">
+                  {phase > 0 && <span className="text-muted">… </span>}{HAMSTER_TEXTO[phase]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+            <div className="flex flex-wrap items-baseline gap-x-3 border-t border-line pt-2">
+              <div className="label tnum">Semana {String(week).padStart(2, '0')} / 52</div>
+              <div className="f-cond text-[clamp(1.3rem,2.6vw,2.2rem)] tnum">{formatPeso(peso)}</div>
+              <div className={cx('f-mono mt-1 w-full text-[10.5px] leading-snug transition-colors', natural ? 'text-leaf' : 'text-accent')}>
+                {natural
+                  ? <>Duplicación natural · hasta la semana {PUBERTAD} (pubertad)</>
+                  : <>Un hámster real deja de duplicar en la semana {PUBERTAD} ({formatPeso(pesoPubertad)}). Este sigue creciendo.</>}
+              </div>
+            </div>
+          </div>
+
+          {/* Computadora (desde 1280 px): zócalo con las tres fases una al lado de la otra.
+              La fase actual se resalta, las pasadas quedan atenuadas y las que vienen se revelan al llegar
+              (su texto ocupa lugar aunque esté oculto, así el zócalo no cambia de alto mientras se scrollea).
+              En pantallas grandes deja lugar a la derecha para el menú lateral de secciones. */}
+          <div ref={zocaloDeskRef} className="absolute inset-x-0 bottom-[var(--tl)] z-10 hidden border-t border-line bg-black/85 backdrop-blur xl:block">
+            <div className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)_minmax(0,1.1fr)_13rem] gap-8 px-8 py-5 xl:pr-[max(2rem,calc(210px_-_max(0px,(100vw_-_1400px)/2)))]">
+              {HAMSTER_FASES.map((f, i) => {
+                const estado = i < phase ? 'pasada' : i === phase ? 'actual' : 'futura';
+                return (
+                  <div key={f} className={cx('min-w-0 border-l pl-5 transition-colors duration-500', estado === 'actual' ? 'border-accent' : 'border-line')}>
+                    <span className={cx('inline-block whitespace-nowrap f-mono px-2 py-0.5 text-[10px] uppercase tracking-[0.08em] transition-colors duration-500', estado === 'actual' ? 'bg-accent text-black' : 'border border-line text-muted')}>
+                      Fase {i + 1} · {f}
+                    </span>
+                    <p aria-hidden={estado === 'futura' || undefined}
+                      className={cx('f-serif mt-3 text-[clamp(0.98rem,1.1vw,1.1rem)] leading-snug transition-opacity duration-500',
+                        estado === 'actual' ? 'opacity-100' : estado === 'pasada' ? 'opacity-40' : 'opacity-0')}>
+                      {i > 0 && <span className="text-muted">… </span>}{HAMSTER_TEXTO[i]}
+                    </p>
+                  </div>
+                );
+              })}
+              <div className="border-l border-line pl-5 text-right">
+                <div className="label tnum">Semana {String(week).padStart(2, '0')} / 52</div>
+                <div className="f-cond mt-1 text-[clamp(1.3rem,2.6vw,2.2rem)] tnum">{formatPeso(peso)}</div>
+                <div className={cx('f-mono mt-2 border-t border-line pt-2 text-[10.5px] leading-snug transition-colors', natural ? 'text-leaf' : 'text-accent')}>
+                  {natural
+                    ? <>Duplicación natural · hasta la semana {PUBERTAD} (pubertad)</>
+                    : <>Un hámster real deja de duplicar en la semana {PUBERTAD} ({formatPeso(pesoPubertad)}). Este sigue creciendo.</>}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Línea de tiempo con el hito de la pubertad */}
+          <div ref={timelineRef} className="absolute inset-x-0 bottom-0 z-10 border-t border-line bg-black/80 px-4 pb-3 pt-7 md:px-8">
+            <div className="mx-auto flex max-w-[1400px] items-center gap-4">
+              <span className="label shrink-0">Nacimiento</span>
+              <div className="relative h-1.5 flex-1 bg-white/10">
+                <motion.div className="absolute inset-y-0 left-0 bg-accent" style={{ width: barW }} />
+                <div className="absolute inset-y-0 left-0 bg-[#7cc68a]" style={{ width: `${P_PUBERTAD * 100}%`, mixBlendMode: 'screen', opacity: 0.35 }} aria-hidden="true" />
+                <div className="absolute -top-2 bottom-[-6px] w-px bg-leaf" style={{ left: `${P_PUBERTAD * 100}%` }} />
+                <span className="absolute -top-6 -translate-x-1/2 whitespace-nowrap f-mono text-[10px] uppercase tracking-[0.12em] text-leaf" style={{ left: `${P_PUBERTAD * 100}%` }}>
+                  Semana {PUBERTAD} · pubertad
+                </span>
+              </div>
+              <span className="label shrink-0 tnum">1 año</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Fuentes (el texto aparece solo durante la interacción) */}
+      <div className="mx-auto max-w-[1400px] px-4 pb-4 pt-10 md:px-8">
+        <div className="max-w-[90ch] border-t border-line pt-5">
+          <Desplegable etiqueta="Fuentes · 2" id="fuentes-hamster">
+          <div className="mt-4 grid gap-2 f-mono text-[11.5px] leading-relaxed text-muted">
+            <span><span className="text-fg">Animación original:</span> “The Impossible Hamster”, New Economics Foundation (nef), Londres.</span>
+            <span><span className="text-fg">Ley del crecimiento exponencial:</span> Albert A. Bartlett, “Forgotten Fundamentals of the Energy Crisis”, <i>American Journal of Physics</i> 46 (9), 1978, y la conferencia “Arithmetic, Population and Energy” (Universidad de Colorado, Boulder). Bartlett resumió el problema así: «la mayor falla de la especie humana es nuestra incapacidad para entender la función exponencial».</span>
+          </div>
+          </Desplegable>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ==================================================================
+   SECCIÓN · CINE
+   ================================================================== */
+function PosterFallback({ f }) {
+  return (
+    <div className="poster-fallback absolute inset-0" style={{ background: `linear-gradient(160deg, ${f.tono}33 0%, #0b0b0b 55%, #000 100%)` }}>
+      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `repeating-linear-gradient(0deg, ${f.tono}22 0 1px, transparent 1px 6px)` }} />
+      <span className="f-display absolute -right-2 top-4 text-[clamp(4rem,9vw,8rem)] leading-none tnum" style={{ color: f.tono, opacity: 0.25 }}>{f.anio}</span>
+    </div>
+  );
+}
+
+function usePrefersReducedMotion() {
+  const query = '(prefers-reduced-motion: reduce)';
+  const [reduced, setReduced] = useState(() => typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia(query).matches);
+  useEffect(() => {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia(query);
+    const on = () => setReduced(mq.matches);
+    mq.addEventListener ? mq.addEventListener('change', on) : mq.addListener(on);
+    return () => (mq.removeEventListener ? mq.removeEventListener('change', on) : mq.removeListener(on));
+  }, []);
+  return reduced;
+}
+
+function FilmClip({ f, playing }) {
+  const ref = useRef(null);
+  const [armed, setArmed] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => { if (playing) setArmed(true); }, [playing]);
+  useEffect(() => { if (armed && ref.current) ref.current.load(); }, [armed]);
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || !armed || failed) return;
+    if (playing) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+    else { v.pause(); try { v.currentTime = 0; } catch (e) {} }
+  }, [playing, armed, failed]);
+  if (!f.clip || failed) return null;
+  const base = assetSrc(ASSETS.trailers, f.clip);
+  return (
+    <video
+      ref={ref} aria-hidden="true" tabIndex={-1}
+      muted loop playsInline preload="none" disablePictureInPicture
+      onLoadedData={() => setReady(true)} onError={() => setFailed(true)}
+      className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-500"
+      style={{ opacity: playing && ready ? 1 : 0, objectPosition: f.foco || '50% 50%' }}
+    >
+      {armed && <source src={`${base}.webm`} type="video/webm" />}
+      {armed && <source src={`${base}.mp4`} type="video/mp4" onError={() => setFailed(true)} />}
+    </video>
+  );
+}
+
+function FilmCard({ f, active, onActivate, inView, reduced, oculta }) {
+  return (
+    <article
+      className={cx('film relative min-h-[132px] min-w-0 cursor-pointer overflow-hidden border bg-black lg:min-h-0 lg:basis-0', oculta ? 'pointer-events-none border-transparent' : active ? 'border-accent' : 'border-line')}
+      style={{ flexGrow: oculta ? 0 : active ? 3.6 : 1, opacity: oculta ? 0 : 1 }}
+      aria-hidden={oculta || undefined}
+      onMouseEnter={onActivate} onFocus={onActivate} onClick={onActivate} tabIndex={0}
+      aria-expanded={active}
+    >
+      <SmartImage src={assetSrc(ASSETS.posters, f.poster)} alt={`Fotograma de ${f.titulo}`} className="absolute inset-0" loading="eager"
+        imgClassName={active ? 'scale-[1.06]' : 'scale-100 grayscale max-lg:brightness-125'} imgStyle={f.foco ? { objectPosition: f.foco } : undefined}>
+        <PosterFallback f={f} />
+      </SmartImage>
+      {!reduced && <FilmClip f={f} playing={active && inView} />}
+      <div className={cx('absolute inset-0 transition-colors duration-500', active ? 'bg-gradient-to-t from-black via-black/75 to-black/10' : 'bg-gradient-to-t from-black/90 to-black/20 max-lg:bg-gradient-to-r max-lg:from-black/75 max-lg:via-black/35 max-lg:to-black/0')} />
+      <div className="relative flex h-full flex-col justify-end gap-3 p-4 md:p-5">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <h3 className={cx('f-cond leading-none transition-all', active ? 'text-[clamp(1.8rem,3vw,2.6rem)]' : 'text-[clamp(1.2rem,1.8vw,1.5rem)]')}>{f.titulo}</h3>
+          <span className="label tnum shrink-0">{f.anio}</span>
+        </div>
+        <AnimatePresence initial={false}>
+          {active && (
+            <motion.div key="body" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.4 }} className="overflow-hidden">
+              <p className="f-serif max-w-[46ch] text-[15px] italic text-fg/85">{f.sinopsis}</p>
+              <div className="mt-4 grid gap-3 border-t border-white/15 pt-4 sm:grid-cols-2">
+                <div className="min-w-0">
+                  <div className="label mb-1 text-accent">La profecía</div>
+                  <p className="text-[14.5px]">{f.profecia}</p>
+                </div>
+                <div className="min-w-0">
+                  <div className="label mb-1">Se cumplió · hoy</div>
+                  <p className="text-[14.5px] text-fg/85">{f.hoy}</p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </article>
+  );
+}
+
+const CIRCUITO = ['Ficción', 'Creencia', 'Acción Colectiva', 'Realidad'];
+
+function Circuito() {
+  const [k, setK] = useState(0);
+  useEffect(() => {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(() => setK((x) => (x + 1) % CIRCUITO.length), 900);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <motion.div
+      initial={{ opacity: 0.3, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-10% 0px' }} transition={{ duration: 0.7 }}
+      className="mt-16 border border-line"
+      style={{ background: 'linear-gradient(160deg, rgba(47,125,87,.16), var(--surface) 40%, rgba(47,143,174,.12))', borderTop: '2px solid var(--green)' }}
+    >
+      <div className="flex items-center justify-between border-b border-line px-6 py-3 md:px-10">
+        <span className="label">El circuito de la hiperstición</span>
+        <span className="label">hiper- + superstición</span>
+      </div>
+      <ol className="grid grid-cols-2 sm:grid-cols-4">
+        {CIRCUITO.map((c, i) => (
+          <li key={c} className={cx('flex items-center justify-between gap-2 px-5 py-5 transition-colors duration-300', i > 0 && 'sm:border-l', i % 2 === 1 && 'border-l', i > 1 && 'border-t sm:border-t-0', 'border-line', k === i && (i === CIRCUITO.length - 1 ? 'bg-[rgba(124,198,138,0.1)]' : 'bg-[rgba(255,87,34,0.1)]'))}>
+            <span className={cx('f-mono text-[12px] uppercase tracking-[0.1em] transition-colors duration-300', k === i ? (i === CIRCUITO.length - 1 ? 'text-leaf' : 'text-accent') : 'text-fg')}>[ {c} ]</span>
+            <span className="text-accent" aria-hidden="true">{i === CIRCUITO.length - 1 ? <RefreshCw size={14} /> : <ArrowRight size={14} />}</span>
+          </li>
+        ))}
+      </ol>
+    </motion.div>
+  );
+}
+
+// Tira de cine: 4 películas por defecto; [ Ver las 8 películas + ] suma las otras 4 a la misma tira (orden cronológico de FILMS)
+const CINE_TIRA_1 = ['2001: Odisea del Espacio', 'Blade Runner', 'Matrix', 'WALL‑E'];
+
+function Cine() {
+  const [active, setActive] = useState(CINE_TIRA_1[0]); // una sola película activa (y un solo clip)
+  const [todas, setTodas] = useState(false);       // estado del botón
+  const [montadas, setMontadas] = useState(false); // las 4 extra están en la tira (también mientras se van)
+  const [visibles, setVisibles] = useState(false); // las 4 extra a ancho completo y opacas
+  const timer = useRef(null);
+  useEffect(() => () => clearTimeout(timer.current), []);
+  const toggleTodas = () => {
+    clearTimeout(timer.current);
+    if (!todas) {
+      setTodas(true);
+      setMontadas(true);
+      // Entran con ancho 0 y transparentes; en el cuadro siguiente crecen y aparecen (transición CSS de .film)
+      requestAnimationFrame(() => requestAnimationFrame(() => setVisibles(true)));
+    } else {
+      setTodas(false);
+      setVisibles(false);
+      if (!CINE_TIRA_1.includes(active)) setActive(CINE_TIRA_1[0]);
+      timer.current = setTimeout(() => setMontadas(false), 600);
+    }
+  };
+  const lista = montadas ? FILMS : FILMS.filter((f) => CINE_TIRA_1.includes(f.titulo));
+  const sectionRef = useRef(null);
+  const inView = useInView(sectionRef, { amount: 0.25 });
+  const reduced = usePrefersReducedMotion();
+  return (
+    <section id="cine" ref={sectionRef} className="flex min-h-[100svh] flex-col border-t border-line px-4 pb-24 pt-24 md:px-8">
+      <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col">
+        <SectionLabel index="01">El cine como anticipación</SectionLabel>
+        <div className="mt-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
+          <h2 className="f-display max-w-[17ch] text-[clamp(2.2rem,5vw,5rem)]">
+            “Todo lo que nos pasa ya lo vimos en el cine.”{' '}
+            <span className="f-serif whitespace-nowrap align-baseline text-[0.34em] font-normal italic tracking-normal text-muted">y en los libros.</span>
+          </h2>
+          <p className="label lg:text-right">A partir de una idea de la cineasta Lucrecia Martel</p>
+        </div>
+        <div id="cine-tira" className="mt-10 flex flex-1 flex-col gap-2 lg:min-h-[62vh] lg:flex-row">
+          {lista.map((f) => (
+            <FilmCard key={f.titulo} f={f} active={active === f.titulo} onActivate={() => setActive(f.titulo)} inView={inView} reduced={reduced}
+              oculta={!CINE_TIRA_1.includes(f.titulo) && !visibles} />
+          ))}
+        </div>
+        <div className="mt-6">
+          <button
+            type="button" onClick={toggleTodas} aria-expanded={todas} aria-controls="cine-tira"
+            className={cx('inline-flex items-center gap-3 border px-4 py-2.5 f-mono text-[12px] uppercase tracking-[0.12em] transition-colors',
+              todas ? 'border-accent text-accent hover:bg-accent hover:text-black' : 'border-line text-fg hover:border-accent hover:text-accent')}
+          >
+            [ {todas ? 'Ver menos' : 'Ver las 8 películas'}
+            <span aria-hidden="true" className="inline-flex leading-none">{todas ? <Minus size={16} /> : <Plus size={16} />}</span>
+            ]
+          </button>
+        </div>
+        <p className="label mt-4">Pasá el cursor (o tocá) cada película para ver la profecía que se cumplió.</p>
+        <Circuito />
+      </div>
+    </section>
+  );
+}
+
+/* ==================================================================
+   SECCIÓN · CONCLUSIÓN
+   ================================================================== */
+function Conclusion({ go }) {
+  return (
+    <section id="cierre" className="glow-hope border-t border-line px-4 py-24 md:px-8 md:py-32">
+      <div className="mx-auto max-w-[1400px]">
+        <p className="f-display text-[clamp(2rem,5vw,4.6rem)]">El mundo no se está acabando.<br /><span className="text-leaf">UN mundo se está acabando.</span></p>
+        <p className="f-serif mt-8 text-[clamp(1.3rem,2.4vw,2rem)] italic">Nuestro desafío es construir el que sigue.</p>
+        <div className="mt-20 flex flex-wrap items-end justify-between gap-10 border-t border-line pt-14">
+          <div className="flex items-end gap-5">
+            <Isotipo className="h-[clamp(90px,12vw,150px)] w-auto" />
+            <p className="f-display text-[clamp(2.8rem,8vw,7.5rem)]">Inventemos el <span className="text-accent">futuro.</span></p>
+          </div>
+          <button type="button" onClick={() => go('catalogo')} className="bg-[#00ff88] px-5 py-3 f-mono text-[12px] font-bold uppercase tracking-[0.12em] text-black shadow-[0_0_24px_rgba(0,255,136,0.25)] transition-colors hover:bg-[#7cffbf]">
+            [ Ir al Catálogo ]
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ==================================================================
+   VISTA · HOME
+   ================================================================== */
+function Home({ go }) {
+  return (
+    <main>
+      <SideNav />
+      <Hero />
+      <Cine />
+      <Bisagra />
+      <HamsterSection />
+      <Puente narrativo>A comienzos de los 70’, la ciencia analizó las tendencias del modelo socioeconómico mundial para medir el punto en que su crecimiento exponencial chocaría contra los márgenes de la biósfera. Décadas después, los datos históricos reales mostraron una alineación notable con aquella proyección.</Puente>
+      <Meadows />
+      <Pradera />
+      <Conclusion go={go} />
+    </main>
+  );
+}
+
+/* ==================================================================
+   VISTA · MANIFIESTO
+   ================================================================== */
+function Manifiesto({ go }) {
+  return (
+    <main className="min-h-[100svh] px-4 pb-32 pt-28 md:px-8 md:pt-36">
+      <article className="mx-auto max-w-[760px]">
+        <div className="flex items-center gap-4">
+          <Isotipo className="h-14 w-auto" />
+          <SectionLabel index="§">Manifiesto</SectionLabel>
+        </div>
+        <h1 className="f-display mt-10 text-[clamp(2.6rem,7vw,5.4rem)]">Fingiendo cordura</h1>
+        <p className="f-serif mt-4 text-[clamp(1.3rem,2.4vw,1.9rem)] italic text-fg/80">Manifiesto para inventar el futuro</p>
+        <div className="mt-14 grid gap-10">
+          {MANIFIESTO.map((m, i) => (
+            <motion.div
+              key={m.titulo} initial={{ opacity: 0.25, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-10% 0px' }} transition={{ duration: 0.6 }}
+              className="grid grid-cols-[2.5rem_1fr] gap-4 border-t border-line pt-6"
+            >
+              <span className="label tnum pt-2">{String(i + 1).padStart(2, '0')}</span>
+              <div className="min-w-0">
+                <h2 className="f-cond text-[clamp(1.5rem,3vw,2.3rem)] leading-tight text-accent">{m.titulo}</h2>
+                <p className="f-serif mt-3 text-[clamp(1.15rem,1.7vw,1.4rem)] leading-relaxed">
+                  {m.texto}{m.cierre && <> <strong className="font-semibold">{m.cierre}</strong></>}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-20 flex flex-wrap items-center justify-between gap-6 border-t border-line pt-8">
+          <span className="f-display text-[clamp(1.8rem,4vw,3rem)]">Inventemos el <span className="text-accent">futuro.</span></span>
+          <button type="button" onClick={() => go('catalogo')} className="bg-[#00ff88] px-5 py-3 f-mono text-[12px] font-bold uppercase tracking-[0.12em] text-black shadow-[0_0_24px_rgba(0,255,136,0.25)] transition-colors hover:bg-[#7cffbf]">
+            [ Ir al Catálogo ]
+          </button>
+        </div>
+      </article>
+    </main>
+  );
+}
+
+/* ==================================================================
+   VISTA · CATÁLOGO
+   ================================================================== */
+function Pill({ active, children, onClick, color }) {
+  return (
+    <button type="button" onClick={onClick} aria-pressed={active}
+      className={cx('inline-flex items-center gap-2 whitespace-nowrap rounded-full border px-4 py-1.5 text-[13px] transition-colors', active ? 'border-accent bg-accent text-black' : 'border-line text-fg hover:border-fg')}>
+      {color && <span className="inline-block h-2 w-2 rounded-full" style={{ background: active ? '#000' : color }} aria-hidden="true" />}
+      {children}
+    </button>
+  );
+}
+
+// Lee la planilla publicada; si falla o no hay link, queda la copia local.
+function useCatalogo() {
+  const [data, setData] = useState(CATALOGO_BASE);
+  useEffect(() => {
+    if (!CATALOGO_CSV_URL) return undefined;
+    let vivo = true;
+    fetch(CATALOGO_CSV_URL, { cache: 'no-store' })
+      .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
+      .then((t) => { const d = filasACatalogo(parseCSV(t.replace(/^﻿/, ''))); if (vivo && d.length) setData(d); })
+      .catch(() => { /* se queda la copia local */ });
+    return () => { vivo = false; };
+  }, []);
+  return data;
+}
+
+// Filtros ↔ link compartible (#catalogo?tiempo=5&tema=alimentacion&ver=leer&q=huerta)
+const leerFiltros = () => {
+  const h = window.location.hash || '';
+  const p = new URLSearchParams(h.includes('?') ? h.slice(h.indexOf('?') + 1) : '');
+  return {
+    q: p.get('q') || '',
+    tiempo: TIEMPO_BY_ID[p.get('tiempo')] ? p.get('tiempo') : '',
+    tema: TEMA_BY_ID[p.get('tema')] ? p.get('tema') : '',
+    ver: TIRA_BY_ID[p.get('ver')] ? p.get('ver') : ''
+  };
+};
+const escribirFiltros = (f) => {
+  const p = new URLSearchParams();
+  ['q', 'tiempo', 'tema', 'ver'].forEach((k) => { if (f[k]) p.set(k, f[k]); });
+  const s = p.toString();
+  try { window.history.replaceState(null, '', `#catalogo${s ? `?${s}` : ''}`); } catch (e) { /* sandbox */ }
+};
+
+const FORMATO_ICONO = { leer: BookOpen, mirar: Film, escuchar: Mic, seguir: User, conocer: Sprout, hacer: Wrench, otros: Sparkles };
+
+// Número estable a partir de un texto (para variar el dibujo de cada portada).
+const semilla = (s) => { let h = 7; for (const ch of String(s)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return h; };
+
+// Motivo de fondo según el tipo de recurso: cada tira tiene su propio dibujo, cada tema su color.
+function CoverMotif({ r, c }) {
+  const s = semilla(r.titulo);
+  if (r.tira === 'leer' || /^(manual|guia)/.test(norm(r.formato))) {
+    return <div className="absolute inset-0 opacity-50" style={{ backgroundImage: `repeating-linear-gradient(0deg, ${c}40 0 1px, transparent 1px 14px)` }} />;
+  }
+  if (r.tira === 'mirar') {
+    return (
+      <>
+        <div className="absolute inset-x-0 top-0 h-[14%] bg-black/80" />
+        <div className="absolute inset-x-0 bottom-0 h-[14%] bg-black/80" />
+        <div className="absolute inset-x-0 top-[3%] flex justify-around opacity-60">{Array.from({ length: 12 }, (_, i) => <span key={i} className="h-1.5 w-2.5 rounded-[1px]" style={{ background: c }} />)}</div>
+      </>
+    );
+  }
+  if (r.tira === 'escuchar') {
+    return (
+      <div className="absolute inset-x-4 top-1/2 flex h-1/2 -translate-y-1/2 items-center gap-[3px] opacity-70" aria-hidden="true">
+        {Array.from({ length: 40 }, (_, i) => {
+          const v = ((s >> (i % 24)) & 7) / 7;
+          const h = 12 + Math.round((Math.sin(i * 0.55 + (s % 9)) * 0.5 + 0.5) * 55 + v * 30);
+          return <span key={i} className="flex-1 rounded-full" style={{ height: `${Math.min(h, 100)}%`, background: c }} />;
+        })}
+      </div>
+    );
+  }
+  if (r.tira === 'seguir') {
+    const ini = r.titulo.replace(/^@/, '').split(/[\s._-]+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+    return (
+      <div className="absolute -right-6 top-1/2 flex aspect-square h-[120%] -translate-y-1/2 items-center justify-center rounded-full border-2 opacity-80" style={{ borderColor: c }}>
+        <span className="f-display text-[clamp(3rem,6vw,4.5rem)] leading-none" style={{ color: c }}>{ini}</span>
+      </div>
+    );
+  }
+  if (r.tira === 'conocer') {
+    return <div className="absolute inset-0 opacity-50" style={{ backgroundImage: `repeating-radial-gradient(circle at 85% 30%, ${c}40 0 1px, transparent 1px 16px)` }} />;
+  }
+  if (r.tira === 'hacer') {
+    return <div className="absolute inset-0 opacity-50" style={{ backgroundImage: `linear-gradient(${c}33 1px, transparent 1px), linear-gradient(90deg, ${c}33 1px, transparent 1px)`, backgroundSize: '18px 18px' }} />;
+  }
+  return <div className="absolute inset-0 opacity-40" style={{ backgroundImage: `repeating-linear-gradient(-45deg, ${c}33 0 1px, transparent 1px 10px)` }} />;
+}
+
+// Portada: diseño propio por formato. Si hay imagen, se tiñe con el color del tema (duotono) para que todo quede parejo.
+// Portada: diseño propio por formato (dibujo + color del tema).
+// Si hay imagen: en Mirar, los fotogramas apaisados ocupan todo y se tiñen (duotono);
+// en Leer y Escuchar (y afiches verticales), la tapa va entera, sin recortar, apoyada sobre el fondo de diseño.
+const TIRAS_CON_IMAGEN = ['mirar', 'leer', 'escuchar'];
+function Cover({ r, compact, grande }) {
+  const c = r.color;
+  const Icono = FORMATO_ICONO[r.tira] || Sparkles;
+  const imagen = TIRAS_CON_IMAGEN.includes(r.tira) ? r.imagen : '';
+  const [img, setImg] = useState('loading');
+  const [modo, setModo] = useState('objeto');
+  useEffect(() => setImg('loading'), [imagen]);
+  const conImagen = imagen && img === 'ok';
+  const fondo = conImagen && modo === 'fondo';
+  const objeto = conImagen && modo === 'objeto';
+  const onLoad = (e) => {
+    const { naturalWidth: w, naturalHeight: h } = e.currentTarget;
+    if (w <= 2) { setImg('error'); return; }
+    setModo(r.tira === 'mirar' && w / h >= 1.3 ? 'fondo' : 'objeto');
+    setImg('ok');
+  };
+  return (
+    <div className={cx('relative w-full overflow-hidden border-b border-line bg-surface', grande ? 'aspect-[16/10] md:aspect-auto md:h-full md:min-h-[220px]' : compact ? 'aspect-[16/10]' : 'aspect-[16/9]')}
+      style={{ background: `linear-gradient(135deg, ${c}26, var(--surface) 70%)` }}>
+      {!fondo && <CoverMotif r={r} c={c} />}
+      {objeto && <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at 50% 60%, ${c}33, transparent 65%)` }} aria-hidden="true" />}
+      {imagen && img !== 'error' && (
+        <div className={cx('absolute transition-opacity duration-500', conImagen ? 'opacity-100' : 'opacity-0',
+          objeto ? 'left-1/2 top-[13%] h-[74%] max-w-[80%] -translate-x-1/2 shadow-[0_14px_32px_rgba(0,0,0,0.65)]' : 'inset-0')}>
+          <img src={imagen} alt="" loading="lazy" decoding="async" referrerPolicy="no-referrer" onLoad={onLoad} onError={() => setImg('error')}
+            className={cx('block', objeto ? 'h-full w-auto max-w-full object-contain' : 'h-full w-full object-cover')}
+            style={{ filter: 'grayscale(1) contrast(1.1) brightness(0.95)' }} />
+          {/* Teñido con el color del tema (duotono), igual para tapas, afiches y fotogramas */}
+          {conImagen && <div className="absolute inset-0" style={{ background: c, mixBlendMode: 'multiply', opacity: 0.85 }} aria-hidden="true" />}
+          {fondo && <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,.55), transparent 55%)' }} aria-hidden="true" />}
+        </div>
+      )}
+      <span className="absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 bg-black/70 px-2 py-1 f-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: c }}>
+        <Icono size={12} aria-hidden="true" /> {r.formato}
+      </span>
+      {!conImagen && (
+        <span className={cx('f-cond absolute bottom-3 left-3 right-3 line-clamp-3 break-words leading-[0.95]', r.tira === 'seguir' && 'right-[38%]',
+          grande ? 'text-[clamp(1.8rem,3.4vw,2.8rem)]' : 'text-[clamp(1.5rem,2.6vw,2rem)]')} style={{ color: c }}>
+          {r.titulo}
+        </span>
+      )}
+    </div>
+  );
+}
+
+function TemaTags({ r }) {
+  if (!r.temas.length) return null;
+  return (
+    <span className="inline-flex flex-wrap gap-x-3 gap-y-1">
+      {r.temas.map((id) => (
+        <span key={id} className="inline-flex items-center gap-1.5">
+          <span className="inline-block h-1.5 w-1.5 rounded-full" style={{ background: TEMA_BY_ID[id].color }} aria-hidden="true" />
+          {TEMA_BY_ID[id].label}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function ResourceCard({ r, compact, grande, onPending }) {
+  const [open, setOpen] = useState(false);
+  const href = r.url || linkAutomatico(r);
+  const buscar = !r.url && !(r.red === 'Instagram' && r.usuario);
+  const esRed = ['Instagram', 'TikTok', 'YouTube', 'X', 'Facebook', 'Threads', 'LinkedIn', 'Substack'].includes(r.red);
+  const t = TIEMPO_BY_ID[r.tiempo];
+  return (
+    <article className={cx('group flex min-w-0 border border-line bg-card transition-colors hover:border-[#FF5722]',
+      grande ? 'flex-col md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]' : 'flex-col',
+      compact ? 'w-[260px] shrink-0 snap-start sm:w-[300px]' : 'w-full')}>
+      <Cover r={r} compact={compact} grande={grande} />
+      <div className="flex flex-1 flex-col gap-3 p-4">
+        <div className="flex flex-wrap items-center gap-2">
+          {t && <span className="border border-line px-2 py-0.5 f-mono text-[11px]">{t.emoji} {t.label}</span>}
+          {r.idioma && <span className="border border-[rgba(56,189,248,0.5)] px-2 py-0.5 f-mono text-[11px] text-[#7dd3fc]">{IDIOMAS[r.idioma] || `Idioma: ${r.idioma}`}</span>}
+          {r.nivel && <span className="border border-[rgba(124,198,138,0.5)] px-2 py-0.5 f-mono text-[11px] text-leaf">Nivel: {r.nivel}</span>}
+          {r.costo && <span className="border border-[rgba(255,87,34,0.5)] px-2 py-0.5 f-mono text-[11px] text-[#ffb08a]">Costo: {r.costo}</span>}
+        </div>
+        <span className="f-mono text-[11px] uppercase tracking-[0.12em] text-muted">
+          {(r.tira === 'seguir' || r.tira === 'conocer') && esRed && r.usuario ? <><span className="normal-case">{r.usuario}</span> · {r.red}</> : (r.kicker || r.autor || r.formato)}
+        </span>
+        <h3 className={cx('f-cond break-words leading-tight transition-colors group-hover:text-[#FF5722]', grande ? 'text-[clamp(1.5rem,2.4vw,2rem)]' : 'text-[22px]')}>{r.titulo}</h3>
+        {r.descripcion && <p className="text-[14px] text-fg/75">{r.descripcion}</p>}
+        <span className="f-mono text-[10.5px] uppercase tracking-[0.1em] text-muted"><TemaTags r={r} /></span>
+        {r.datos && (
+          <div className="border-t border-line pt-3">
+            <button type="button" onClick={() => setOpen(!open)} aria-expanded={open}
+              className="flex w-full items-center justify-between f-mono text-[11px] uppercase tracking-[0.12em] text-leaf hover:text-fg">
+              [ Ficha de datos ]
+              <motion.span aria-hidden="true" animate={{ rotate: open ? 45 : 0 }} transition={{ duration: 0.25 }} className="inline-flex"><Plus size={14} /></motion.span>
+            </button>
+            <AnimatePresence initial={false}>
+              {open && (
+                <motion.dl key="datos" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35 }}
+                  className="overflow-hidden">
+                  <div className="grid gap-2 pt-3">
+                    {r.datos.map(([k, v]) => (
+                      <div key={k} className="grid gap-0.5">
+                        <dt className="f-mono text-[10px] uppercase tracking-[0.12em] text-muted">{k}</dt>
+                        <dd className="text-[13px] leading-snug">{v}</dd>
+                      </div>
+                    ))}
+                    <p className="f-mono text-[10px] leading-snug text-muted">Picos: corrida estándar del World3.</p>
+                  </div>
+                </motion.dl>
+              )}
+            </AnimatePresence>
+          </div>
+        )}
+        <a href={href} target="_blank" rel="noopener noreferrer" title={buscar ? 'Todavía no tiene link propio: abre una búsqueda' : undefined}
+          className="mt-auto inline-flex w-fit max-w-full items-center gap-2 border border-line px-3 py-2 f-mono text-[12px] uppercase tracking-[0.1em] transition-colors hover:border-[#FF5722] hover:bg-[#FF5722] hover:text-black">
+          <span className="min-w-0 break-words">{etiquetaBoton(r)}</span> <ArrowUpRight size={14} className="shrink-0" />
+        </a>
+      </div>
+    </article>
+  );
+}
+
+// Generador al azar reproducible a partir de una semilla.
+function azar(semilla) {
+  let a = semilla >>> 0;
+  return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
+function mezclar(lista, semilla) {
+  const rnd = azar(semilla); const a = [...lista];
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+
+// Elige 3 recursos al azar, de 3 tipos distintos y, si se puede, uno por tiempo (5 min, 15 min, +1 hora).
+// Si en la planilla hay al menos 3 marcados como Destacado, sortea solo entre esos.
+function elegirDestacados(data, semilla) {
+  let a = semilla >>> 0;
+  const rnd = () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  const marcados = data.filter((r) => r.destacado);
+  const pool = marcados.length >= 3 ? marcados : data;
+  const elegidos = [];
+  const tirasUsadas = () => elegidos.map((r) => r.tira);
+  const sacar = (op) => { if (op.length) elegidos.push(op[Math.floor(rnd() * op.length)]); return op.length > 0; };
+  // 1) Uno por tiempo, sin repetir tipo (no dos referentes, no dos libros).
+  TIEMPOS.forEach((t) => sacar(pool.filter((r) => r.tiempo === t.id && !tirasUsadas().includes(r.tira))));
+  // 2) Si falta alguno, se completa con otro tipo distinto, de cualquier tiempo.
+  while (elegidos.length < 3 && sacar(pool.filter((r) => !elegidos.includes(r) && !tirasUsadas().includes(r.tira))));
+  // 3) Solo si no alcanzan los tipos, se permite repetir.
+  while (elegidos.length < 3 && sacar(pool.filter((r) => !elegidos.includes(r))));
+  const orden = Object.fromEntries(TIEMPOS.map((t, i) => [t.id, i]));
+  return elegidos.sort((a, b) => (orden[a.tiempo] ?? 9) - (orden[b.tiempo] ?? 9));
+}
+
+const SI_TENES = { 5: 'Si tenés 5 minutos', 15: 'Si tenés 15 minutos', 60: 'Si tenés más de una hora' };
+
+function Destacado({ r }) {
+  const Icono = FORMATO_ICONO[r.tira] || Sparkles;
+  const t = TIEMPO_BY_ID[r.tiempo];
+  return (
+    <a href={r.url || linkAutomatico(r)} target="_blank" rel="noopener noreferrer"
+      className="group flex min-w-0 items-center gap-4 px-4 py-4 transition-colors hover:bg-[rgba(255,87,34,0.06)]">
+      <span className="flex h-14 w-14 shrink-0 items-center justify-center border" style={{ borderColor: r.color, background: `${r.color}1f`, color: r.color }} aria-hidden="true">
+        <Icono size={22} />
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block f-mono text-[10.5px] uppercase tracking-[0.12em] text-accent">{t ? `${t.emoji} ${SI_TENES[t.id]}` : r.formato}</span>
+        <span className="mt-1 block f-cond text-[20px] leading-tight transition-colors group-hover:text-[#FF5722]">{r.titulo}</span>
+        <span className="mt-0.5 block truncate text-[12.5px] text-muted">{[r.formato, r.autor].filter(Boolean).join(' · ')}</span>
+      </span>
+      <ArrowUpRight size={16} className="shrink-0 text-muted transition-colors group-hover:text-[#FF5722]" aria-hidden="true" />
+    </a>
+  );
+}
+
+function Row({ tira, items, onPending, onVerTodos }) {
+  const ref = useRef(null);
+  const by = (d) => ref.current?.scrollBy({ left: d * (ref.current.clientWidth * 0.8), behavior: 'smooth' });
+  if (!items.length) return null;
+  return (
+    <section className="min-w-0">
+      <div className="mb-4 flex items-end justify-between gap-4">
+        <div className="min-w-0">
+          <h3 className="f-cond text-[clamp(1.4rem,2.4vw,1.9rem)]">{tira.titulo}</h3>
+          <p className="label mt-1">{tira.bajada}</p>
+        </div>
+        <div className="flex shrink-0 items-center gap-1">
+          <button type="button" onClick={onVerTodos}
+            className="mr-2 whitespace-nowrap f-mono text-[11px] uppercase tracking-[0.12em] text-accent hover:text-fg">Ver todos ({items.length}) →</button>
+          <button type="button" onClick={() => by(-1)} className="hidden items-center border border-line px-2.5 py-1.5 hover:border-accent sm:flex" aria-label={`Anterior en ${tira.titulo}`}><ChevronLeft size={16} /></button>
+          <button type="button" onClick={() => by(1)} className="hidden items-center border border-line px-2.5 py-1.5 hover:border-accent sm:flex" aria-label={`Siguiente en ${tira.titulo}`}><ChevronRight size={16} /></button>
+        </div>
+      </div>
+      <div ref={ref} className="noscroll -mx-4 flex snap-x items-stretch gap-4 overflow-x-auto px-4 pb-3 md:-mx-8 md:px-8">
+        {items.map((r) => <ResourceCard key={r.titulo} r={r} compact onPending={onPending} />)}
+      </div>
+    </section>
+  );
+}
+
+function Catalogo() {
+  const data = useCatalogo();
+  const [f, setF] = useState(leerFiltros);
+  const [toast, setToast] = useState(null);
+  const set = (cambios) => setF((prev) => { const n = { ...prev, ...cambios }; escribirFiltros(n); return n; });
+  useEffect(() => {
+    const onHash = () => { if ((window.location.hash || '').startsWith('#catalogo')) setF(leerFiltros()); };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+  useEffect(() => { if (!toast) return undefined; const id = setTimeout(() => setToast(null), 2600); return () => clearTimeout(id); }, [toast]);
+  const onPending = (t) => setToast(`El enlace de “${t}” todavía no está cargado.`);
+
+  const filtrando = !!(f.q || f.tiempo || f.tema || f.ver);
+  const qn = norm(f.q);
+  // Orden al azar en cada visita (estable mientras la persona navega), para no privilegiar a nadie.
+  const [orden] = useState(() => Math.floor(Math.random() * 1e9));
+  const mezclados = useMemo(() => mezclar(data, orden), [data, orden]);
+  const resultados = useMemo(() => mezclados.filter((r) =>
+    (!f.tiempo || r.tiempo === f.tiempo) &&
+    (!f.tema || r.temas.includes(f.tema)) &&
+    (!f.ver || r.tira === f.ver) &&
+    (!qn || norm([r.titulo, r.autor, r.descripcion, r.formato, r.kicker, ...r.temas.map((id) => TEMA_BY_ID[id].label)].join(' ')).includes(qn))
+  ), [mezclados, f.tiempo, f.tema, f.ver, qn]);
+  const tiras = useMemo(() => TIRAS.map((t) => ({ tira: t, items: mezclados.filter((r) => r.tira === t.id) })), [mezclados]);
+  const [tirada, setTirada] = useState(() => Math.floor(Math.random() * 1e9));
+  const destacados = useMemo(() => elegirDestacados(data, tirada), [data, tirada]);
+  // En la grilla: cuántos hay de cada formato con los demás filtros aplicados
+  const porTira = useMemo(() => {
+    const base = data.filter((r) => (!f.tiempo || r.tiempo === f.tiempo) && (!f.tema || r.temas.includes(f.tema)) &&
+      (!qn || norm([r.titulo, r.autor, r.descripcion, r.formato, r.kicker].join(' ')).includes(qn)));
+    return Object.fromEntries(TIRAS.map((t) => [t.id, base.filter((r) => r.tira === t.id).length]));
+  }, [data, f.tiempo, f.tema, qn]);
+  const limpiar = () => set({ q: '', tiempo: '', tema: '', ver: '' });
+  const verTodos = (id) => { set({ ver: id }); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+
+  return (
+    <main className="px-4 pb-32 pt-24 md:px-8 md:pt-32">
+      <div className="mx-auto max-w-[1400px]">
+        <SectionLabel index="§">Del diagnóstico a la práctica</SectionLabel>
+        <div className="mt-8 flex flex-wrap items-end justify-between gap-6">
+          <h1 className="f-display text-[clamp(2.6rem,7vw,6.5rem)]">CATÁLOGO</h1>
+          <div className="max-w-[44ch]">
+            <p className="text-[clamp(1.1rem,1.6vw,1.3rem)] leading-snug text-fg">Recursos y herramientas que parten de la premisa de un mundo finito para construir alternativas reales.</p>
+            <p className="mt-2 text-[13px] leading-relaxed text-muted">Referentes, libros, podcasts, documentales, cuentas de IG y talleres para pasar del diagnóstico a la práctica.</p>
+          </div>
+        </div>
+
+        {/* Buscador */}
+        <label className="mt-10 flex items-center gap-3 border border-line px-4 py-3 transition-colors focus-within:border-accent">
+          <Search size={18} className="shrink-0 text-muted" aria-hidden="true" />
+          <span className="sr-only">Buscar en el catálogo</span>
+          <input type="search" value={f.q} onChange={(e) => set({ q: e.target.value })} placeholder="Buscá por tema, autor o palabra"
+            className="min-w-0 flex-1 bg-transparent text-[16px] text-fg outline-none placeholder:text-muted" />
+          {f.q && <button type="button" onClick={() => set({ q: '' })} className="text-muted hover:text-fg" aria-label="Borrar búsqueda"><X size={16} /></button>}
+        </label>
+
+        {/* ¿Cuánto tiempo tenés? */}
+        <div className="mt-8">
+          <p className="label mb-3">¿Cuánto tiempo tenés?</p>
+          <div className="grid grid-cols-3 gap-2 md:gap-3">
+            {TIEMPOS.map((t) => {
+              const on = f.tiempo === t.id;
+              return (
+                <button key={t.id} type="button" aria-pressed={on} onClick={() => set({ tiempo: on ? '' : t.id })}
+                  title={on ? 'Tocá de nuevo para quitar' : undefined}
+                  className={cx('relative flex flex-col items-start gap-1 border px-3 py-3 text-left transition-colors md:px-5 md:py-4', on ? 'border-accent bg-accent text-black' : 'border-line hover:border-fg')}>
+                  {on && <span className="absolute right-2 top-2 inline-flex items-center gap-1 f-mono text-[10px] uppercase tracking-[0.1em]"><span className="hidden md:inline">Quitar</span><X size={14} aria-hidden="true" /></span>}
+                  <span className="text-[22px] leading-none md:text-[26px]" aria-hidden="true">{t.emoji}</span>
+                  <span className="f-cond text-[clamp(1.2rem,2.4vw,1.7rem)] leading-none">{t.label}</span>
+                  <span className={cx('hidden text-[12.5px] leading-snug sm:block', on ? 'text-black/70' : 'text-muted')}>{t.bajada}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Temas */}
+        <div className="mt-6 flex items-center gap-3">
+          <span className="label hidden shrink-0 sm:inline">Tema</span>
+          <div className="noscroll -mx-4 flex min-w-0 gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0">
+            <Pill active={!f.tema} onClick={() => set({ tema: '' })}>Todos</Pill>
+            {TEMAS.map((t) => <Pill key={t.id} color={t.color} active={f.tema === t.id} onClick={() => set({ tema: f.tema === t.id ? '' : t.id })}>{t.label}</Pill>)}
+          </div>
+        </div>
+
+        {!filtrando ? (
+          <>
+            {destacados.length > 0 && (
+              <section className="mt-12 border border-line bg-[rgba(255,255,255,0.02)]">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-4 py-3">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h2 className="f-cond text-[clamp(1.15rem,1.8vw,1.4rem)]">✦ Si empezás por uno</h2>
+                    <span className="label">Tres al azar, para distintos tiempos</span>
+                  </div>
+                  <button type="button" onClick={() => setTirada((n) => n + 1)}
+                    className="inline-flex items-center gap-1.5 f-mono text-[11px] uppercase tracking-[0.12em] text-accent hover:text-fg">
+                    <RefreshCw size={13} aria-hidden="true" /> Otros tres
+                  </button>
+                </div>
+                <div className="grid divide-y divide-[var(--line)] md:grid-cols-3 md:divide-x md:divide-y-0">
+                  {destacados.map((r) => <Destacado key={r.titulo} r={r} />)}
+                </div>
+              </section>
+            )}
+            <div className="mt-14 grid gap-14">
+              {tiras.map(({ tira, items }) => <Row key={tira.id} tira={tira} items={items} onPending={onPending} onVerTodos={() => verTodos(tira.id)} />)}
+            </div>
+          </>
+        ) : (
+          <section className="mt-10">
+            <div className="noscroll -mx-4 flex gap-2 overflow-x-auto border-y border-line px-4 py-3 sm:mx-0">
+              <Pill active={!f.ver} onClick={() => set({ ver: '' })}>Todo</Pill>
+              {TIRAS.filter((t) => porTira[t.id] || f.ver === t.id).map((t) => (
+                <Pill key={t.id} active={f.ver === t.id} onClick={() => set({ ver: f.ver === t.id ? '' : t.id })}>{t.titulo} <span className="tnum opacity-60">{porTira[t.id]}</span></Pill>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap items-baseline justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="label tnum mr-1">{resultados.length} {resultados.length === 1 ? 'recurso' : 'recursos'} de {data.length}</span>
+                {[
+                  f.q && { k: 'q', txt: `“${f.q}”` },
+                  f.tiempo && { k: 'tiempo', txt: `${TIEMPO_BY_ID[f.tiempo].emoji} ${TIEMPO_BY_ID[f.tiempo].label}` },
+                  f.tema && { k: 'tema', txt: TEMA_BY_ID[f.tema].label }
+                ].filter(Boolean).map((c) => (
+                  <button key={c.k} type="button" onClick={() => set({ [c.k]: '' })} aria-label={`Quitar ${c.txt}`}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-accent px-3 py-1 text-[12px] text-accent hover:bg-accent hover:text-black">
+                    {c.txt} <X size={12} aria-hidden="true" />
+                  </button>
+                ))}
+              </div>
+              <button type="button" onClick={limpiar} className="f-mono text-[11px] uppercase tracking-[0.12em] text-accent hover:text-fg">[ Quitar filtros ]</button>
+            </div>
+            {resultados.length ? (
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {resultados.map((r) => <ResourceCard key={r.titulo} r={r} onPending={onPending} />)}
+              </div>
+            ) : (
+              <div className="mt-6 border border-dashed border-line p-10 text-center">
+                <p className="f-cond text-2xl">Todavía no hay recursos para esta combinación.</p>
+                <p className="mt-2 text-muted">Probá con otro tiempo o tema, o quitá los filtros.</p>
+                <button type="button" onClick={limpiar} className="mt-6 border border-accent px-4 py-2 f-mono text-[12px] uppercase tracking-[0.1em] text-accent hover:bg-accent hover:text-black">[ Quitar filtros ]</button>
+              </div>
+            )}
+          </section>
+        )}
+      </div>
+      <AnimatePresence>
+        {toast && (
+          <motion.div role="status" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-32px)] max-w-md -translate-x-1/2 border border-accent bg-black px-4 py-3 f-mono text-[12px]"
+            style={{ marginBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+            {toast}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </main>
+  );
+}
+
+/* ==================================================================
+   APP · RAÍZ Y ENRUTADO (#manifiesto, #catalogo)
+   ================================================================== */
+const VIEWS = ['inicio', 'manifiesto', 'catalogo'];
+const viewFromHash = () => {
+  const h = (window.location.hash || '').replace('#', '').split('?')[0];
+  return VIEWS.includes(h) ? h : 'inicio';
+};
+
+export default function App() {
+  const [view, setView] = useState(viewFromHash);
+
+  useEffect(() => {
+    const onNav = () => setView(viewFromHash());
+    window.addEventListener('hashchange', onNav);
+    window.addEventListener('popstate', onNav);
+    return () => {
+      window.removeEventListener('hashchange', onNav);
+      window.removeEventListener('popstate', onNav);
+    };
+  }, []);
+
+  // El Manifiesto cambia la paleta completa (ver :root[data-view] en GLOBAL_CSS)
+  useEffect(() => {
+    document.documentElement.dataset.view = view;
+  }, [view]);
+
+  const go = useCallback((next) => {
+    setView(next);
+    try {
+      const url = next === 'inicio' ? window.location.pathname + window.location.search : `#${next}`;
+      window.history.pushState(null, '', url);
+    } catch (e) { /* entornos sandbox pueden bloquear history */ }
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
+
+  return (
+    <MotionConfig reducedMotion="user">
+      <GlobalStyles />
+      <div className="min-h-screen bg-ink text-fg" style={{ fontFamily: 'var(--f-body)' }}>
+        <Navbar view={view} go={go} />
+        <AnimatePresence mode="wait">
+          <motion.div key={view} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
+            {view === 'inicio' && <Home go={go} />}
+            {view === 'manifiesto' && <Manifiesto go={go} />}
+            {view === 'catalogo' && <Catalogo />}
+          </motion.div>
+        </AnimatePresence>
+        <Footer go={go} />
+      </div>
+    </MotionConfig>
+  );
+}
+</script>
+
+  <script>
+    (function () {
+      var root = document.getElementById('root');
+      function fail(msg) { root.innerHTML = '<div id="boot">' + msg + '</div>'; }
+      var libs = {
+        'react': window.React,
+        'framer-motion': window.Motion,
+        'recharts': window.Recharts,
+        'lucide-react': window.LucideReact
+      };
+      for (var name in libs) if (!libs[name]) return fail('No se pudo cargar ' + name + '. Revisá tu conexión y recargá.');
+      try {
+        var code = Babel.transform(document.getElementById('app-src').textContent, {
+          presets: ['react'],
+          plugins: ['transform-modules-commonjs'],
+          filename: 'Hipersticion.jsx'
+        }).code;
+        var module = { exports: {} };
+        new Function('require', 'module', 'exports', code)(function (id) {
+          if (!(id in libs)) throw new Error('Librería no disponible: ' + id);
+          return libs[id];
+        }, module, module.exports);
+        ReactDOM.createRoot(root).render(React.createElement(module.exports.default));
+      } catch (e) {
+        console.error(e);
+        fail('Error al iniciar: ' + (e && e.message ? e.message : e));
+      }
+    })();
+  </script>
+</body>
+</html>
