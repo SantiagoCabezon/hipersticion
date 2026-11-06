@@ -81,7 +81,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence, MotionConfig, useInView, useMotionValueEvent, useScroll, useSpring, useTransform } from 'framer-motion';
 import { CartesianGrid, Line, LineChart, ReferenceDot, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ChevronLeft, ChevronRight, Clock, Film, Mic, Minus, Plus, RefreshCw, Search, Sparkles, Sprout, User, Wrench, X } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Banknote, BookOpen, ChevronLeft, ChevronRight, Clock, Film, Map as MapIcon, Mic, Minus, Plus, RefreshCw, Scale, Search, Sparkles, Sprout, User, Wrench, X } from 'lucide-react';
 
 /* ==================================================================
    ESTILOS GLOBALES Y TAILWIND
@@ -155,6 +155,9 @@ body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font
 .f-display { font-family: var(--f-display); font-stretch: 125%; font-weight: 800; letter-spacing: -0.02em; line-height: 0.95; text-wrap: balance; }
 .f-cond { font-family: var(--f-display); font-stretch: 70%; font-weight: 700; letter-spacing: -0.01em; text-wrap: balance; }
 .f-serif { font-family: var(--f-serif); font-optical-sizing: auto; text-wrap: pretty; }
+/* Sin palabras sueltas al final: párrafos con pretty; títulos y destacados con balance */
+p, li, blockquote, figcaption, dd { text-wrap: pretty; }
+h1, h2, h3, h4, .destacado { text-wrap: balance; }
 .f-mono { font-family: var(--f-mono); }
 .label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .measure { max-width: 65ch; }
@@ -328,9 +331,9 @@ const VARIABLES = [
     key: 'recursos', color: '#EF4444', boton: 'Recursos No Renovables', nombre: 'Recursos No Renovables', linea: 'Línea Roja',
     modelo: 'En la corrida estándar, en 2026 queda el 31% del stock de 1900.',
     resumen: 'QUÉ MIDE: Stock de fósiles y minerales. POR QUÉ CAE: La aceleración del siglo XX dispara el consumo. Extraer exige exponencialmente más energía, drenando recursos. DATO REAL: Desde 1970, la extracción global de materiales se triplicó (UNEP, 2024).',
-    queMide: 'El stock disponible de combustibles fósiles, minerales y fertilizantes minerales de fácil extracción.',
-    porQue: 'Muestra un descenso continuo desde 1900. La aceleración industrial del siglo XX dispara la tasa de consumo. Al volverse más escasos, extraer la siguiente unidad exige exponencialmente más energía y capital, drenando recursos del resto de la economía.',
-    evidencia: 'Desde 1970, la extracción global de materiales se triplicó: pasó de 30.000 millones de toneladas anuales a unos 106.000 millones en la actualidad.',
+    queMide: 'El stock disponible de combustibles fósiles, minerales y fertilizantes minerales de fácil\u00A0extracción.',
+    porQue: 'Muestra un descenso continuo desde 1900. La aceleración industrial del siglo XX dispara la tasa de consumo. Al volverse más escasos, extraer la siguiente unidad exige exponencialmente más energía y capital, drenando recursos del resto de la\u00A0economía.',
+    evidencia: 'Desde 1970, la extracción global de materiales se triplicó: pasó de 30.000 millones de toneladas anuales a unos 106.000 millones en la\u00A0actualidad.',
     fuentes: 'Panel Internacional de Recursos de la ONU (UNEP / IRP), Global Resources Outlook 2024.'
   },
   {
@@ -432,14 +435,14 @@ const PRADERA_TEXTOS = [
   'Cuando el consumo agota la capacidad de regeneración, el sistema colapsa.'
 ];
 
-// Manifiesto para inventar el futuro
+// Manifiesto para escribir el futuro
 const MANIFIESTO = [
-  { titulo: 'La falsa dicotomía', texto: 'Hoy el mundo nos inunda de relatos apocalípticos y, en este contexto distópico, se ha instalado una falsa dicotomía: nos hacen creer que debemos elegir entre el colapso económico o el ambiental, como si no hubiera otra forma de organizar la sociedad que continuar destruyendo la biósfera. Vivimos atrapados en ficciones que nos contamos tanto que terminamos materializándolas en la realidad.' },
+  { titulo: 'La falsa dicotomía', texto: 'Hoy el mundo nos inunda de relatos apocalípticos y, en este contexto distópico, se ha instalado una falsa dicotomía: nos hacen creer que debemos elegir entre el colapso económico o el ambiental, como si no hubiera otra forma de organizar la sociedad que continuar destruyendo la biósfera. Esa dicotomía también es una ficción: mientras la creamos, vamos a seguir actuando como si no hubiera alternativa, y eso es lo que termina volviéndola real.' },
   { titulo: 'El choque material', texto: 'Nos acercamos a puntos críticos de no retorno impulsados por el aumento de la temperatura global, la pérdida drástica de ecosistemas y el agotamiento acelerado de los recursos materiales y energéticos que sostienen nuestra forma de vida. Toda ideología que ignore los límites biofísicos del planeta es una ficción peligrosa. El estudio de los límites del crecimiento ya advertía en 1972 que este rumbo de bonanza material basada en el mito infinito iba a sobrepasar las fronteras finitas de la Tierra.' },
-  { titulo: 'El absurdo del presente', texto: '¿Por qué gastar billones de dólares en ir a Marte cuando podemos usarlos para regenerar la Tierra? Es desconcertante sentir que uno es catalogado como un extremista solo por proponer que actuemos en sintonía con un consenso científico masivo que lleva medio siglo advirtiéndolo.' },
+  { titulo: 'El absurdo del presente', texto: 'Es desconcertante sentir que uno es catalogado como un extremista solo por proponer que actuemos en sintonía con un consenso científico masivo que lleva medio siglo advirtiéndolo. Lo extremo no es querer cambiar de rumbo, es seguir igual sabiendo lo que sabemos.' },
   { titulo: 'Más allá de la sostenibilidad', texto: 'El relato del progreso nos enseñó a ver la naturaleza como un obstáculo. Su versión amable, la "sostenibilidad", nació como una promesa, pero el marketing corporativo la reescribió a su medida hasta vaciarla de sentido y convertirla en maquillaje del daño existente. No se trata solo de conservar lo que queda, sino de activar una cultura basada en la regeneración de la trama vital.' },
   { titulo: 'El verdadero desafío', texto: 'Tenemos la capacidad técnica, el conocimiento y las herramientas para construir un sistema que reconozca los umbrales de la naturaleza; el desafío actual es comunicacional y político. Tenemos que dejar atrás la obsesión por crecer sin parar y empezar a cuidar los límites reales de la naturaleza.' },
-  { titulo: 'Un cambio de época', texto: 'El cambio de rumbo exige abandonar la inercia cultural y diseñar nuevos marcos de acción basados en la evidencia científica. Si las ficciones que heredamos construyeron este presente, tenemos el poder de crear nuevos relatos. Las grandes transformaciones no empiezan con certezas: empiezan con una ficción que alguien se anima a contar.', cierre: 'Inventemos el futuro.' }
+  { titulo: 'Un cambio de época', texto: 'El cambio de rumbo exige abandonar la inercia cultural y diseñar nuevos marcos de acción basados en la evidencia científica. Si las ficciones que heredamos construyeron este presente, tenemos el poder de crear nuevos relatos. Las grandes transformaciones no empiezan con certezas: empiezan con una ficción que alguien se anima a contar. Cuando mucha gente la cree y actúa en consecuencia, esa ficción puede volverse real. A eso le llamamos hiperstición. Si las historias pueden volverse reales, empecemos a contar las que queremos vivir.', cierre: 'Escribamos el futuro.' }
 ];
 
 /* ==================================================================
@@ -860,11 +863,15 @@ function Navbar({ view, go }) {
    ================================================================== */
 const HOME_SECTIONS = [
   { id: 'inicio', label: 'Inicio' },
+  { id: 'hipersticion', label: 'Hiperstición' },
   { id: 'cine', label: 'Cine' },
   { id: 'imaginacion', label: 'Imaginación' },
+  { id: 'historia', label: 'La historia' },
   { id: 'hamster', label: 'Hámster' },
-  { id: 'meadows', label: 'Informe Meadows' },
+  { id: 'meadows', label: 'Meadows' },
   { id: 'pradera', label: 'Pradera' },
+  { id: 'somos-mas', label: 'Somos más' },
+  { id: 'ficciones', label: 'Ficciones' },
   { id: 'cierre', label: 'Cierre' }
 ];
 
@@ -918,7 +925,6 @@ function Footer({ go }) {
    SECCIÓN · INICIO
    ================================================================== */
 function Hero() {
-  const [open, setOpen] = useState(false);
   return (
     <section id="inicio" className="glow-hero relative px-4 pb-20 pt-32 md:px-8 md:pt-40">
       <div className="mx-auto w-full max-w-[1400px]">
@@ -947,37 +953,8 @@ function Hero() {
           <Clock size={12} strokeWidth={1.75} aria-hidden="true" className="shrink-0" />Lectura de 15 minutos
         </motion.p>
 
-        {/* Definición desplegable (mismo componente visual que la revalidación de Herrington) */}
-        <div className="mt-10">
-          <button
-            type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="definicion"
-            className={cx('group inline-flex items-center gap-3 border px-4 py-2.5 f-mono text-[12px] uppercase tracking-[0.12em] transition-colors',
-              open ? 'border-leaf bg-leaf text-black' : 'border-line text-fg hover:border-leaf hover:text-leaf')}
-          >
-            [ Ver definición completa
-            <motion.span aria-hidden="true" animate={{ rotate: open ? 45 : 0 }} transition={{ duration: 0.25 }} className="inline-flex leading-none"><Plus size={16} /></motion.span>
-            ]
-          </button>
-          <AnimatePresence initial={false}>
-            {open && (
-              <motion.div id="definicion" key="definicion" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }} className="overflow-hidden">
-                <article className="mt-8 border-l-2 border-leaf bg-[#0a1a14]/70 py-6 pl-6 pr-4 md:py-8 md:pl-10">
-                  <p className="measure text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-fg/90">
-                    <strong className="font-bold text-fg">Hiper + superstición.</strong> Una ficción que se vuelve real porque mucha gente la cree y actúa en consecuencia. No es magia ni pensamiento positivo: las historias que compartimos sobre el futuro guían las decisiones del presente, y esas decisiones terminan dándole forma a la realidad.
-                  </p>
-                  {/* Mismo ancho que la definición: la línea fina acompaña al párrafo */}
-                  <div className="measure mt-4 border-t border-line pt-4 text-[clamp(1.05rem,1.4vw,1.25rem)]">
-                    <p className="label leading-relaxed">
-                      Ejemplo · En la pandemia de 2020, todos creyeron que se iba a acabar el papel higiénico. Salieron a comprar… y se acabó.
-                    </p>
-                  </div>
-                </article>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
         <div className="mt-12 flex justify-end">
-          <a href="#cine" onClick={(e) => { e.preventDefault(); document.getElementById('cine')?.scrollIntoView({ behavior: 'smooth' }); }} className="label flex items-center gap-3 hover:text-fg">
+          <a href="#hipersticion" onClick={(e) => { e.preventDefault(); document.getElementById('hipersticion')?.scrollIntoView({ behavior: 'smooth' }); }} className="label flex items-center gap-3 hover:text-fg">
             Scrolleá
             <motion.span aria-hidden="true" animate={{ y: [0, 8, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }} className="leading-none text-accent"><ArrowDown size={28} strokeWidth={1.75} /></motion.span>
           </a>
@@ -997,7 +974,7 @@ function Bisagra() {
         initial={{ opacity: 0.3, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-15% 0px' }} transition={{ duration: 0.7 }}
         className="mx-auto max-w-[1400px]"
       >
-        <SectionLabel index="02">Imaginación</SectionLabel>
+        <SectionLabel index="03">Imaginación</SectionLabel>
         <p className="f-display mt-10 max-w-[18ch] text-[clamp(2.2rem,5.8vw,5.6rem)]">
           “La crisis ecológica es, antes que nada, una <span className="text-accent">crisis de imaginación.</span>”
         </p>
@@ -1016,7 +993,7 @@ function Puente({ children, className, narrativo = false }) {
     <div className={cx('mx-auto max-w-[1100px] px-4 py-24 text-center md:px-8 md:py-32', className)}>
       <motion.p
         initial={{ opacity: 0.3, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-15% 0px' }} transition={{ duration: 0.7 }}
-        className={cx('f-serif mx-auto max-w-[34ch] text-[clamp(1.4rem,3vw,2.4rem)] leading-snug', narrativo ? 'text-fg/85' : 'italic')}
+        className={cx('destacado f-serif mx-auto max-w-[34ch] text-[clamp(1.4rem,3vw,2.4rem)] leading-snug', narrativo ? 'text-fg/85' : 'italic')}
       >
         {children}
       </motion.p>
@@ -1077,7 +1054,7 @@ function Pradera() {
         <div className="absolute inset-x-0 top-0" style={{ height: '46%', background: 'linear-gradient(to bottom, var(--bg), color-mix(in srgb, var(--bg) 50%, transparent), transparent)' }} />
 
         <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 pt-24 md:px-8">
-          <SectionLabel index="05">La escala elemental</SectionLabel>
+          <SectionLabel index="07">La escala elemental</SectionLabel>
           <div className="mt-6 min-h-[8.5rem] md:min-h-[9rem]">
             <AnimatePresence mode="wait">
               <motion.p
@@ -1271,7 +1248,7 @@ function Meadows() {
   return (
     <section id="meadows" className="glow-data relative px-4 pb-24 pt-8 md:px-8 md:pb-32">
       <div className="mx-auto max-w-[1400px]">
-        <SectionLabel index="04">El núcleo de datos</SectionLabel>
+        <SectionLabel index="06">El núcleo de datos</SectionLabel>
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-end">
           <h2 className="f-display text-[clamp(2.4rem,6.5vw,6rem)]">El Informe Meadows</h2>
           <div className="min-w-0">
@@ -1604,7 +1581,7 @@ function HamsterSection() {
   return (
     <section id="hamster" className="relative border-t border-line">
       <div className="mx-auto max-w-[1400px] px-4 pt-24 md:px-8 md:pt-32">
-        <SectionLabel index="03">Diagnóstico sistémico</SectionLabel>
+        <SectionLabel index="05">Diagnóstico sistémico</SectionLabel>
         <h2 className="f-display mt-8 max-w-[18ch] text-[clamp(2.2rem,5.6vw,5.4rem)]">El hámster imposible</h2>
       </div>
 
@@ -1790,11 +1767,11 @@ function FilmCard({ f, active, onActivate, inView, reduced, oculta }) {
               <p className="f-serif max-w-[46ch] text-[15px] italic text-fg/85">{f.sinopsis}</p>
               <div className="mt-4 grid gap-3 border-t border-white/15 pt-4 sm:grid-cols-2">
                 <div className="min-w-0">
-                  <div className="label mb-1 text-accent">La profecía</div>
+                  <div className="label mb-1 text-accent">Lo que imaginó</div>
                   <p className="text-[14.5px]">{f.profecia}</p>
                 </div>
                 <div className="min-w-0">
-                  <div className="label mb-1">Se cumplió · hoy</div>
+                  <div className="label mb-1">Lo que hoy existe</div>
                   <p className="text-[14.5px] text-fg/85">{f.hoy}</p>
                 </div>
               </div>
@@ -1837,6 +1814,333 @@ function Circuito() {
   );
 }
 
+/* ==================================================================
+   SISTEMA DE TARJETAS · secciones 01, 04, 08 y 09
+   Mismo marco, mismo tamaño de texto y mismas etiquetas en todas: el lector reconoce el patrón.
+   ================================================================== */
+const TARJETA_FONDO = { background: 'linear-gradient(160deg, rgba(47,125,87,.12), var(--surface) 45%)', borderTop: '2px solid var(--green)' };
+
+function Tarjeta({ titulo, icono, contexto, children, className, delay = 0 }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0.25, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-10% 0px' }} transition={{ duration: 0.6, delay }}
+      className={cx('flex min-w-0 flex-col border border-line p-6 md:p-7', className)} style={TARJETA_FONDO}
+    >
+      {icono && <span className="mb-4 text-leaf" aria-hidden="true">{icono}</span>}
+      {titulo && <h3 className="f-cond text-[clamp(1.5rem,2.2vw,1.9rem)] leading-tight">{titulo}</h3>}
+      {contexto && <p className="mt-3 text-[15px] leading-relaxed text-fg/80">{contexto}</p>}
+      {children}
+    </motion.article>
+  );
+}
+
+// Etiqueta de paso: mismos colores e íconos que el circuito (naranja con flecha; Realidad en verde con el ciclo)
+function Etiqueta({ children, tono = 'accent', icono = 'flecha', partir = false }) {
+  return (
+    <span className={cx('inline-flex items-center gap-1.5 f-mono text-[11px] uppercase tracking-[0.1em]', partir ? 'whitespace-normal md:whitespace-nowrap' : 'whitespace-nowrap', tono === 'leaf' ? 'text-leaf' : 'text-accent')}>
+      [ {children} ]
+      {icono === 'flecha' && <ArrowRight size={12} aria-hidden="true" />}
+      {icono === 'ciclo' && <RefreshCw size={12} aria-hidden="true" />}
+    </span>
+  );
+}
+
+function Paso({ etiqueta, tono, icono, children }) {
+  return (
+    <p className="border-t border-line pt-3 text-[15px] leading-relaxed">
+      <Etiqueta tono={tono} icono={icono}>{etiqueta}</Etiqueta>{' '}{children}
+    </p>
+  );
+}
+
+// Texto destacado: mismo estilo en todas las secciones
+function TextoDestacado({ children, className }) {
+  return (
+    <motion.p
+      initial={{ opacity: 0.3, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-10% 0px' }} transition={{ duration: 0.7 }}
+      className={cx('destacado f-serif max-w-[38ch] text-[clamp(1.4rem,2.8vw,2.3rem)] leading-snug text-fg', className)}
+    >
+      {children}
+    </motion.p>
+  );
+}
+
+const TITULO_SECCION = 'f-display mt-8 max-w-[18ch] text-[clamp(2.2rem,5vw,5rem)]';
+const TEXTO_SECCION = 'f-serif max-w-[54ch] text-[clamp(1.15rem,1.7vw,1.4rem)] leading-relaxed text-fg/85';
+
+/* ==================================================================
+   SECCIÓN 01 · QUÉ ES LA HIPERSTICIÓN
+   ================================================================== */
+const PASOS_CIRCUITO = [
+  { etiqueta: 'Ficción' }, { etiqueta: 'Creencia' }, { etiqueta: 'Acción' }, { etiqueta: 'Realidad', tono: 'leaf', icono: 'ciclo' }
+];
+const EJEMPLOS_HIPERSTICION = [
+  { titulo: 'El restaurante', contexto: 'Un restaurante nuevo en Palermo pone pocas mesas a propósito, para que se arme fila.',
+    pasos: ['este lugar está de moda.', 'el que pasa ve la fila y lo cree.', 'se suma a la fila.', 'se vuelve el lugar de moda.'] },
+  { titulo: 'El papel higiénico', contexto: 'Pandemia, 2020. Las fábricas siguen funcionando con\u00A0normalidad.',
+    pasos: ['va a faltar papel.', 'mucha gente lo cree.', 'compra de más, por las dudas.', 'las góndolas quedan vacías.'] },
+  { titulo: 'El banco', contexto: 'Un banco que funciona bien.',
+    pasos: ['el banco va a quebrar.', 'los clientes lo creen.', 'todos sacan su plata a la vez.', 'el banco quiebra.'] }
+];
+
+function QueEsHipersticion() {
+  return (
+    <>
+      <section id="hipersticion" className="border-t border-line px-4 pt-24 md:px-8 md:pt-32">
+        <div className="mx-auto max-w-[1400px] lg:pr-[max(0px,calc(185px_-_max(32px,(100vw_-_1400px)/2)))]">
+          <SectionLabel index="01">Hiperstición</SectionLabel>
+          <h2 className={TITULO_SECCION}>Qué es la hiperstición</h2>
+          <TextoDestacado className="mt-10 border-l-2 border-leaf pl-6 md:pl-8">Para que una ficción se vuelva real hacen falta dos cosas: que la gente la crea y que actúe en consecuencia.</TextoDestacado>
+          <Circuito />
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {EJEMPLOS_HIPERSTICION.map((e, i) => (
+              <Tarjeta key={e.titulo} titulo={e.titulo} contexto={e.contexto} delay={i * 0.08}>
+                <div className="mt-5 grid gap-3">
+                  {e.pasos.map((t, j) => <Paso key={j} {...PASOS_CIRCUITO[j]}>{t}</Paso>)}
+                </div>
+              </Tarjeta>
+            ))}
+          </div>
+          <TextoDestacado className="mt-16">Ninguna de las tres cosas era cierta al principio. Se volvieron ciertas porque mucha gente las creyó y actuó en consecuencia.</TextoDestacado>
+        </div>
+      </section>
+      <Puente>Lo que creemos cambia lo que hacemos. ¿Y de dónde sacamos lo que creemos sobre el futuro?</Puente>
+    </>
+  );
+}
+
+/* ==================================================================
+   SECCIÓN 04 · LA HISTORIA QUE NOS CONTAMOS
+   ================================================================== */
+const lerp = (a, b, k) => a + (b - a) * k;
+const tramo = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a)));
+const suavizar = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const mezclarRgb = (a, b, k) => `rgb(${a.map((x, i) => Math.round(lerp(x, b[i], k))).join(',')})`;
+const RGB_FG = [238, 243, 238]; const RGB_LEAF = [124, 198, 138];
+
+// Geometría del diagrama (px) según el ancho disponible: dos cajas → un círculo dentro de otro
+function geometriaDiagrama(W) {
+  const H = W < 480 ? Math.round(W * 0.98) : Math.round(W * 0.78);
+  const cx = W / 2; const cy = H / 2;
+  const D = Math.min(W, H) * 0.94; const d = D * 0.44;
+  const fin = {
+    amb: { x: cx - D / 2, y: cy - D / 2, w: D, h: D },
+    eco: { x: cx - d / 2, y: cy + D * 0.12 - d / 2, w: d, h: d }
+  };
+  let ini;
+  if (W >= 320) { // lado a lado, con la «o» en el medio
+    const bw = W * 0.4; const bh = Math.min(150, H * 0.36);
+    ini = { eco: { x: 0, y: cy - bh / 2, w: bw, h: bh }, amb: { x: W - bw, y: cy - bh / 2, w: bw, h: bh }, o: { x: cx, y: cy } };
+  } else { // muy angosto: una arriba de la otra
+    const bh = Math.min(112, H * 0.3); const gap = 72;
+    ini = { eco: { x: 0, y: cy - gap / 2 - bh, w: W, h: bh }, amb: { x: 0, y: cy + gap / 2, w: W, h: bh }, o: { x: cx, y: cy } };
+  }
+  return { H, ini, fin };
+}
+
+function CajaDiagrama({ r, e, etiqueta, final, etiquetaTop = 50, escala = 1, colorEtiqueta }) {
+  const radio = e * Math.min(r.w, r.h) / 2;
+  return (
+    <div className="absolute" style={{ left: r.x, top: r.y, width: r.w, height: r.h, borderRadius: radio }}>
+      {/* Estado inicial: misma tarjeta que el resto del sistema */}
+      <div className="absolute inset-0 border border-line" style={{ ...TARJETA_FONDO, borderRadius: radio, opacity: 1 - e }} />
+      {/* Estado final: círculo */}
+      <div className="absolute inset-0" style={{ ...final, borderRadius: radio, opacity: e }} />
+      <span className="f-cond absolute left-1/2 whitespace-nowrap text-[clamp(1.05rem,3.2vw,2.2rem)] leading-tight"
+        style={{ top: `${etiquetaTop}%`, transform: `translate(-50%, -50%) scale(${escala})`, color: colorEtiqueta, whiteSpace: 'nowrap', textWrap: 'nowrap' }}>
+        <span style={{ opacity: 1 - e }}>[ </span>{etiqueta}<span style={{ opacity: 1 - e }}> ]</span>
+      </span>
+    </div>
+  );
+}
+
+function DiagramaEconomia() {
+  const ref = useRef(null);
+  const reduced = usePrefersReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['center 70%', 'center 30%'] });
+  const suave = useSpring(scrollYProgress, { stiffness: 140, damping: 28, mass: 0.3 });
+  const [t, setT] = useState(0);
+  useMotionValueEvent(suave, 'change', (v) => setT(v));
+  const [W, setW] = useState(0);
+  useEffect(() => {
+    const el = ref.current; if (!el) return undefined;
+    setW(el.getBoundingClientRect().width);
+    if (typeof ResizeObserver === 'undefined') return undefined;
+    const ro = new ResizeObserver(([entry]) => setW(entry.contentRect.width));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  const k = reduced ? 1 : Math.min(1, Math.max(0, t));
+  const e = suavizar(tramo(k, 0.12, 1));
+  const g = W ? geometriaDiagrama(W) : null;
+  const caja = (a, b) => ({ x: lerp(a.x, b.x, e), y: lerp(a.y, b.y, e), w: lerp(a.w, b.w, e), h: lerp(a.h, b.h, e) });
+  const textoFinal = tramo(k, 0.82, 1);
+  return (
+    <div>
+      <div ref={ref} className="relative w-full" style={g ? { height: g.H } : { aspectRatio: '4 / 3' }}
+        role="img" aria-label="Dos cajas, Economía o Ambiente, que se transforman en un círculo de Economía dentro de un círculo más grande de Ambiente.">
+        {g && (
+          <>
+            <CajaDiagrama r={caja(g.ini.amb, g.fin.amb)} e={e} etiqueta="Ambiente" etiquetaTop={lerp(50, 20, e)}
+              colorEtiqueta={mezclarRgb(RGB_FG, RGB_LEAF, e)}
+              final={{ border: '1.5px solid var(--leaf)', background: 'rgba(124,198,138,0.08)' }} />
+            <span aria-hidden="true" className="f-display absolute text-[clamp(2.6rem,7vw,5.5rem)] leading-none text-fg/70"
+              style={{ left: g.ini.o.x, top: g.ini.o.y, transform: 'translate(-50%, -54%)', opacity: 1 - tramo(k, 0, 0.25) }}>o</span>
+            <CajaDiagrama r={caja(g.ini.eco, g.fin.eco)} e={e} etiqueta="Economía" escala={lerp(1, 0.82, e)}
+              final={{ border: '1.5px solid rgb(var(--fg-rgb) / 0.55)', background: 'var(--surface)' }} />
+          </>
+        )}
+      </div>
+      <p className="destacado f-serif mt-6 max-w-[34ch] text-[clamp(1.4rem,2.8vw,2.3rem)] leading-snug text-fg"
+        style={{ opacity: textoFinal, transform: `translateY(${lerp(10, 0, textoFinal)}px)` }}>
+        Pero el ambiente no es algo aparte. Es la base sobre la que funciona todo lo demás.
+      </p>
+    </div>
+  );
+}
+
+function LaHistoria() {
+  return (
+    <>
+      <section id="historia" className="border-t border-line px-4 pt-24 md:px-8 md:pt-32">
+        <div className="mx-auto max-w-[1400px] lg:pr-[max(0px,calc(185px_-_max(32px,(100vw_-_1400px)/2)))]">
+          {/* Escritorio: texto a la izquierda, diagrama a la derecha. Celular: texto y abajo el diagrama */}
+          <div className="grid gap-x-16 gap-y-12 lg:grid-cols-2">
+            <div className="min-w-0">
+              <SectionLabel index="04">La historia</SectionLabel>
+              <h2 className={TITULO_SECCION}>La historia que nos contamos</h2>
+              <p className={cx(TEXTO_SECCION, 'mt-8')}>Hay una historia que nos contamos tanto que ya no parece una historia. Dice que la economía puede crecer para siempre. Y trae otra con ella, que hay que elegir entre economía o ambiente.</p>
+              <p className={cx(TEXTO_SECCION, 'mt-4')}>Esta segunda funciona como hiperstición. Si creemos que no hay alternativa, no construimos ninguna.</p>
+            </div>
+            <div className="min-w-0 w-full max-w-[640px] lg:max-w-none lg:pt-4">
+              <DiagramaEconomia />
+            </div>
+          </div>
+        </div>
+      </section>
+      <Puente>¿Algo puede crecer para siempre?</Puente>
+    </>
+  );
+}
+
+/* ==================================================================
+   SECCIÓN 08 · SOMOS MÁS DE LOS QUE CREEMOS
+   ================================================================== */
+// Andre, Boneva, Chopra y Falk (2024), Nature Climate Change 14, 253–259 · 129.902 personas, 125 países (Gallup World Poll 2021/22)
+const ENCUESTA_CLIMA = [
+  { n: 69, texto: 'daría el 1% de su ingreso cada mes para frenar el cambio climático' },
+  { n: 43, texto: 'es lo que creemos que daría el resto' }
+];
+
+function GrillaPuntos({ pintados }) {
+  const ref = useRef(null);
+  const visto = useInView(ref, { once: true, amount: 0.4 });
+  const reduced = usePrefersReducedMotion();
+  return (
+    <div ref={ref} role="img" aria-label={`${pintados} de cada 100 puntos pintados`} className="grid w-full max-w-[240px] grid-cols-10 gap-[5px]">
+      {Array.from({ length: 100 }, (_, i) => {
+        const on = i < pintados && (visto || reduced);
+        return (
+          <span key={i} className="aspect-square rounded-full transition-colors duration-300"
+            style={{ background: on ? 'var(--accent)' : 'rgb(var(--fg-rgb) / 0.16)', transitionDelay: reduced ? '0ms' : `${i * 12}ms` }} />
+        );
+      })}
+    </div>
+  );
+}
+
+function SomosMas() {
+  return (
+    <section id="somos-mas" className="border-t border-line px-4 py-24 md:px-8 md:py-32">
+      <div className="mx-auto max-w-[1400px] lg:pr-[max(0px,calc(185px_-_max(32px,(100vw_-_1400px)/2)))]">
+        <SectionLabel index="08">Somos más</SectionLabel>
+        <h2 className={TITULO_SECCION}>Somos más de los que creemos</h2>
+        <p className="f-serif mt-8 text-[clamp(1.4rem,2.8vw,2.3rem)] italic leading-snug">¿Por qué no cambiamos? En parte, por otra ficción.</p>
+        <div className="mt-12 grid max-w-[1000px] gap-4 sm:grid-cols-2">
+          {ENCUESTA_CLIMA.map((e, i) => (
+            <Tarjeta key={e.n} delay={i * 0.1}>
+              <GrillaPuntos pintados={e.n} />
+              <p className="f-display tnum mt-6 text-[clamp(3rem,6vw,4.8rem)] leading-none">{e.n}%</p>
+              <p className="mt-3 max-w-[34ch] text-[15px] leading-relaxed text-fg/85">{e.texto}</p>
+            </Tarjeta>
+          ))}
+        </div>
+        <p className="label mt-6 max-w-[80ch] leading-relaxed">
+          Encuesta a casi 130.000 personas en 125 países. Andre, Boneva, Chopra y Falk,{' '}
+          <a href="https://www.nature.com/articles/s41558-024-01925-3" target="_blank" rel="noopener noreferrer" className="text-leaf underline decoration-[rgba(124,198,138,0.4)] underline-offset-2 hover:text-fg">Nature Climate Change</a>, 2024.
+        </p>
+        <TextoDestacado className="mt-16">Si creemos que somos pocos, actuamos como pocos. Y esa ficción también se vuelve real.</TextoDestacado>
+      </div>
+    </section>
+  );
+}
+
+/* ==================================================================
+   SECCIÓN 09 · LAS FICCIONES ORGANIZAN EL MUNDO
+   ================================================================== */
+const FICCIONES_COMPARTIDAS = [
+  { titulo: 'El dinero', Icono: Banknote, contexto: 'Un billete es un papel. Y la mayor parte del dinero ni siquiera es eso: cerca del 90% son números en una\u00A0computadora.', porque: 'todos creemos que el otro lo va a aceptar.' },
+  { titulo: 'Las naciones', Icono: MapIcon, contexto: 'Una frontera es una línea en un mapa. De los dos lados hay la misma tierra.', porque: 'millones creemos que esa línea existe.' },
+  { titulo: 'Las leyes', Icono: Scale, contexto: 'Una ley es un texto escrito.', porque: 'la mayoría cree que hay que cumplirla.' }
+];
+const DERECHOS_HUMANOS = [
+  { anio: '1948', paso: 'Ficción', texto: 'Una declaración dice que todas las personas tienen los mismos derechos. No era cierto en casi ningún lado, y no obligaba a nadie.' },
+  { anio: '1966', paso: 'Creencia y acción', texto: 'Los países escriben dos tratados basados en ella.' },
+  { anio: '1976', paso: 'Realidad', tono: 'leaf', icono: 'ciclo', texto: 'Se vuelven ley\u00A0internacional.' },
+  { anio: 'Hoy', tono: 'leaf', texto: 'Se reclaman en\u00A0tribunales.' }
+];
+
+function Ficciones() {
+  return (
+    <section id="ficciones" className="border-t border-line px-4 py-24 md:px-8 md:py-32">
+      <div className="mx-auto max-w-[1400px] lg:pr-[max(0px,calc(185px_-_max(32px,(100vw_-_1400px)/2)))]">
+        <SectionLabel index="09">Ficciones</SectionLabel>
+        <h2 className={TITULO_SECCION}>Las ficciones organizan el mundo</h2>
+        <p className={cx(TEXTO_SECCION, 'mt-8')}>Esto no pasa solo con una fila o un banco. Pasa con lo que organiza nuestra vida entera.</p>
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {FICCIONES_COMPARTIDAS.map((f, i) => (
+            <Tarjeta key={f.titulo} titulo={f.titulo} contexto={f.contexto} icono={<f.Icono size={28} strokeWidth={1.5} />} delay={i * 0.08}>
+              <div className="mt-5 grid gap-3">
+                <Paso etiqueta="Funciona porque">{f.porque}</Paso>
+              </div>
+            </Tarjeta>
+          ))}
+        </div>
+        <p className={cx(TEXTO_SECCION, 'mt-14')}>Ninguna existe en la naturaleza. Existen porque millones las creemos. Son ficciones compartidas.</p>
+
+        {/* Entrada a la línea de tiempo, separada como una sección nueva */}
+        <TextoDestacado className="mt-24 md:mt-32">Y algunas nacen como una hiperstición.</TextoDestacado>
+
+        {/* Línea de tiempo: horizontal desde md; en celular vertical, con la etiqueta a la izquierda de cada año */}
+        <div className="mt-12">
+          <h3 className="f-display text-[clamp(1.9rem,3vw,2.6rem)] leading-none">Los derechos humanos</h3>
+          <ol className="relative mt-10 grid gap-10 md:grid-cols-4 md:gap-8">
+            <span aria-hidden="true" className="absolute bottom-3 left-[7px] top-3 w-px bg-line md:hidden" />
+            <span aria-hidden="true" className="absolute left-0 right-0 top-[7px] hidden h-px bg-line md:block" />
+            {DERECHOS_HUMANOS.map((d, i) => {
+              const color = d.tono === 'leaf' ? 'var(--leaf)' : 'var(--accent)';
+              return (
+                <motion.li key={d.anio}
+                  initial={{ opacity: 0.25, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-10% 0px' }} transition={{ duration: 0.6, delay: i * 0.12 }}
+                  className="relative min-w-0 pl-9 md:pl-0 md:pt-10"
+                >
+                  <span aria-hidden="true" className="absolute left-0 top-[6px] h-[15px] w-[15px] rounded-full border-2 md:top-0"
+                    style={{ borderColor: color, background: i === DERECHOS_HUMANOS.length - 1 ? color : 'var(--bg)' }} />
+                  <div className="grid grid-cols-[7.75rem_minmax(0,1fr)] items-center gap-x-3 md:flex md:flex-col md:items-start">
+                    <div className="min-w-0 md:order-2 md:mt-3">{d.paso && <Etiqueta tono={d.tono} icono={d.icono} partir>{d.paso}</Etiqueta>}</div>
+                    <p className="f-display tnum text-[clamp(1.9rem,3vw,2.6rem)] leading-none md:order-1">{d.anio}</p>
+                  </div>
+                  <p className="mt-3 max-w-[34ch] text-[15px] leading-relaxed text-fg/85">{d.texto}</p>
+                </motion.li>
+              );
+            })}
+          </ol>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // Tira de cine: 4 películas por defecto; [ Ver las 8 películas + ] suma las otras 4 a la misma tira (orden cronológico de FILMS)
 const CINE_TIRA_1 = ['2001: Odisea del Espacio', 'Blade Runner', 'Matrix', 'WALL‑E'];
 
@@ -1868,7 +2172,7 @@ function Cine() {
   return (
     <section id="cine" ref={sectionRef} className="flex min-h-[100svh] flex-col border-t border-line px-4 pb-24 pt-24 md:px-8">
       <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col">
-        <SectionLabel index="01">El cine como anticipación</SectionLabel>
+        <SectionLabel index="02">El cine como anticipación</SectionLabel>
         <div className="mt-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
           <h2 className="f-display max-w-[17ch] text-[clamp(2.2rem,5vw,5rem)]">
             “Todo lo que nos pasa ya lo vimos en el cine.”{' '}
@@ -1893,17 +2197,15 @@ function Cine() {
             ]
           </button>
         </div>
-        <p className="label mt-4">Pasá el cursor (o tocá) cada película para ver la profecía que se cumplió.</p>
-        {/* Cierre conceptual de Cine / transición al circuito */}
-        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-10% 0px' }} transition={{ duration: 0.7 }}
-          className="cinema-outro-bridge mt-20 max-w-[60ch]">
-          <span className="section-tag label text-accent">[ La profecía ]</span>
-          <h3 className="bridge-headline f-serif mt-4 text-[clamp(1.6rem,3.2vw,2.6rem)] italic leading-tight">“La profecía crea las condiciones para su propio cumplimiento.”</h3>
-          <p className="bridge-subtext mt-5 text-[clamp(1rem,1.3vw,1.15rem)] leading-relaxed text-fg/80">
+        <p className="label mt-4">Pasá el cursor (o tocá) cada película para ver lo que imaginó y lo que hoy existe.</p>
+        {/* Cierre de Cine: frase grande a la izquierda, contexto a la derecha (en celular, una abajo de la otra) */}
+        <div className="cinema-outro-bridge mt-20 grid items-start gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-16 lg:pr-[max(0px,calc(185px_-_max(32px,(100vw_-_1400px)/2)))]">
+          <TextoDestacado className="bridge-headline">Las películas no adivinan el futuro. Pero lo que vemos en la pantalla se vuelve lo que nos parece posible.</TextoDestacado>
+          <motion.p initial={{ opacity: 0.3, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-10% 0px' }} transition={{ duration: 0.7, delay: 0.1 }}
+            className="bridge-subtext max-w-[46ch] text-[clamp(1rem,1.3vw,1.15rem)] leading-relaxed text-fg/80 lg:pt-2">
             <strong className="font-bold text-fg">IA, vigilancia, automatización y escasez de recursos:</strong> las ficciones entrenaron nuestra mirada para asumir estos escenarios como un destino inevitable.
-          </p>
-        </motion.div>
-        <Circuito />
+          </motion.p>
+        </div>
       </div>
     </section>
   );
@@ -1915,18 +2217,19 @@ function Cine() {
 function Conclusion({ go }) {
   return (
     <>
-    {/* Transición de la pradera al cierre verde bosque: degradé sin texto encima */}
+    {/* Transición de la sección 09 al cierre verde bosque: degradé sin texto encima */}
     <div id="cierre-transicion" aria-hidden="true" className="h-[45vh]" style={{ background: 'linear-gradient(180deg, #1E2B22 0%, #2E6B45 100%)' }} />
     <section id="cierre" className="tema-cierre px-4 py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-[1400px]">
-        <p className="f-display text-[clamp(2rem,5vw,4.6rem)]">El mundo no se está acabando.<br /><span className="text-leaf">UN mundo se está acabando.</span></p>
+        <p className="f-serif max-w-[40ch] text-[clamp(1.3rem,2.4vw,2rem)] leading-snug text-[#E8F0EA]">Si las ficciones organizan el mundo, podemos elegir cuáles contamos.</p>
+        <p className="f-display mt-12 text-[clamp(2rem,5vw,4.6rem)]">El mundo no se está&nbsp;acabando.<br /><span className="text-leaf">UN mundo se está&nbsp;acabando.</span></p>
         <p className="f-serif mt-8 text-[clamp(1.3rem,2.4vw,2rem)] italic text-[#E8F0EA]">Nuestro desafío es construir el que sigue.</p>
-        <div className="mt-20 flex flex-wrap items-end justify-between gap-10 border-t border-line pt-14">
+        <div className="mt-20 border-t border-line pt-14">
           <div className="flex items-end gap-5">
             <Isotipo className="h-[clamp(90px,12vw,150px)] w-auto" />
-            <p className="f-display text-[clamp(2.8rem,8vw,7.5rem)]">Inventemos el <span className="text-accent">futuro.</span></p>
+            <p className="f-display text-[clamp(2.8rem,8vw,7.5rem)]">Escribamos el <span className="text-accent">futuro.</span></p>
           </div>
-          <button type="button" onClick={() => go('catalogo')} className="bg-[#040806] px-5 py-3 f-mono text-[12px] font-bold uppercase tracking-[0.12em] text-[#9FE0AE] transition-colors hover:bg-[#12392b]">
+          <button type="button" onClick={() => go('catalogo')} className="mt-12 bg-[#040806] px-5 py-3 f-mono text-[12px] font-bold uppercase tracking-[0.12em] text-[#9FE0AE] transition-colors hover:bg-[#12392b]">
             [ Ir al Catálogo ]
           </button>
         </div>
@@ -1940,7 +2243,7 @@ function Conclusion({ go }) {
    VISTA · HOME
    ================================================================== */
 // Fondo narrativo: oscuro arriba, cada vez más verde y luminoso al bajar, hasta el cierre en verde bosque.
-const FONDOS = [['inicio', '#040806'], ['cine', '#040806'], ['imaginacion', '#060C08'], ['hamster', '#0A140E'], ['meadows', '#112017'], ['pradera', '#1E2B22']];
+const FONDOS = [['inicio', '#040806'], ['hipersticion', '#040806'], ['cine', '#040806'], ['imaginacion', '#060C08'], ['historia', '#080F0B'], ['hamster', '#0A140E'], ['meadows', '#112017'], ['pradera', '#1E2B22'], ['somos-mas', '#1E2B22'], ['ficciones', '#1E2B22']];
 const FONDO_CIERRE = '#2E6B45';
 const hexRgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
 const mezclarColor = (a, b, t) => '#' + hexRgb(a).map((x, i) => Math.round(x + (hexRgb(b)[i] - x) * t).toString(16).padStart(2, '0')).join('');
@@ -1972,9 +2275,9 @@ function useFondoNarrativo() {
           if (linea >= a.mid && linea < b.mid) { color = mezclarColor(a.c, b.c, (linea - a.mid) / Math.max(1, b.mid - a.mid)); break; }
         }
       }
-      // Cierre: el fondo general pasa al verde bosque cuando la pradera salió de pantalla
-      const pradera = document.getElementById('pradera');
-      if (pradera && pradera.getBoundingClientRect().bottom <= 0) color = FONDO_CIERRE;
+      // Cierre: el fondo general pasa al verde bosque cuando la última sección (09) salió de pantalla
+      const ultima = document.getElementById('ficciones');
+      if (ultima && ultima.getBoundingClientRect().bottom <= 0) color = FONDO_CIERRE;
       if (color !== ultimo) { root.style.setProperty('--bg-scroll', color); ultimo = color; }
     };
     const pedir = () => { if (!raf) raf = requestAnimationFrame(calcular); };
@@ -2001,12 +2304,19 @@ function Home({ go }) {
     <main>
       <SideNav />
       <Hero />
+      <QueEsHipersticion />
       <Cine />
       <Bisagra />
+      <LaHistoria />
       <HamsterSection />
       <Puente narrativo>A comienzos de los 70’, la ciencia analizó las tendencias del modelo socioeconómico mundial para medir el punto en que su crecimiento exponencial chocaría contra los márgenes de la biósfera. Décadas después, los datos históricos reales mostraron una alineación notable con aquella proyección.</Puente>
       <Meadows />
       <Pradera />
+      <div className="mx-auto max-w-[1100px] px-4 py-24 text-center md:px-8 md:py-32">
+        <TextoDestacado className="mx-auto">Una economía que ignora los límites de la naturaleza no es realista. Es una ficción.</TextoDestacado>
+      </div>
+      <SomosMas />
+      <Ficciones />
       <Conclusion go={go} />
     </main>
   );
@@ -2024,7 +2334,8 @@ function Manifiesto({ go }) {
           <SectionLabel index="§">Manifiesto</SectionLabel>
         </div>
         <h1 className="f-display mt-10 text-[clamp(2.6rem,7vw,5.4rem)]">Fingiendo cordura</h1>
-        <p className="f-serif mt-4 text-[clamp(1.3rem,2.4vw,1.9rem)] italic text-fg/80">Manifiesto para inventar el futuro</p>
+        <p className="f-serif mt-4 text-[clamp(1.3rem,2.4vw,1.9rem)] italic text-fg/80">Manifiesto para escribir el futuro</p>
+        <p className="f-serif mt-6 max-w-[48ch] text-[clamp(1.1rem,1.8vw,1.5rem)] leading-relaxed text-fg/80">Fingimos cordura cada vez que aceptamos que no hay otra forma de vivir.</p>
         <div className="mt-14 grid gap-10">
           {MANIFIESTO.map((m, i) => (
             <motion.div
@@ -2042,7 +2353,7 @@ function Manifiesto({ go }) {
           ))}
         </div>
         <div className="mt-20 flex flex-wrap items-center justify-between gap-6 border-t border-line pt-8">
-          <span className="f-display text-[clamp(1.8rem,4vw,3rem)]">Inventemos el <span className="text-accent">futuro.</span></span>
+          <span className="f-display text-[clamp(1.8rem,4vw,3rem)]">Escribamos el <span className="text-accent">futuro.</span></span>
           <button type="button" onClick={() => go('catalogo')} className="bg-[#00ff88] px-5 py-3 f-mono text-[12px] font-bold uppercase tracking-[0.12em] text-black shadow-[0_0_24px_rgba(0,255,136,0.25)] transition-colors hover:bg-[#7cffbf]">
             [ Ir al Catálogo ]
           </button>
