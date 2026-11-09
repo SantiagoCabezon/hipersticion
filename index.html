@@ -1,8 +1,7 @@
 <!doctype html>
-<html lang="es" data-view="inicio">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Hiperstición</title>
   <meta name="description" content="Muchas de las cosas que hoy vivimos primero fueron ficción. Si el futuro también se escribe, ¿qué historia nos estamos contando?" />
   <meta name="theme-color" content="#040806" />
@@ -158,6 +157,8 @@ body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font
 /* Sin palabras sueltas al final: párrafos con pretty; títulos y destacados con balance */
 p, li, blockquote, figcaption, dd { text-wrap: pretty; }
 h1, h2, h3, h4, .destacado { text-wrap: balance; }
+/* Frase que en escritorio va en una sola línea (en celular corta de forma natural) */
+@media (min-width: 1024px) { .una-linea { white-space: nowrap; text-wrap: nowrap; } }
 .f-mono { font-family: var(--f-mono); }
 .label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .measure { max-width: 65ch; }
@@ -785,12 +786,26 @@ function Bracket({ children, active, onClick, color, className, ...rest }) {
   );
 }
 
-function SectionLabel({ index, children }) {
+// Sellos de sección: qué hace la historia en cada tramo del ensayo (mismo estilo en todas)
+const SELLOS = {
+  anticipacion: 'Anticipación · La historia muestra',
+  hiperstición: 'Hiperstición · La historia crea',
+  ficcion: 'Ficción compartida · La historia sostiene',
+  limite: 'El límite · La historia choca con la física',
+  imaginario: 'Imaginario · La historia moldea'
+};
+
+function SectionLabel({ index, children, sello }) {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
       <span className="label tnum">{index}</span>
       <span className="h-px w-8 bg-line" />
       <span className="label">{children}</span>
+      {sello && (
+        <span className="sello inline-block border border-[rgba(124,198,138,0.45)] px-2 py-[3px] f-mono text-[10px] font-medium uppercase leading-snug tracking-[0.14em] text-leaf">
+          {SELLOS[sello]}
+        </span>
+      )}
     </div>
   );
 }
@@ -865,13 +880,13 @@ const HOME_SECTIONS = [
   { id: 'inicio', label: 'Inicio' },
   { id: 'hipersticion', label: 'Hiperstición' },
   { id: 'cine', label: 'Cine' },
-  { id: 'imaginacion', label: 'Imaginación' },
+  { id: 'ficciones', label: 'Ficciones' },
   { id: 'historia', label: 'La historia' },
   { id: 'hamster', label: 'Hámster' },
   { id: 'meadows', label: 'Meadows' },
   { id: 'pradera', label: 'Pradera' },
   { id: 'somos-mas', label: 'Somos más' },
-  { id: 'ficciones', label: 'Ficciones' },
+  { id: 'imaginacion', label: 'Imaginación' },
   { id: 'cierre', label: 'Cierre' }
 ];
 
@@ -974,12 +989,12 @@ function Bisagra() {
         initial={{ opacity: 0.3, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-15% 0px' }} transition={{ duration: 0.7 }}
         className="mx-auto max-w-[1400px]"
       >
-        <SectionLabel index="03">Imaginación</SectionLabel>
+        <SectionLabel index="09" sello="imaginario">Imaginación</SectionLabel>
         <p className="f-display mt-10 max-w-[18ch] text-[clamp(2.2rem,5.8vw,5.6rem)]">
           “La crisis ecológica es, antes que nada, una <span className="text-accent">crisis de imaginación.</span>”
         </p>
         <p className="label mt-6">— a partir de Amitav Ghosh</p>
-        <p className="f-serif mt-10 text-[clamp(1.4rem,2.8vw,2.3rem)] italic">¿Somos capaces de imaginar un mundo distinto?</p>
+        <p className="destacado f-serif mt-10 text-[clamp(1.4rem,2.8vw,2.3rem)] italic">¿Somos capaces de imaginar un mundo distinto?</p>
       </motion.div>
     </section>
   );
@@ -1054,7 +1069,7 @@ function Pradera() {
         <div className="absolute inset-x-0 top-0" style={{ height: '46%', background: 'linear-gradient(to bottom, var(--bg), color-mix(in srgb, var(--bg) 50%, transparent), transparent)' }} />
 
         <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 pt-24 md:px-8">
-          <SectionLabel index="07">La escala elemental</SectionLabel>
+          <SectionLabel index="07" sello="limite">La escala elemental</SectionLabel>
           <div className="mt-6 min-h-[8.5rem] md:min-h-[9rem]">
             <AnimatePresence mode="wait">
               <motion.p
@@ -1243,12 +1258,12 @@ function VariablePanel({ v }) {
 }
 
 function Meadows() {
-  const [selected, setSelected] = useState('recursos');
+  const [selected, setSelected] = useState(null); // ficha cerrada hasta que se elige una variable
   const [hovered, setHovered] = useState(null);
   return (
     <section id="meadows" className="glow-data relative px-4 pb-24 pt-8 md:px-8 md:pb-32">
       <div className="mx-auto max-w-[1400px]">
-        <SectionLabel index="06">El núcleo de datos</SectionLabel>
+        <SectionLabel index="06" sello="limite">El núcleo de datos</SectionLabel>
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-end">
           <h2 className="f-display text-[clamp(2.4rem,6.5vw,6rem)]">El Informe Meadows</h2>
           <div className="min-w-0">
@@ -1262,8 +1277,8 @@ function Meadows() {
           <div className="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Variables del modelo World3">
             {VARIABLES.map((x) => (
               <button
-                key={x.key} type="button" role="tab" aria-selected={selected === x.key}
-                onClick={() => setSelected(x.key)} onMouseEnter={() => setHovered(x.key)} onMouseLeave={() => setHovered(null)}
+                key={x.key} type="button" role="tab" aria-selected={selected === x.key} aria-expanded={selected === x.key}
+                onClick={() => setSelected((s) => (s === x.key ? null : x.key))} onMouseEnter={() => setHovered(x.key)} onMouseLeave={() => setHovered(null)}
                 onFocus={() => setHovered(x.key)} onBlur={() => setHovered(null)}
                 className="f-mono flex items-center gap-2 border px-3 py-2 text-[12px] uppercase tracking-[0.1em] transition-colors"
                 style={selected === x.key ? { background: x.color, borderColor: x.color, color: '#000' } : { borderColor: 'var(--line)', color: 'var(--fg)' }}
@@ -1273,7 +1288,7 @@ function Meadows() {
               </button>
             ))}
           </div>
-          <div className="mt-6"><VariablePanel v={VAR_BY_KEY[selected]} /></div>
+          {selected ? <div className="mt-6"><VariablePanel v={VAR_BY_KEY[selected]} /></div> : <p className="label mt-6">Tocá una variable para abrir su ficha.</p>}
           <Fuentes lista={FUENTES_MEADOWS} id="fuentes-meadows" className="mt-6" />
         </div>
 
@@ -1581,7 +1596,7 @@ function HamsterSection() {
   return (
     <section id="hamster" className="relative border-t border-line">
       <div className="mx-auto max-w-[1400px] px-4 pt-24 md:px-8 md:pt-32">
-        <SectionLabel index="05">Diagnóstico sistémico</SectionLabel>
+        <SectionLabel index="05" sello="limite">Diagnóstico sistémico</SectionLabel>
         <h2 className="f-display mt-8 max-w-[18ch] text-[clamp(2.2rem,5.6vw,5.4rem)]">El hámster imposible</h2>
       </div>
 
@@ -1888,10 +1903,12 @@ function QueEsHipersticion() {
     <>
       <section id="hipersticion" className="border-t border-line px-4 pt-24 md:px-8 md:pt-32">
         <div className="mx-auto max-w-[1400px] lg:pr-[max(0px,calc(185px_-_max(32px,(100vw_-_1400px)/2)))]">
-          <SectionLabel index="01">Hiperstición</SectionLabel>
+          <SectionLabel index="01" sello="hiperstición">Hiperstición</SectionLabel>
           <h2 className={TITULO_SECCION}>Qué es la hiperstición</h2>
           <TextoDestacado className="mt-10 border-l-2 border-leaf pl-6 md:pl-8">Para que una ficción se vuelva real hacen falta dos cosas: que la gente la crea y que actúe en consecuencia.</TextoDestacado>
           <Circuito />
+          {/* Origen del término: nota chica, mismo tamaño que las fuentes */}
+          <p className="f-mono mt-4 max-w-[90ch] text-[12px] leading-relaxed text-[#8FA398]">El término surgió en los años 90 en el CCRU, un grupo de investigación de la Universidad de Warwick (Reino Unido), de la mano del filósofo Nick Land.</p>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {EJEMPLOS_HIPERSTICION.map((e, i) => (
               <Tarjeta key={e.titulo} titulo={e.titulo} contexto={e.contexto} delay={i * 0.08}>
@@ -2051,9 +2068,10 @@ function GrillaPuntos({ pintados }) {
 
 function SomosMas() {
   return (
-    <section id="somos-mas" className="border-t border-line px-4 py-24 md:px-8 md:py-32">
+    <>
+    <section id="somos-mas" className="border-t border-line px-4 pt-24 md:px-8 md:pt-32">
       <div className="mx-auto max-w-[1400px] lg:pr-[max(0px,calc(185px_-_max(32px,(100vw_-_1400px)/2)))]">
-        <SectionLabel index="08">Somos más</SectionLabel>
+        <SectionLabel index="08" sello="hiperstición">Somos más</SectionLabel>
         <h2 className={TITULO_SECCION}>Somos más de los que creemos</h2>
         <p className="f-serif mt-8 text-[clamp(1.4rem,2.8vw,2.3rem)] italic leading-snug">¿Por qué no cambiamos? En parte, por otra ficción.</p>
         <div className="mt-12 grid max-w-[1000px] gap-4 sm:grid-cols-2">
@@ -2072,16 +2090,18 @@ function SomosMas() {
         <TextoDestacado className="mt-16">Si creemos que somos pocos, actuamos como pocos. Y esa ficción también se vuelve real.</TextoDestacado>
       </div>
     </section>
+    <Puente>Si una historia nos frena, otra nos puede mover. Pero primero hay que poder imaginarla.</Puente>
+    </>
   );
 }
 
 /* ==================================================================
-   SECCIÓN 09 · LAS FICCIONES ORGANIZAN EL MUNDO
+   SECCIÓN 03 · LAS FICCIONES ORGANIZAN EL MUNDO
    ================================================================== */
 const FICCIONES_COMPARTIDAS = [
   { titulo: 'El dinero', Icono: Banknote, contexto: 'Un billete es un papel. Y la mayor parte del dinero ni siquiera es eso: cerca del 90% son números en una\u00A0computadora.', porque: 'todos creemos que el otro lo va a aceptar.' },
-  { titulo: 'Las naciones', Icono: MapIcon, contexto: 'Una frontera es una línea en un mapa. De los dos lados hay la misma tierra.', porque: 'millones creemos que esa línea existe.' },
-  { titulo: 'Las leyes', Icono: Scale, contexto: 'Una ley es un texto escrito.', porque: 'la mayoría cree que hay que cumplirla.' }
+  { titulo: 'Las naciones', Icono: MapIcon, contexto: 'Una frontera es una línea en un mapa. De los dos lados hay la misma tierra.', porque: 'millones creemos que esa línea existe, y actuamos en\u00A0consecuencia.' },
+  { titulo: 'Las leyes', Icono: Scale, contexto: 'Una ley es un texto escrito.', porque: 'casi todos la cumplimos sin que nadie nos obligue. El castigo es para los pocos que no.' }
 ];
 const DERECHOS_HUMANOS = [
   { anio: '1948', paso: 'Ficción', texto: 'Una declaración dice que todas las personas tienen los mismos derechos. No era cierto en casi ningún lado, y no obligaba a nadie.' },
@@ -2094,9 +2114,9 @@ function Ficciones() {
   return (
     <section id="ficciones" className="border-t border-line px-4 py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-[1400px] lg:pr-[max(0px,calc(185px_-_max(32px,(100vw_-_1400px)/2)))]">
-        <SectionLabel index="09">Ficciones</SectionLabel>
+        <SectionLabel index="03" sello="ficcion">Ficciones</SectionLabel>
         <h2 className={TITULO_SECCION}>Las ficciones organizan el mundo</h2>
-        <p className={cx(TEXTO_SECCION, 'mt-8')}>Esto no pasa solo con una fila o un banco. Pasa con lo que organiza nuestra vida entera.</p>
+        <TextoDestacado className="mt-10">Y algunas organizan nuestra vida entera.</TextoDestacado>
         <div className="mt-12 grid gap-4 md:grid-cols-3">
           {FICCIONES_COMPARTIDAS.map((f, i) => (
             <Tarjeta key={f.titulo} titulo={f.titulo} contexto={f.contexto} icono={<f.Icono size={28} strokeWidth={1.5} />} delay={i * 0.08}>
@@ -2106,7 +2126,7 @@ function Ficciones() {
             </Tarjeta>
           ))}
         </div>
-        <p className={cx(TEXTO_SECCION, 'mt-14')}>Ninguna existe en la naturaleza. Existen porque millones las creemos. Son ficciones compartidas.</p>
+        <p className="una-linea f-serif mt-14 text-[clamp(1.15rem,1.7vw,1.4rem)] leading-relaxed text-fg/85">Ninguna existe en la naturaleza. Existen porque millones las creemos. Son ficciones compartidas.</p>
 
         {/* Entrada a la línea de tiempo, separada como una sección nueva */}
         <TextoDestacado className="mt-24 md:mt-32">Y algunas nacen como una hiperstición.</TextoDestacado>
@@ -2170,9 +2190,10 @@ function Cine() {
   const inView = useInView(sectionRef, { amount: 0.25 });
   const reduced = usePrefersReducedMotion();
   return (
-    <section id="cine" ref={sectionRef} className="flex min-h-[100svh] flex-col border-t border-line px-4 pb-24 pt-24 md:px-8">
+    <>
+    <section id="cine" ref={sectionRef} className="flex min-h-[100svh] flex-col border-t border-line px-4 pt-24 md:px-8">
       <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col">
-        <SectionLabel index="02">El cine como anticipación</SectionLabel>
+        <SectionLabel index="02" sello="anticipacion">El cine como anticipación</SectionLabel>
         <div className="mt-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
           <h2 className="f-display max-w-[17ch] text-[clamp(2.2rem,5vw,5rem)]">
             “Todo lo que nos pasa ya lo vimos en el cine.”{' '}
@@ -2208,6 +2229,8 @@ function Cine() {
         </div>
       </div>
     </section>
+    <Puente>Una película sabemos que es ficción. Otras ficciones las usamos todos los días sin darnos cuenta.</Puente>
+    </>
   );
 }
 
@@ -2221,8 +2244,7 @@ function Conclusion({ go }) {
     <div id="cierre-transicion" aria-hidden="true" className="h-[45vh]" style={{ background: 'linear-gradient(180deg, #1E2B22 0%, #2E6B45 100%)' }} />
     <section id="cierre" className="tema-cierre px-4 py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-[1400px]">
-        <p className="f-serif max-w-[40ch] text-[clamp(1.3rem,2.4vw,2rem)] leading-snug text-[#E8F0EA]">Si las ficciones organizan el mundo, podemos elegir cuáles contamos.</p>
-        <p className="f-display mt-12 text-[clamp(2rem,5vw,4.6rem)]">El mundo no se está&nbsp;acabando.<br /><span className="text-leaf">UN mundo se está&nbsp;acabando.</span></p>
+        <p className="f-display text-[clamp(2rem,5vw,4.6rem)]">El mundo no se está&nbsp;acabando.<br /><span className="text-leaf">UN mundo se está&nbsp;acabando.</span></p>
         <p className="f-serif mt-8 text-[clamp(1.3rem,2.4vw,2rem)] italic text-[#E8F0EA]">Nuestro desafío es construir el que sigue.</p>
         <div className="mt-20 border-t border-line pt-14">
           <div className="flex items-end gap-5">
@@ -2243,7 +2265,7 @@ function Conclusion({ go }) {
    VISTA · HOME
    ================================================================== */
 // Fondo narrativo: oscuro arriba, cada vez más verde y luminoso al bajar, hasta el cierre en verde bosque.
-const FONDOS = [['inicio', '#040806'], ['hipersticion', '#040806'], ['cine', '#040806'], ['imaginacion', '#060C08'], ['historia', '#080F0B'], ['hamster', '#0A140E'], ['meadows', '#112017'], ['pradera', '#1E2B22'], ['somos-mas', '#1E2B22'], ['ficciones', '#1E2B22']];
+const FONDOS = [['inicio', '#040806'], ['hipersticion', '#040806'], ['cine', '#040806'], ['ficciones', '#060C08'], ['historia', '#080F0B'], ['hamster', '#0A140E'], ['meadows', '#112017'], ['pradera', '#1E2B22'], ['somos-mas', '#1E2B22'], ['imaginacion', '#1E2B22']];
 const FONDO_CIERRE = '#2E6B45';
 const hexRgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
 const mezclarColor = (a, b, t) => '#' + hexRgb(a).map((x, i) => Math.round(x + (hexRgb(b)[i] - x) * t).toString(16).padStart(2, '0')).join('');
@@ -2276,7 +2298,7 @@ function useFondoNarrativo() {
         }
       }
       // Cierre: el fondo general pasa al verde bosque cuando la última sección (09) salió de pantalla
-      const ultima = document.getElementById('ficciones');
+      const ultima = document.getElementById('imaginacion');
       if (ultima && ultima.getBoundingClientRect().bottom <= 0) color = FONDO_CIERRE;
       if (color !== ultimo) { root.style.setProperty('--bg-scroll', color); ultimo = color; }
     };
@@ -2306,7 +2328,7 @@ function Home({ go }) {
       <Hero />
       <QueEsHipersticion />
       <Cine />
-      <Bisagra />
+      <Ficciones />
       <LaHistoria />
       <HamsterSection />
       <Puente narrativo>A comienzos de los 70’, la ciencia analizó las tendencias del modelo socioeconómico mundial para medir el punto en que su crecimiento exponencial chocaría contra los márgenes de la biósfera. Décadas después, los datos históricos reales mostraron una alineación notable con aquella proyección.</Puente>
@@ -2316,7 +2338,7 @@ function Home({ go }) {
         <TextoDestacado className="mx-auto">Una economía que ignora los límites de la naturaleza no es realista. Es una ficción.</TextoDestacado>
       </div>
       <SomosMas />
-      <Ficciones />
+      <Bisagra />
       <Conclusion go={go} />
     </main>
   );
