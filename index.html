@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Hiperstición</title>
   <meta name="description" content="Muchas de las cosas que hoy vivimos primero fueron ficción. Si el futuro también se escribe, ¿qué historia nos estamos contando?" />
   <meta name="theme-color" content="#040806" />
@@ -159,6 +160,15 @@ p, li, blockquote, figcaption, dd { text-wrap: pretty; }
 h1, h2, h3, h4, .destacado { text-wrap: balance; }
 /* Frase que en escritorio va en una sola línea (en celular corta de forma natural) */
 @media (min-width: 1024px) { .una-linea { white-space: nowrap; text-wrap: nowrap; } }
+/* Portada: horizonte */
+.horizonte-piso { position: absolute; left: -60%; right: -60%; bottom: 0; height: 320%; transform: perspective(380px) rotateX(64deg); transform-origin: 50% 100%;
+  background-image: linear-gradient(rgba(124,198,138,.6) 1.5px, transparent 1.5px), linear-gradient(90deg, rgba(124,198,138,.6) 1.5px, transparent 1.5px);
+  background-size: 80px 60px; -webkit-mask-image: linear-gradient(to top, #000 70%, rgba(0,0,0,.35) 100%); mask-image: linear-gradient(to top, #000 70%, rgba(0,0,0,.35) 100%);
+  animation: horizonte-avanza 2.6s linear infinite; }
+.horizonte-linea { position: absolute; left: 0; right: 0; bottom: 94px; height: 1px; background: rgba(124,198,138,.8); box-shadow: 0 0 40px 10px rgba(124,198,138,.25); animation: horizonte-brilla 4s ease-in-out infinite; }
+@keyframes horizonte-avanza { from { background-position: 0 0; } to { background-position: 0 60px; } }
+@keyframes horizonte-brilla { 0%, 100% { opacity: .65; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .horizonte-piso, .horizonte-linea { animation: none; } }
 .f-mono { font-family: var(--f-mono); }
 .label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .measure { max-width: 65ch; }
@@ -900,7 +910,10 @@ function SideNav() {
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
-  const jump = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const jump = (id) => {
+    if (id === 'inicio') window.dispatchEvent(new Event('hiper:inicio'));
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
   return (
     <nav aria-label="Secciones" className="side-nav fixed right-3 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-2.5 lg:flex">
       {HOME_SECTIONS.map((s) => {
@@ -939,22 +952,101 @@ function Footer({ go }) {
 /* ==================================================================
    SECCIÓN · INICIO
    ================================================================== */
+// Portada: grilla menta en perspectiva que avanza lento hacia el horizonte
+function Horizonte() {
+  return (
+    <div className="horizonte pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[20%] min-h-[120px] overflow-hidden" aria-hidden="true">
+      <div className="horizonte-piso" />
+      <div className="horizonte-linea" />
+    </div>
+  );
+}
+
+// Portada: el título aparece como caracteres que se van acomodando hasta formar la frase.
+// Cada letra ocupa su lugar desde el principio, así el título no salta. Con "reducir movimiento" se ve directo.
+const TITULO_PORTADA = [['Una', 'ficción', 'que', 'se', 'vuelve'], ['real.']];
+const GLIFOS = '01<>/\\#*+=_-:%$';
+function TituloDecodificado() {
+  const reduced = usePrefersReducedMotion();
+  const total = TITULO_PORTADA.flat().join('').length;
+  const [t, setT] = useState(reduced ? Infinity : 0);
+  const [ciclo, setCiclo] = useState(0);
+  const ref = useRef(null);
+  // Se repite al volver a la portada: al tocar Inicio o el logo, o al scrollear de nuevo hasta arriba
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || reduced) return undefined;
+    let salio = false;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) salio = true;
+      else if (salio) { salio = false; setCiclo((c) => c + 1); }
+    });
+    io.observe(el);
+    const inicio = () => { const r = el.getBoundingClientRect(); if (r.bottom > 0 && r.top < window.innerHeight) setCiclo((c) => c + 1); };
+    window.addEventListener('hiper:inicio', inicio);
+    return () => { io.disconnect(); window.removeEventListener('hiper:inicio', inicio); };
+  }, [reduced]);
+  const orden = useMemo(() => {
+    let sem = 11;
+    const rnd = () => (sem = (sem * 16807) % 2147483647) / 2147483647;
+    return Array.from({ length: total }, (_, i) => 350 + i * 48 + rnd() * 260);
+  }, [total]);
+  const fin = Math.max(...orden) + 120;
+  useEffect(() => {
+    if (reduced) { setT(Infinity); return undefined; }
+    setT(0);
+    let raf; let t0;
+    const paso = (now) => {
+      if (t0 === undefined) t0 = now;
+      const dt = now - t0;
+      setT(dt);
+      if (dt < fin) raf = requestAnimationFrame(paso);
+    };
+    raf = requestAnimationFrame(paso);
+    return () => cancelAnimationFrame(raf);
+  }, [reduced, fin, ciclo]);
+  if (t >= fin) return <span ref={ref}>{TITULO_PORTADA[0].join(' ')} <span className="text-accent">{TITULO_PORTADA[1][0]}</span></span>;
+  const cuadro = Math.floor(t / 70);
+  let k = 0;
+  const palabra = (w, acento) => (
+    <span key={w} className="whitespace-nowrap">
+      {[...w].map((ch) => {
+        const i = k++;
+        const listo = t >= orden[i];
+        const g = GLIFOS[(i * 7 + cuadro * 3) % GLIFOS.length];
+        return (
+          <span key={i} className="relative" aria-hidden="true">
+            <span style={{ opacity: listo ? 1 : 0 }} className={cx('transition-opacity duration-200', acento && 'text-accent')}>{ch}</span>
+            {!listo && (
+              <span className="f-mono absolute inset-0 flex items-center justify-center text-[0.62em] font-normal text-leaf" style={{ textShadow: '0 0 14px rgba(124,198,138,0.7)' }}>{g}</span>
+            )}
+          </span>
+        );
+      })}
+    </span>
+  );
+  return (
+    <span ref={ref}>
+      {TITULO_PORTADA[0].map((w, j) => <React.Fragment key={w}>{palabra(w, false)}{j < TITULO_PORTADA[0].length - 1 ? ' ' : ''}</React.Fragment>)}
+      {' '}{palabra(TITULO_PORTADA[1][0], true)}
+    </span>
+  );
+}
+
 function Hero() {
   return (
-    <section id="inicio" className="glow-hero relative px-4 pb-20 pt-32 md:px-8 md:pt-40">
-      <div className="mx-auto w-full max-w-[1400px]">
+    <section id="inicio" className="glow-hero relative overflow-hidden px-4 pb-20 pt-32 md:px-8 md:pt-40">
+      <Horizonte />
+      <div className="relative z-[1] mx-auto w-full max-w-[1400px]">
         <motion.div initial={{ opacity: 0.001, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
           className="f-mono text-[13px] uppercase tracking-[0.32em] text-leaf max-[480px]:text-[12px] max-[480px]:tracking-[0.18em] max-[480px]:whitespace-nowrap">
           Hiperstición · Ensayo interactivo
           {/* Tiempo de lectura: en la misma línea desde md; en pantallas chicas va debajo de la bajada */}
           <span className="hidden text-muted md:inline"> · <Clock size={12} strokeWidth={1.75} aria-hidden="true" className="mr-2 inline-block align-[-1px]" />Lectura de 15 min</span>
         </motion.div>
-        <motion.h1
-          initial={{ opacity: 0.001, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
-          className="f-display mt-6 max-w-[12ch] text-[clamp(3.2rem,9.5vw,9rem)]"
-        >
-          Una ficción que se vuelve <span className="text-accent">real.</span>
-        </motion.h1>
+        <h1 className="f-display mt-6 max-w-[12ch] text-[clamp(3.2rem,9.5vw,9rem)]" aria-label="Una ficción que se vuelve real.">
+          <TituloDecodificado />
+        </h1>
         <motion.p
           initial={{ opacity: 0.001, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
           className="f-serif mt-6 max-w-[48ch] text-[clamp(1.1rem,1.8vw,1.5rem)] leading-relaxed text-fg/80 text-pretty"
@@ -1169,7 +1261,7 @@ function W3Tooltip({ active, payload, label, focusKey }) {
   );
 }
 
-function World3Chart({ selected, hovered, setHovered, onSelect }) {
+function World3Chart({ selected, hovered, setHovered, onSelect, compacto = false, ampliado = false }) {
   const wrapRef = useRef(null);
   const inView = useInView(wrapRef, { once: true, margin: '-15% 0px' });
   const focus = hovered || selected;
@@ -1177,10 +1269,10 @@ function World3Chart({ selected, hovered, setHovered, onSelect }) {
   return (
     <div ref={wrapRef} className="relative">
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-between pl-12 pr-4 md:pr-6">
-        <span className="label inline-flex items-center gap-1.5"><ArrowLeft size={12} /> Simulación · antes de hoy</span>
-        <span className="label inline-flex items-center gap-1.5">Simulación · después de hoy <ArrowRight size={12} /></span>
+        <span className="label inline-flex items-center gap-1.5 whitespace-nowrap"><ArrowLeft size={12} /> <span className="hidden sm:inline">Simulación · </span>antes de hoy</span>
+        <span className="label inline-flex items-center gap-1.5 whitespace-nowrap"><span className="hidden sm:inline">Simulación · </span>después de hoy <ArrowRight size={12} /></span>
       </div>
-      <div className="h-[360px] w-full pt-6 md:h-[470px]" onMouseLeave={() => setHovered(null)}>
+      <div className={cx('w-full pt-6', ampliado ? 'h-[min(62vh,620px)]' : compacto ? 'h-[280px] sm:h-[320px] lg:h-[380px]' : 'h-[360px] md:h-[470px]')} onMouseLeave={() => setHovered(null)}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart key={inView ? 'in' : 'out'} data={WORLD3} margin={{ top: 22, right: 16, bottom: 8, left: -12 }}>
             <CartesianGrid stroke="#13211b" vertical={false} />
@@ -1198,7 +1290,7 @@ function World3Chart({ selected, hovered, setHovered, onSelect }) {
                   dot={isFocus ? (d) => (d.payload.year % 10 === 0 ? <circle key={d.key} cx={d.cx} cy={d.cy} r={2.5} fill={v.color} /> : <g key={d.key} />) : false}
                   activeDot={focus && !isFocus ? false : { r: 4.5, stroke: '#000', strokeWidth: 2 }}
                   isAnimationActive={inView} animationDuration={1800} animationEasing="ease-out"
-                  onMouseEnter={() => setHovered(v.key)} onClick={() => onSelect(v.key)}
+                  onMouseEnter={() => setHovered(v.key)} onClick={() => onSelect && onSelect(v.key)}
                   style={{ cursor: 'pointer', transition: 'stroke-width .25s, stroke-opacity .25s' }}
                 />
               );
@@ -1210,6 +1302,15 @@ function World3Chart({ selected, hovered, setHovered, onSelect }) {
           </LineChart>
         </ResponsiveContainer>
       </div>
+      {!compacto && !ampliado && <NotaSimulacion />}
+    </div>
+  );
+}
+
+// Explicación de la simulación (va adentro del informe completo)
+function NotaSimulacion() {
+  return (
+    <>
       <p className="mt-3 max-w-[70ch] f-serif text-[clamp(0.98rem,1.2vw,1.1rem)] italic leading-snug text-fg/75">
         Para lograrlo, el estudio del MIT generó una simulación matemática sistémica que hizo interactuar cinco grandes variables: población, producción industrial, alimentos, recursos no renovables y contaminación.
       </p>
@@ -1221,20 +1322,28 @@ function World3Chart({ selected, hovered, setHovered, onSelect }) {
         Recursos no renovables, producción industrial y contaminación persistente son variables propias del modelo, sin una serie real oficial equivalente.
       </p>
       </Desplegable>
-    </div>
+    </>
   );
 }
 
-function VariablePanel({ v }) {
+function VariablePanel({ v, onClose }) {
   return (
     <AnimatePresence mode="wait">
       <motion.article
         key={v.key} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}
         className="border border-line bg-card" style={{ borderTopColor: v.color, borderTopWidth: 3 }}
       >
-        <header className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line px-5 py-4">
-          <h3 className="f-cond text-[clamp(1.4rem,2.6vw,2rem)]" style={{ color: v.color }}>{v.nombre}</h3>
-          <span className="label">{v.linea} · <span className="text-fg">{v.modelo}</span></span>
+        <header className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2 border-b border-line px-5 py-4">
+          <div className="min-w-0">
+            <h3 className="f-cond text-[clamp(1.4rem,2.6vw,2rem)]" style={{ color: v.color }}>{v.nombre}</h3>
+            <span className="label">{v.linea} · <span className="text-fg">{v.modelo}</span></span>
+          </div>
+          {onClose && (
+            <button type="button" onClick={onClose} aria-label={`Cerrar la ficha de ${v.nombre}`}
+              className="inline-flex shrink-0 items-center gap-2 border border-line px-3 py-1.5 f-mono text-[11px] uppercase tracking-[0.12em] text-fg transition-colors hover:border-fg">
+              Cerrar <X size={14} aria-hidden="true" />
+            </button>
+          )}
         </header>
         <p className="border-b border-line px-5 py-4 f-mono text-[12.5px] leading-relaxed text-fg/85">{v.resumen}</p>
         <div className="grid gap-px bg-line md:grid-cols-3">
@@ -1257,43 +1366,148 @@ function VariablePanel({ v }) {
   );
 }
 
-function Meadows() {
-  const [selected, setSelected] = useState(null); // ficha cerrada hasta que se elige una variable
+// Informe Meadows en grande: gráfico ampliado + fichas + nota y fuentes.
+// Se sale con "Volver al ensayo", con la X, con Esc, tocando afuera o con el botón Atrás del celular.
+function GraficoAmpliado({ abierto, onClose }) {
   const [hovered, setHovered] = useState(null);
+  const [sel, setSel] = useState(null);
+  const fichaRef = useRef(null);
+  const cerrarRef = useRef(onClose);
+  cerrarRef.current = onClose;
+  useEffect(() => {
+    if (!abierto) return undefined;
+    let porAtras = false;
+    const tecla = (e) => { if (e.key === 'Escape') cerrarRef.current(); };
+    const atras = () => { porAtras = true; cerrarRef.current(); };
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    try { window.history.pushState({ informeMeadows: true }, ''); } catch (e) { /* sin historial */ }
+    window.addEventListener('keydown', tecla);
+    window.addEventListener('popstate', atras);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener('keydown', tecla);
+      window.removeEventListener('popstate', atras);
+      if (!porAtras) { try { if (window.history.state && window.history.state.informeMeadows) window.history.back(); } catch (e) { /* nada */ } }
+    };
+  }, [abierto]);
+  useEffect(() => { if (!abierto) setSel(null); }, [abierto]);
+  const elegir = (k) => {
+    setSel((s) => (s === k ? null : k));
+    setTimeout(() => { if (fichaRef.current) fichaRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
+  };
+  const Volver = ({ className }) => (
+    <button type="button" onClick={onClose}
+      className={cx('inline-flex shrink-0 items-center gap-2 border border-leaf px-3 py-2 f-mono text-[11px] uppercase tracking-[0.12em] text-leaf transition-colors hover:bg-leaf hover:text-black', className)}>
+      <ArrowLeft size={14} aria-hidden="true" /> Volver al ensayo
+    </button>
+  );
+  return (
+    <AnimatePresence>
+      {abierto && (
+        <motion.div key="ampliado" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/85 p-3 backdrop-blur-sm md:p-8"
+          onClick={onClose} role="dialog" aria-modal="true" aria-label="Informe Meadows">
+          <motion.div initial={{ scale: 0.96, y: 12 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.97, y: 8 }} transition={{ duration: 0.3, ease: [0.2, 0.7, 0.2, 1] }}
+            className="relative my-auto w-full max-w-[1200px] border border-line bg-surface px-4 pb-6 md:px-6 md:pb-8" onClick={(e) => e.stopPropagation()}>
+            <div className="sticky top-0 z-10 -mx-4 flex items-center justify-between gap-4 border-b border-line bg-surface px-4 py-3 md:-mx-6 md:px-6">
+              <Volver />
+              <span className="label hidden text-right md:block">El Informe Meadows · modelo World3, corrida estándar</span>
+              <button type="button" onClick={onClose} autoFocus aria-label="Cerrar el informe"
+                className="inline-flex h-9 w-9 shrink-0 items-center justify-center border border-line text-fg transition-colors hover:border-fg">
+                <X size={18} aria-hidden="true" />
+              </button>
+            </div>
+            <NotaSimulacion />
+            <World3Chart ampliado selected={sel} hovered={hovered} setHovered={setHovered} onSelect={elegir} />
+            <div className="mt-3 flex flex-wrap gap-2" aria-label="Variables del modelo World3">
+              {VARIABLES.map((x) => (
+                <button key={x.key} type="button" onClick={() => elegir(x.key)} aria-pressed={sel === x.key}
+                  onMouseEnter={() => setHovered(x.key)} onMouseLeave={() => setHovered(null)}
+                  className="f-mono flex items-center gap-2 border px-2.5 py-1.5 text-[11px] uppercase tracking-[0.1em] transition-colors"
+                  style={sel === x.key ? { background: x.color, borderColor: x.color, color: '#000' } : { borderColor: 'var(--line)', color: 'var(--fg)' }}>
+                  <span className="inline-block h-2 w-2" style={{ background: sel === x.key ? '#000' : x.color }} />{x.boton}
+                </button>
+              ))}
+            </div>
+            <div ref={fichaRef} className="scroll-mb-6">
+              {sel ? <div className="mt-4"><VariablePanel v={VAR_BY_KEY[sel]} onClose={() => setSel(null)} /></div>
+                : <p className="label mt-4">Tocá una variable para abrir su ficha.</p>}
+            </div>
+            <Fuentes lista={FUENTES_MEADOWS} id="fuentes-meadows" className="mt-6" />
+            <Validacion soloHerrington />
+            <div className="mt-8 flex justify-center border-t border-line pt-6"><Volver /></div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+// Invitación a abrir el informe completo
+function InvitacionInforme({ abierto, onToggle, className }) {
+  return (
+    <div className={className}>
+      <p className="max-w-[40ch] text-[clamp(1rem,1.3vw,1.1rem)] leading-relaxed text-fg/80">
+        <strong className="font-bold text-fg">Cinco curvas, cinco variables.</strong> Tocá cualquiera y vas a ver qué mide, por qué sube o cae y qué dicen los datos reales.
+      </p>
+      <button
+        type="button" onClick={onToggle} aria-haspopup="dialog"
+        className={cx('group mt-4 inline-flex items-center gap-3 border px-4 py-2.5 f-mono text-[12px] uppercase tracking-[0.12em] transition-colors',
+          abierto ? 'border-leaf bg-leaf text-black' : 'border-line text-fg hover:border-leaf hover:text-leaf')}
+      >
+        [ Explorar el informe
+        <motion.span aria-hidden="true" animate={{ rotate: abierto ? 45 : 0 }} transition={{ duration: 0.25 }} className="inline-flex leading-none"><Plus size={16} /></motion.span>
+        ]
+      </button>
+    </div>
+  );
+}
+
+function Meadows() {
+  const [hovered, setHovered] = useState(null);
+  const [ampliado, setAmpliado] = useState(false);
+  const abrir = () => setAmpliado(true);
   return (
     <section id="meadows" className="glow-data relative px-4 pb-24 pt-8 md:px-8 md:pb-32">
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-[1400px] lg:pr-[max(0px,calc(185px_-_max(32px,(100vw_-_1400px)/2)))]">
         <SectionLabel index="06" sello="limite">El núcleo de datos</SectionLabel>
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-end">
-          <h2 className="f-display text-[clamp(2.4rem,6.5vw,6rem)]">El Informe Meadows</h2>
+
+        {/* Resumen: se entiende en una oración y un vistazo al gráfico. El detalle va en el informe completo. */}
+        <div className="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-14">
           <div className="min-w-0">
-            <p className="f-cond text-[clamp(1.6rem,2.8vw,2.4rem)] leading-tight">(MIT, 1972)</p>
-            <p className="label mt-3">Estudio del MIT patrocinado por el Club de Roma y la Fundación Volkswagen · “Los límites al crecimiento” · modelo World3</p>
+            <h2 className="f-display text-[clamp(2.4rem,5vw,5rem)]">El Informe Meadows</h2>
+            <p className="f-cond mt-3 text-[clamp(1.4rem,2.2vw,2rem)] leading-tight">(MIT, 1972)</p>
+            <p className="label mt-3 max-w-[48ch] leading-relaxed">Encargado por el Club de Roma, con fondos de la Fundación Volkswagen · “Los límites al crecimiento” · modelo World3</p>
+            <p className="destacado f-serif mt-8 max-w-[34ch] text-[clamp(1.3rem,2.2vw,1.9rem)] leading-snug">
+              El MIT simuló qué pasaría si la población, la industria y el consumo seguían creciendo al mismo ritmo.
+            </p>
+            <InvitacionInforme abierto={ampliado} onToggle={abrir} className="mt-8 hidden lg:block" />
           </div>
-        </div>
-
-        <div className="mt-14 border-t border-line pt-8">
-          <World3Chart selected={selected} hovered={hovered} setHovered={setHovered} onSelect={setSelected} />
-          <div className="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Variables del modelo World3">
-            {VARIABLES.map((x) => (
-              <button
-                key={x.key} type="button" role="tab" aria-selected={selected === x.key} aria-expanded={selected === x.key}
-                onClick={() => setSelected((s) => (s === x.key ? null : x.key))} onMouseEnter={() => setHovered(x.key)} onMouseLeave={() => setHovered(null)}
-                onFocus={() => setHovered(x.key)} onBlur={() => setHovered(null)}
-                className="f-mono flex items-center gap-2 border px-3 py-2 text-[12px] uppercase tracking-[0.1em] transition-colors"
-                style={selected === x.key ? { background: x.color, borderColor: x.color, color: '#000' } : { borderColor: 'var(--line)', color: 'var(--fg)' }}
-              >
-                <span className="inline-block h-2 w-2" style={{ background: selected === x.key ? '#000' : x.color }} />
-                [ {x.boton} ]
+          <div className="min-w-0 border-t border-line pt-6 lg:border-t-0 lg:pt-0">
+            {/* Tocar el gráfico también lo abre en grande */}
+            <div onClick={abrir} className="cursor-zoom-in" aria-hidden="true">
+              <World3Chart compacto selected={null} hovered={hovered} setHovered={setHovered} />
+            </div>
+            {/* Leyenda simple y botón para ampliar, debajo del gráfico */}
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+              <ul className="flex flex-wrap gap-x-4 gap-y-1.5" aria-label="Referencias del gráfico">
+                {VARIABLES.map((x) => (
+                  <li key={x.key} className="label inline-flex items-center gap-1.5 text-fg/80"><span className="inline-block h-2 w-2" style={{ background: x.color }} />{x.boton}</li>
+                ))}
+              </ul>
+              <button type="button" onClick={abrir} aria-haspopup="dialog"
+                className="hidden shrink-0 items-center gap-2 border border-line px-3 py-1.5 f-mono text-[11px] uppercase tracking-[0.12em] text-fg/85 transition-colors hover:border-leaf hover:text-leaf lg:inline-flex">
+                [ Ampliar el gráfico <Plus size={13} aria-hidden="true" /> ]
               </button>
-            ))}
+            </div>
+            <InvitacionInforme abierto={ampliado} onToggle={abrir} className="mt-8 lg:hidden" />
           </div>
-          {selected ? <div className="mt-6"><VariablePanel v={VAR_BY_KEY[selected]} /></div> : <p className="label mt-6">Tocá una variable para abrir su ficha.</p>}
-          <Fuentes lista={FUENTES_MEADOWS} id="fuentes-meadows" className="mt-6" />
         </div>
 
-        <Validacion />
+        <CierreMeadows />
       </div>
+      <GraficoAmpliado abierto={ampliado} onClose={() => setAmpliado(false)} />
     </section>
   );
 }
@@ -1381,14 +1595,16 @@ function Desplegable({ etiqueta, id, className, children }) {
 }
 
 // Frase destacada + revalidación desplegable
-function Validacion() {
+function Validacion({ soloHerrington = false }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="mt-24 border-t border-line pt-16">
+    <div className={soloHerrington ? 'mt-10' : 'mt-24 border-t border-line pt-16'}>
+      {!soloHerrington && (
       <p className="f-display max-w-[20ch] text-[clamp(2.2rem,5.6vw,5.4rem)]">
         No adivinaron el futuro: calcularon los <span className="text-leaf">límites geofísicos del planeta.</span>
       </p>
-      <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+      )}
+      <div className={cx('flex flex-wrap items-center gap-x-8 gap-y-4', !soloHerrington && 'mt-8')}>
         <button
           type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="herrington"
           className={cx('group inline-flex items-center gap-3 border px-4 py-2.5 f-mono text-[12px] uppercase tracking-[0.12em] transition-colors',
@@ -1429,6 +1645,22 @@ function Validacion() {
           </motion.div>
         )}
       </AnimatePresence>
+      {!soloHerrington && (
+      <p className="mt-20 max-w-[34ch] border-t border-line pt-12 f-cond text-[clamp(1.6rem,3vw,2.6rem)] leading-tight">
+        El problema no era la falta de datos empíricos, sino la <span className="text-accent">dominancia del relato del crecimiento ilimitado.</span>
+      </p>
+      )}
+    </div>
+  );
+}
+
+// Cierre de Meadows a la vista (sin la revalidación, que va adentro del informe completo)
+function CierreMeadows() {
+  return (
+    <div className="mt-24 border-t border-line pt-16">
+      <p className="f-display max-w-[20ch] text-[clamp(2.2rem,5.6vw,5.4rem)]">
+        No adivinaron el futuro: calcularon los <span className="text-leaf">límites geofísicos del planeta.</span>
+      </p>
       <p className="mt-20 max-w-[34ch] border-t border-line pt-12 f-cond text-[clamp(1.6rem,3vw,2.6rem)] leading-tight">
         El problema no era la falta de datos empíricos, sino la <span className="text-accent">dominancia del relato del crecimiento ilimitado.</span>
       </p>
@@ -1604,13 +1836,15 @@ function HamsterSection() {
         <div className="sticky top-0 h-[100svh] overflow-hidden" style={{ '--tl': `${alturas.tl}px`, '--zh': `${alturas.zh}px` }}>
           <div className="absolute inset-0 opacity-50" aria-hidden="true"
             style={{ backgroundImage: 'linear-gradient(#0f1d17 1px, transparent 1px), linear-gradient(90deg, #0f1d17 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
-          <div className="absolute inset-x-0 bottom-[calc(var(--tl)+var(--zh))] top-16 transition-[bottom] duration-300 md:top-20">
+          <div className="absolute inset-x-0 mx-auto max-w-[min(92vw,980px)] bottom-[calc(var(--tl)+var(--zh))] top-16 transition-[bottom] duration-300 md:top-20 xl:max-w-[900px]">
             <HamsterScene p={p} grainsLeft={grainsLeft} eaten={eaten} chewing={phase === 0} />
           </div>
 
           {/* Celular y tablet: zócalo con la fase actual, sobre la línea de tiempo */}
-          <div ref={zocaloRef} className="absolute inset-x-0 bottom-[var(--tl)] z-10 flex flex-col gap-3 border-t border-line bg-black/85 px-4 py-3 backdrop-blur md:px-8 xl:hidden">
-            <div>
+          <div ref={zocaloRef} className="absolute inset-x-0 bottom-[var(--tl)] z-10 flex flex-col gap-3 border-t border-line bg-black/85 px-4 pb-3 backdrop-blur md:px-8 xl:hidden">
+            {/* El bloque de texto que hay que leer va pintado; al cambiar de fase se vuelve a pintar */}
+            <motion.div key={phase} initial={{ backgroundColor: 'rgba(255,87,34,0.32)' }} animate={{ backgroundColor: 'rgba(255,87,34,0.14)' }} transition={{ duration: 1 }}
+              className="bg-[rgba(255,87,34,0.14)] -mx-4 px-4 pb-4 pt-3 md:-mx-8 md:px-8">
               <div className="flex flex-wrap gap-1.5">
                 {HAMSTER_FASES.map((f, i) => (
                   <span key={f} className={cx('f-mono px-1.5 py-0.5 text-[9.5px] uppercase tracking-[0.06em] transition-colors', i === phase ? 'bg-accent text-black' : 'border border-line text-muted')}>
@@ -1620,12 +1854,12 @@ function HamsterSection() {
               </div>
               <AnimatePresence mode="wait">
                 <motion.p key={phase} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}
-                  className="f-serif mt-3 text-[clamp(1rem,1.5vw,1.2rem)] leading-snug">
+                  className="f-serif mt-3 text-[clamp(1.15rem,2.2vw,1.35rem)] leading-snug">
                   {phase > 0 && <span className="text-muted">… </span>}{HAMSTER_TEXTO[phase]}
                 </motion.p>
               </AnimatePresence>
-            </div>
-            <div className="flex flex-wrap items-baseline gap-x-3 border-t border-line pt-2">
+            </motion.div>
+            <div className="flex flex-wrap items-baseline gap-x-3">
               <div className="label tnum">Semana {String(week).padStart(2, '0')} / 52</div>
               <div className="f-cond text-[clamp(1.3rem,2.6vw,2.2rem)] tnum">{formatPeso(peso)}</div>
               <div className={cx('f-mono mt-1 w-full text-[10.5px] leading-snug transition-colors', natural ? 'text-leaf' : 'text-accent')}>
@@ -1641,23 +1875,23 @@ function HamsterSection() {
               (su texto ocupa lugar aunque esté oculto, así el zócalo no cambia de alto mientras se scrollea).
               En pantallas grandes deja lugar a la derecha para el menú lateral de secciones. */}
           <div ref={zocaloDeskRef} className="absolute inset-x-0 bottom-[var(--tl)] z-10 hidden border-t border-line bg-black/85 backdrop-blur xl:block">
-            <div className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)_minmax(0,1.1fr)_13rem] gap-8 px-8 py-5 xl:pr-[max(2rem,calc(210px_-_max(0px,(100vw_-_1400px)/2)))]">
+            <div className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)_minmax(0,1.1fr)_13rem] px-8 xl:pr-[max(2rem,calc(210px_-_max(0px,(100vw_-_1400px)/2)))]">
               {HAMSTER_FASES.map((f, i) => {
                 const estado = i < phase ? 'pasada' : i === phase ? 'actual' : 'futura';
                 return (
-                  <div key={f} className={cx('min-w-0 border-l pl-5 transition-colors duration-500', estado === 'actual' ? 'border-accent' : 'border-line')}>
+                  <div key={f} className={cx('min-w-0 border-l px-6 py-5 transition-colors duration-700', estado === 'actual' ? 'border-accent bg-[rgba(255,87,34,0.14)]' : 'border-line')}>
                     <span className={cx('inline-block whitespace-nowrap f-mono px-2 py-0.5 text-[10px] uppercase tracking-[0.08em] transition-colors duration-500', estado === 'actual' ? 'bg-accent text-black' : 'border border-line text-muted')}>
                       Fase {i + 1} · {f}
                     </span>
                     <p aria-hidden={estado === 'futura' || undefined}
-                      className={cx('f-serif mt-3 text-[clamp(0.98rem,1.1vw,1.1rem)] leading-snug transition-opacity duration-500',
+                      className={cx('f-serif mt-3 text-[clamp(1.1rem,1.3vw,1.3rem)] leading-snug transition-opacity duration-500',
                         estado === 'actual' ? 'opacity-100' : estado === 'pasada' ? 'opacity-40' : 'opacity-0')}>
                       {i > 0 && <span className="text-muted">… </span>}{HAMSTER_TEXTO[i]}
                     </p>
                   </div>
                 );
               })}
-              <div className="border-l border-line pl-5 text-right">
+              <div className="border-l border-line py-5 pl-5 text-right">
                 <div className="label tnum">Semana {String(week).padStart(2, '0')} / 52</div>
                 <div className="f-cond mt-1 text-[clamp(1.3rem,2.6vw,2.2rem)] tnum">{formatPeso(peso)}</div>
                 <div className={cx('f-mono mt-2 border-t border-line pt-2 text-[10.5px] leading-snug transition-colors', natural ? 'text-leaf' : 'text-accent')}>
@@ -1757,6 +1991,7 @@ function FilmClip({ f, playing }) {
 }
 
 function FilmCard({ f, active, onActivate, inView, reduced, oculta }) {
+  const [detalle, setDetalle] = useState(false);
   return (
     <article
       className={cx('film relative min-h-[132px] min-w-0 cursor-pointer overflow-hidden border bg-black lg:min-h-0 lg:basis-0', oculta ? 'pointer-events-none border-transparent' : active ? 'border-accent' : 'border-line')}
@@ -1779,17 +2014,30 @@ function FilmCard({ f, active, onActivate, inView, reduced, oculta }) {
         <AnimatePresence initial={false}>
           {active && (
             <motion.div key="body" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.4 }} className="overflow-hidden">
-              <p className="f-serif max-w-[46ch] text-[15px] italic text-fg/85">{f.sinopsis}</p>
-              <div className="mt-4 grid gap-3 border-t border-white/15 pt-4 sm:grid-cols-2">
-                <div className="min-w-0">
-                  <div className="label mb-1 text-accent">Lo que imaginó</div>
-                  <p className="text-[14.5px]">{f.profecia}</p>
-                </div>
-                <div className="min-w-0">
-                  <div className="label mb-1">Lo que hoy existe</div>
-                  <p className="text-[14.5px] text-fg/85">{f.hoy}</p>
-                </div>
-              </div>
+              <p className="f-serif max-w-[44ch] text-[clamp(1.05rem,1.4vw,1.2rem)] leading-snug text-fg/90">{f.sinopsis}</p>
+              <button type="button" aria-expanded={detalle}
+                onClick={(e) => { e.stopPropagation(); onActivate(); setDetalle(!detalle); }}
+                className="mt-4 inline-flex items-center gap-2 border-t border-white/15 pt-3 f-mono text-[11px] uppercase tracking-[0.12em] text-accent transition-colors hover:text-fg">
+                [ Lo que imaginó · Lo que hoy existe
+                <motion.span aria-hidden="true" animate={{ rotate: detalle ? 45 : 0 }} transition={{ duration: 0.25 }} className="inline-flex leading-none"><Plus size={14} /></motion.span>
+                ]
+              </button>
+              <AnimatePresence initial={false}>
+                {detalle && (
+                  <motion.div key="detalle" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35 }} className="overflow-hidden">
+                    <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                      <div className="min-w-0">
+                        <div className="label mb-1 text-accent">Lo que imaginó</div>
+                        <p className="text-[15px] leading-relaxed">{f.profecia}</p>
+                      </div>
+                      <div className="min-w-0">
+                        <div className="label mb-1">Lo que hoy existe</div>
+                        <p className="text-[15px] leading-relaxed text-fg/85">{f.hoy}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           )}
         </AnimatePresence>
@@ -1835,16 +2083,34 @@ function Circuito() {
    ================================================================== */
 const TARJETA_FONDO = { background: 'linear-gradient(160deg, rgba(47,125,87,.12), var(--surface) 45%)', borderTop: '2px solid var(--green)' };
 
-function Tarjeta({ titulo, icono, contexto, children, className, delay = 0 }) {
+function Tarjeta({ titulo, icono, contexto, children, className, delay = 0, desplegable, grande }) {
+  // desplegable: texto del botón. Si está, el contenido (children) queda cerrado hasta tocarlo.
+  const [abierta, setAbierta] = useState(false);
   return (
     <motion.article
       initial={{ opacity: 0.25, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-10% 0px' }} transition={{ duration: 0.6, delay }}
       className={cx('flex min-w-0 flex-col border border-line p-6 md:p-7', className)} style={TARJETA_FONDO}
     >
       {icono && <span className="mb-4 text-leaf" aria-hidden="true">{icono}</span>}
-      {titulo && <h3 className="f-cond text-[clamp(1.5rem,2.2vw,1.9rem)] leading-tight">{titulo}</h3>}
-      {contexto && <p className="mt-3 text-[15px] leading-relaxed text-fg/80">{contexto}</p>}
-      {children}
+      {titulo && <h3 className={cx('f-cond text-[clamp(1.5rem,2.2vw,1.9rem)] leading-tight', desplegable && 'text-leaf')}>{titulo}</h3>}
+      {contexto && <p className={cx('mt-3 leading-relaxed', desplegable || grande ? 'text-[clamp(1.06rem,1.35vw,1.2rem)] text-fg/90' : 'text-[15px] text-fg/80')}>{contexto}</p>}
+      {desplegable ? (
+        <>
+          <button type="button" onClick={() => setAbierta(!abierta)} aria-expanded={abierta}
+            className="mt-5 inline-flex items-center gap-2 self-start f-mono text-[11px] uppercase tracking-[0.12em] text-accent transition-colors hover:text-fg">
+            [ {desplegable}
+            <motion.span aria-hidden="true" animate={{ rotate: abierta ? 45 : 0 }} transition={{ duration: 0.25 }} className="inline-flex leading-none"><Plus size={14} /></motion.span>
+            ]
+          </button>
+          <AnimatePresence initial={false}>
+            {abierta && (
+              <motion.div key="cuerpo" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }} className="overflow-hidden">
+                {children}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </>
+      ) : children}
     </motion.article>
   );
 }
@@ -1862,7 +2128,7 @@ function Etiqueta({ children, tono = 'accent', icono = 'flecha', partir = false 
 
 function Paso({ etiqueta, tono, icono, children }) {
   return (
-    <p className="border-t border-line pt-3 text-[15px] leading-relaxed">
+    <p className="border-t border-line pt-3 text-[clamp(1rem,1.25vw,1.12rem)] leading-relaxed">
       <Etiqueta tono={tono} icono={icono}>{etiqueta}</Etiqueta>{' '}{children}
     </p>
   );
@@ -1899,6 +2165,7 @@ const EJEMPLOS_HIPERSTICION = [
 ];
 
 function QueEsHipersticion() {
+  const [ejemplos, setEjemplos] = useState(false);
   return (
     <>
       <section id="hipersticion" className="border-t border-line px-4 pt-24 md:px-8 md:pt-32">
@@ -1909,15 +2176,32 @@ function QueEsHipersticion() {
           <Circuito />
           {/* Origen del término: nota chica, mismo tamaño que las fuentes */}
           <p className="f-mono mt-4 max-w-[90ch] text-[12px] leading-relaxed text-[#8FA398]">El término surgió en los años 90 en el CCRU, un grupo de investigación de la Universidad de Warwick (Reino Unido), de la mano del filósofo Nick Land.</p>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {EJEMPLOS_HIPERSTICION.map((e, i) => (
-              <Tarjeta key={e.titulo} titulo={e.titulo} contexto={e.contexto} delay={i * 0.08}>
-                <div className="mt-5 grid gap-3">
-                  {e.pasos.map((t, j) => <Paso key={j} {...PASOS_CIRCUITO[j]}>{t}</Paso>)}
+          {/* Ejemplos: cerrados por defecto; un solo botón grande abre los tres */}
+          <button type="button" onClick={() => setEjemplos(!ejemplos)} aria-expanded={ejemplos} aria-controls="ejemplos-hiperstición"
+            className="group mt-10 flex w-full items-center justify-between gap-6 border-y border-line py-5 text-left transition-colors hover:border-leaf md:py-6">
+            <span className="f-cond text-[clamp(1.8rem,3.4vw,2.8rem)] leading-none text-leaf transition-colors group-hover:text-fg">
+              {ejemplos ? 'Ocultar ejemplos' : 'Ver ejemplos'}
+            </span>
+            <motion.span aria-hidden="true" animate={{ rotate: ejemplos ? 45 : 0 }} transition={{ duration: 0.3 }}
+              className="inline-flex h-12 w-12 shrink-0 items-center justify-center border border-leaf text-leaf transition-colors group-hover:bg-leaf group-hover:text-black md:h-14 md:w-14">
+              <Plus size={26} strokeWidth={1.75} />
+            </motion.span>
+          </button>
+          <AnimatePresence initial={false}>
+            {ejemplos && (
+              <motion.div id="ejemplos-hiperstición" key="ejemplos" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }} className="overflow-hidden">
+                <div className="grid items-start gap-4 pt-6 md:grid-cols-3">
+                  {EJEMPLOS_HIPERSTICION.map((e, i) => (
+                    <Tarjeta key={e.titulo} titulo={<span className="text-leaf">{e.titulo}</span>} contexto={e.contexto} grande delay={i * 0.08}>
+                      <div className="mt-5 grid gap-3">
+                        {e.pasos.map((t, j) => <Paso key={j} {...PASOS_CIRCUITO[j]}>{t}</Paso>)}
+                      </div>
+                    </Tarjeta>
+                  ))}
                 </div>
-              </Tarjeta>
-            ))}
-          </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
           <TextoDestacado className="mt-16">Ninguna de las tres cosas era cierta al principio. Se volvieron ciertas porque mucha gente las creyó y actuó en consecuencia.</TextoDestacado>
         </div>
       </section>
@@ -2045,7 +2329,7 @@ function LaHistoria() {
    ================================================================== */
 // Andre, Boneva, Chopra y Falk (2024), Nature Climate Change 14, 253–259 · 129.902 personas, 125 países (Gallup World Poll 2021/22)
 const ENCUESTA_CLIMA = [
-  { n: 69, texto: 'daría el 1% de su ingreso cada mes para frenar el cambio climático' },
+  { n: 69, texto: 'daría el 1% de su ingreso cada mes para frenar el cambio\u00A0climático' },
   { n: 43, texto: 'es lo que creemos que daría el resto' }
 ];
 
@@ -2074,12 +2358,16 @@ function SomosMas() {
         <SectionLabel index="08" sello="hiperstición">Somos más</SectionLabel>
         <h2 className={TITULO_SECCION}>Somos más de los que creemos</h2>
         <p className="f-serif mt-8 text-[clamp(1.4rem,2.8vw,2.3rem)] italic leading-snug">¿Por qué no cambiamos? En parte, por otra ficción.</p>
-        <div className="mt-12 grid max-w-[1000px] gap-4 sm:grid-cols-2">
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
           {ENCUESTA_CLIMA.map((e, i) => (
             <Tarjeta key={e.n} delay={i * 0.1}>
-              <GrillaPuntos pintados={e.n} />
-              <p className="f-display tnum mt-6 text-[clamp(3rem,6vw,4.8rem)] leading-none">{e.n}%</p>
-              <p className="mt-3 max-w-[34ch] text-[15px] leading-relaxed text-fg/85">{e.texto}</p>
+              <div className="grid grid-cols-[minmax(0,8.5rem)_minmax(0,1fr)] items-center gap-5 sm:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] sm:gap-7">
+                <GrillaPuntos pintados={e.n} />
+                <div className="min-w-0">
+                  <p className="f-display tnum text-[clamp(2.8rem,5vw,4.4rem)] leading-none">{e.n}%</p>
+                  <p className="mt-3 max-w-[30ch] text-[15px] leading-relaxed text-fg/85">{e.texto}</p>
+                </div>
+              </div>
             </Tarjeta>
           ))}
         </div>
@@ -2101,7 +2389,7 @@ function SomosMas() {
 const FICCIONES_COMPARTIDAS = [
   { titulo: 'El dinero', Icono: Banknote, contexto: 'Un billete es un papel. Y la mayor parte del dinero ni siquiera es eso: cerca del 90% son números en una\u00A0computadora.', porque: 'todos creemos que el otro lo va a aceptar.' },
   { titulo: 'Las naciones', Icono: MapIcon, contexto: 'Una frontera es una línea en un mapa. De los dos lados hay la misma tierra.', porque: 'millones creemos que esa línea existe, y actuamos en\u00A0consecuencia.' },
-  { titulo: 'Las leyes', Icono: Scale, contexto: 'Una ley es un texto escrito.', porque: 'casi todos la cumplimos sin que nadie nos obligue. El castigo es para los pocos que no.' }
+  { titulo: 'Las leyes', Icono: Scale, contexto: 'Una ley es un texto\u00A0escrito.', porque: 'casi todos la cumplimos sin que nadie nos obligue. El castigo es para los pocos que no.' }
 ];
 const DERECHOS_HUMANOS = [
   { anio: '1948', paso: 'Ficción', texto: 'Una declaración dice que todas las personas tienen los mismos derechos. No era cierto en casi ningún lado, y no obligaba a nadie.' },
@@ -2117,10 +2405,10 @@ function Ficciones() {
         <SectionLabel index="03" sello="ficcion">Ficciones</SectionLabel>
         <h2 className={TITULO_SECCION}>Las ficciones organizan el mundo</h2>
         <TextoDestacado className="mt-10">Y algunas organizan nuestra vida entera.</TextoDestacado>
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-12 grid items-start gap-4 md:grid-cols-3">
           {FICCIONES_COMPARTIDAS.map((f, i) => (
-            <Tarjeta key={f.titulo} titulo={f.titulo} contexto={f.contexto} icono={<f.Icono size={28} strokeWidth={1.5} />} delay={i * 0.08}>
-              <div className="mt-5 grid gap-3">
+            <Tarjeta key={f.titulo} titulo={f.titulo} contexto={f.contexto} icono={<f.Icono size={28} strokeWidth={1.5} />} delay={i * 0.08} desplegable="Por qué funciona">
+              <div className="mt-4 grid gap-3">
                 <Paso etiqueta="Funciona porque">{f.porque}</Paso>
               </div>
             </Tarjeta>
@@ -2246,6 +2534,7 @@ function Conclusion({ go }) {
       <div className="mx-auto max-w-[1400px]">
         <p className="f-display text-[clamp(2rem,5vw,4.6rem)]">El mundo no se está&nbsp;acabando.<br /><span className="text-leaf">UN mundo se está&nbsp;acabando.</span></p>
         <p className="f-serif mt-8 text-[clamp(1.3rem,2.4vw,2rem)] italic text-[#E8F0EA]">Nuestro desafío es construir el que sigue.</p>
+        <p className="label mt-4">— a partir de un posteo de @heynergiz</p>
         <div className="mt-20 border-t border-line pt-14">
           <div className="flex items-end gap-5">
             <Isotipo className="h-[clamp(90px,12vw,150px)] w-auto" />
@@ -2331,7 +2620,7 @@ function Home({ go }) {
       <Ficciones />
       <LaHistoria />
       <HamsterSection />
-      <Puente narrativo>A comienzos de los 70’, la ciencia analizó las tendencias del modelo socioeconómico mundial para medir el punto en que su crecimiento exponencial chocaría contra los márgenes de la biósfera. Décadas después, los datos históricos reales mostraron una alineación notable con aquella proyección.</Puente>
+      <Puente narrativo>A comienzos de los 70’, la ciencia analizó las tendencias del modelo socioeconómico mundial para medir el punto en que su crecimiento exponencial chocaría contra los márgenes de la biósfera. Décadas después, los datos reales se parecen mucho a lo que calcularon.</Puente>
       <Meadows />
       <Pradera />
       <div className="mx-auto max-w-[1100px] px-4 py-24 text-center md:px-8 md:py-32">
@@ -2872,6 +3161,7 @@ export default function App() {
       window.history.pushState(null, '', url);
     } catch (e) { /* entornos sandbox pueden bloquear history */ }
     window.scrollTo({ top: 0, behavior: 'auto' });
+    if (next === 'inicio') window.dispatchEvent(new Event('hiper:inicio'));
   }, []);
 
   return (
